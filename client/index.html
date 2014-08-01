@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+  </head>
+  <body>
+    <div ng-app="erg">
+      <div ng-controller="MainCtrl">
+        <div ng-hide="isAuthenticated">
+          Enter username: <input ng-model="username"/><br/>
+          Password: <input type="password" ng-model="password"/><br/>
+          <button ng-click="login()">Login</button>
+        </div>
+
+        <div ng-show="isAuthenticated">
+          Hello, {{username}}! {{numberOfTasks || 'No tasks'}}
+        </div>
+
+        <div ng-show="isAuthenticated" ng-controller="TaskListCtrl">
+          {{username}}, you've got {{numberOfTasks}} tasks<br/>
+          <button ng-click="addTask()">Add task</button>
+        </div>
+      </div>
+    </div>
+    <script src="/app/app.js"></script>
+    <script src="/app/components/main/main-controller.js"></script>
+    <script src="/app/sections/task-list/task-list-controller.js"></script>
+
+  </body>
+</html>
