@@ -1,0 +1,16 @@
+{
+  "name": "erg",
+  "version": "0.0.1",
+  "description": "Erg, a Social Task Manager",
+  "main": "server/app.js",
+  "author": "Yuri Takhteyev <yuri@rangle.io>",
+  "license": "MIT",
+  "dependencies": {
+    "koast": "^0.1.10",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.6",
+    "rangle-gulp": "0.0.6"
+  }
+}
