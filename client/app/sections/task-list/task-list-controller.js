@@ -3,8 +3,8 @@
 angular.module('erg')
 
 .controller('TaskListCtrl', function() {
-  var $scope = this;
-  $scope.tasks = [
+  var scope = this;
+  scope.tasks = [
     {
       owner: 'alice',
       description: 'Build the dog shed.'
@@ -18,8 +18,8 @@ angular.module('erg')
       description: 'Fix the door handle.'
     }
   ];
-  $scope.numberOfTasks = 0;
-  $scope.addTask = function() {
-    $scope.numberOfTasks += 1;
+  scope.numberOfTasks = 0;
+  scope.addTask = function() {
+    scope.numberOfTasks += 1;
   };
 });

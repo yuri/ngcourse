@@ -26,14 +26,15 @@
           <button ng-click="taskList.addTask()">Add task</button>
 
           <table>
-           <tr>
-            <th>Owner</th>
-            <th>Task description</th>
-           </tr>
-           <tr ng-repeat="task in taskList.tasks">
-            <td>{{task.owner}}</td>
-            <td>{{task.description}}</td>
-           </tr>
+            <tr>
+              <th>Owner</th>
+              <th>Task description</th>
+            </tr>
+            <tr ng-repeat="task in taskList.tasks">
+              <td>{{task.owner}}</td>
+              <td>{{task.description}}</td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
