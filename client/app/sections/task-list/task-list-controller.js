@@ -2,22 +2,17 @@
 
 angular.module('erg')
 
-.controller('TaskListCtrl', function() {
+.controller('TaskListCtrl', function($http, $log) {
   var scope = this;
-  scope.tasks = [
-    {
-      owner: 'alice',
-      description: 'Build the dog shed.'
-    },
-    {
-      owner: 'bob',
-      description: 'Get the milk.'
-    },
-    {
-      owner: 'alice',
-      description: 'Fix the door handle.'
-    }
-  ];
+  scope.tasks = [];
+
+  $http.get('http://localhost:5000/api/v1/tasks')
+    .then(function(response) {
+      $log.info(response);
+      scope.tasks = response.data;
+    })
+    .then(null, $log.error);
+
   scope.numberOfTasks = 0;
   scope.addTask = function() {
     scope.numberOfTasks += 1;
