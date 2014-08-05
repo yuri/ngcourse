@@ -547,6 +547,104 @@ Your `.run()` is essentially you modules's equivalent of the "main" block.
 
 Keep in mind, though, that Angular's modules are somewhat of a fiction.
 
+## Reusing Promises
+
+```javascript
+  var taskPromise;
+  service.getTasks = function () {
+    taskPromise = taskPromise || server.get('/api/v1/tasks');
+    return taskPromise;
+  };
+```
+
+## Postponing the Requests
+
+```javascript
+  .factory('server', function($http, user, API_BASE_URL) {
+    var service = {};
+
+    service.get = function (path) {
+      return user.whenAuthenticated()
+        .then(function() {
+          return $http.get(API_BASE_URL + path);
+        })
+        .then(function(response) {
+          return response.data;
+        });
+    };
+
+    return service;
+  });
+```
+
+## A Brand New Promise
+
+Suppose we have a function that uses callbacks. We can convert it to use promises with `$q.defer()`.
+
+```javascript
+  function getFooPromise(param) {
+    var deferred = $q.defer();
+    getFooWithCallbacks(param, function(error, result) {
+      if (error) {
+        deferred.reject(error);
+      } else {
+        deferred.resolve(result);
+      }
+    });
+    return deferred.promise;
+  }
+```
+
+This is about the only case when you will need to use `$q.defer()`.
+
+However, `$q.when()` and `$q.reject()` can come in handy often when you want
+to *not* call a function that returns a promise.
+
+```javascript
+  service.get = function (path) {
+    if (!networkInformation.isOnline) {
+      return $q.reject('offline');
+    } else {
+      return user.whenAuthenticated()
+        .then(function() {
+          return $http.get(API_BASE_URL + path);
+        })
+        .then(function(response) {
+          return response.data;
+        });
+    }
+  };
+```
+
+Or, better yet:
+
+```javascript
+
+  function waitForPreconditions() {
+    if (!networkInformation.isOnline) {
+      return $q.reject('offline');
+    } else {
+      return user.whenAuthenticated();
+    }
+  }
+
+  service.get = function (path) {
+    waitForPreconditions()
+      .then(function() {
+        return $http.get(API_BASE_URL + path);
+      })
+      .then(function(response) {
+        return response.data;
+      });
+    }
+  };
+```
+
+## Promises from `$timeout()`
+
+Angular's `$timeout()` service also returns a promise. The same is true for a
+number of other AngularJS functions.
+
 ## Next Steps
 
 We now know most of what we need to know about services. Before we write more
