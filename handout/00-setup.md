@@ -55,24 +55,36 @@ Postman is less essential and if you have another HTTP client that you prefer, t
 
 Once you have all the tools setup correctly, you should be able to do the
 following steps through the command line. This is the best way to check that
-git and node were installed correctly:
+git and node were installed correctly.
+
+Clone the training repository:
 
 ```javascript
-
-    # Clone the training repository:
     git clone https://github.com/rangle/ngcourse.git
     cd ngcourse
+```
 
-    # Install bower via NPM (skip 'sudo' on Windows):
+Install bower via NPM (skip 'sudo' on Windows):
+
+```javascript
     sudo npm install -g bower
+```
 
-    # Install the projects bower components using bower:
+Install the projects bower components using bower:
+
+```javascript
     bower install
+```
 
-    # Install http-server using npm (skip 'sudo' on Windows):
+Install http-server using npm (skip 'sudo' on Windows):
+
+```javascript
     sudo npm install -g http-server
+```
 
-    # Fire up the server:
+Fire up the server:
+
+```javascript
     http-server client/
 ```
 
