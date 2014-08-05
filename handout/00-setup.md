@@ -64,7 +64,7 @@ Clone the training repository:
     cd ngcourse
 ```
 
-Install bower via NPM (skip 'sudo' on Windows):
+Install bower via NPM (skip `sudo` on Windows):
 
 ```javascript
     sudo npm install -g bower
@@ -76,7 +76,7 @@ Install the projects bower components using bower:
     bower install
 ```
 
-Install http-server using npm (skip 'sudo' on Windows):
+Install http-server using npm (skip `sudo` on Windows):
 
 ```javascript
     sudo npm install -g http-server
