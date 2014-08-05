@@ -1,2 +1,8 @@
-angular.module('erg', []); // Let's leave it at this for now.
+angular.module('erg', [
+  'erg-server'
+])
+
+.run(function($log) {
+  $log.info('All ready!');
+});
 

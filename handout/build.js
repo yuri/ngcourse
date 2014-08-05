@@ -4,7 +4,8 @@ var highlightjs = require('highlight.js');
 var typogr = require('typogr');
 
 var parts = [
-  '02-controllers.md'
+  '02-controllers.md',
+  '03-services.md'
 ];
 
 // Synchronous highlighting with highlight.js

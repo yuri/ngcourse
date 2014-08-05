@@ -2,14 +2,13 @@
 
 angular.module('erg')
 
-.controller('TaskListCtrl', function($http, $log) {
+.controller('TaskListCtrl', function($http, $log, tasks) {
   var scope = this;
   scope.tasks = [];
 
-  $http.get('http://localhost:5000/api/v1/tasks')
-    .then(function(response) {
-      $log.info(response);
-      scope.tasks = response.data;
+  tasks.getTasks()
+    .then(function(tasks) {
+      scope.tasks = tasks;
     })
     .then(null, $log.error);
 
