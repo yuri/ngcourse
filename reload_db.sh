@@ -1,4 +1,4 @@
-for COLLECTION in tasks
+for COLLECTION in tasks users
 do
   echo
   echo "# <$COLLECTION>"
