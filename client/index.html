@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script src="/bower_components/angular/angular.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+    <link href="http://fonts.googleapis.com/css?family=Dosis:400,600" rel="stylesheet" type="text/css">
   </head>
   <body>
     <div ng-app="erg">
       <div ng-controller="MainCtrl as main">
-        <div ng-hide="main.isAuthenticated" ng-controller="LoginFormCtrl as loginForm">
+        <div ng-hide="main.isAuthenticated" ng-controller="LoginFormCtrl as loginForm" class="login">
           Enter username: <input ng-model="loginForm.username"/><br/>
           Password: <input type="password" ng-model="loginForm.password"/><br/>
           <div ng-show="main.errorMessage">{{ main.errorMessage}}</div>
