@@ -1,8 +1,15 @@
 angular.module('erg', [
-  'erg.tasks'
+  'erg.main-ctrl',
+  'erg.tasks',
+  'koast'
 ])
 
-.run(function($log) {
+.run(function($log, koast) {
   $log.info('All ready!');
+  koast.init({
+    baseUrl: 'http://ngcourse.herokuapp.com'
+  });
+  koast.setApiUriPrefix('http://ngcourse.herokuapp.com/api/v1/');
+  koast.addEndpoint('tasks-plus', ':taskId');
 });
 
