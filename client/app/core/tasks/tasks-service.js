@@ -1,4 +1,6 @@
-angular.module('erg')
+angular.module('erg.tasks', [
+  'erg.server'
+])
 
 .factory('tasks', function($http, server) {
   var service = {};

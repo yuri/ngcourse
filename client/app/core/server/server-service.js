@@ -1,4 +1,4 @@
-angular.module('erg-server', [])
+angular.module('erg.server', [])
 
 .constant('API_BASE_URL', 'http://ngcourse.herokuapp.com')
 

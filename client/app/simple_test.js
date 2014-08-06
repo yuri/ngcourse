@@ -1,12 +1,14 @@
+var expect = chai.expect;
 describe('tasks', function () {
-  // Define a test.
   it('2*2 should equal 4', function () {
-    var x;
-    // Do something.
-    x = 2 * 2;
-    // Check that the results are what we expect and throw an error if something is off.
-    if (x!==5) {
-      throw new Error('Failure of basic arithmetics.')
-    }
+    var x = 2 * 2;
+    var y = 4;
+    // Assert that x is defined.
+    expect(x).to.not.be.undefined;
+    // Assert that x equals to specific value.
+    expect(x).to.equal(4);
+    // Assert that x equals to y.
+    expect(x).to.equal(y);
+    // See http://chaijs.com/api/bdd/ for more assertion options.
   });
 });
