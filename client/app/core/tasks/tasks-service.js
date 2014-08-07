@@ -7,7 +7,16 @@ angular.module('erg.tasks', [
   var service = {};
 
   service.getTasks = function () {
-    return koast.queryForResources('tasks-plus');
+    return koast.user.whenAuthenticated()
+      .then(function() {
+        return koast.queryForResources('tasks-plus');
+      })
+      .then(function(tasks) {
+        tasks.forEach(function(task) {
+          console.log(task, task.can.edit);
+        });
+        return tasks;
+      });
   };
 
   // service.getMyTasks = function () {

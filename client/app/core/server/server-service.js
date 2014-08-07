@@ -6,6 +6,7 @@ angular.module('erg.server', [])
   var service = {};
 
   service.get = function (path) {
+
     return $http.get(API_BASE_URL + path)
       .then(function(response) {
         return response.data;

@@ -24,7 +24,7 @@
         </div>
 
         <div ng-show="main.user.isAuthenticated" ng-controller="TaskListCtrl as taskList">
-          {{main.user.data.displayName}}, you've got {{taskList.numberOfTasks}} tasks<br/>
+          {{main.user.data.displayName}}, we've got {{taskList.tasks.length}} tasks<br/>
           <button ng-click="taskList.addTask()">Add task</button>
 
           <table>
@@ -35,6 +35,7 @@
             <tr ng-repeat="task in taskList.tasks">
               <td>{{task.owner}}</td>
               <td>{{task.description}}</td>
+              <td><span ng-show="task.can.edit">edit</span></td>
             </tr>
           </table>
         </div>
