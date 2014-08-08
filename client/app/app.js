@@ -1,7 +1,7 @@
 angular.module('erg', [
   'erg.main-ctrl',
   'erg.tasks',
-  'erg.router',
+  // 'erg.router',
   'koast'
 ])
 

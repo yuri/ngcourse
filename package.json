@@ -10,7 +10,9 @@
     "lodash": "^2.4.1"
   },
   "devDependencies": {
+    "chai": "^1.9.1",
+    "chai-as-promised": "^4.1.1",
     "gulp": "^3.8.6",
-    "rangle-gulp": "0.0.6"
+    "rangle-gulp": "0.0.7"
   }
 }

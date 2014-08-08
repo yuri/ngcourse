@@ -47,3 +47,9 @@ gulp.task('dev', rg.connectWatch({
 }));
 
 gulp.task('default', ['lint', 'concat', 'mocha', 'karma']);
+
+gulp.task('protractor', rg.protractor({
+  files: [
+    'client/testing/scenarios/*.scenario.js'
+  ]
+}));
