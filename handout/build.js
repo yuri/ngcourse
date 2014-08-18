@@ -4,8 +4,15 @@ var highlightjs = require('highlight.js');
 var typogr = require('typogr');
 
 var parts = [
+  '00-setup.md',
+  '01-introduction.md',
   '02-controllers.md',
-  '03-services.md'
+  '03-services.md',
+  '04-unit-testing.md',
+  '05-authentication.md',
+  '06-ui-router.md',
+  '07-directives.md',
+  '08-protractor.md'
 ];
 
 // Synchronous highlighting with highlight.js

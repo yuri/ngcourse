@@ -1,4 +1,4 @@
-# Getting Started with the Client
+# Part 2: Getting Started with the Client
 
 This course will be organized around building a collaborative task manager. We
 will start by building a client app, which we will later connect to a REST

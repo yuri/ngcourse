@@ -1,4 +1,4 @@
-# $http.get, Services and Promises
+# Part 3: $http.get, Services and Promises
 
 After setting up a basic view we will set up the app to receive data from the
 server using `$http.get`. To avoid doing server interaction in the controller,

@@ -1,3 +1,4 @@
+# Part 4: Unit Testing
 
 ## The Rationale
 
@@ -37,7 +38,7 @@ However, let's install Mocha as well, so that we could try using it manually:
 
 Now we can proceed to writing tests.
 
-# A Basic Mocha Test
+## A Basic Mocha Test
 
 First, let's write a simple test and run it just using Mocha. Put this code
 into `client/app/simple_test.js`.
@@ -64,7 +65,7 @@ We can now run this code with:
   mocha client/app/simple_test.js
 ```
 
-# Mocha with Karma and Gulp
+## Mocha with Karma and Gulp
 
 Run Karma via Gulp using:
 
@@ -77,7 +78,7 @@ This will run **all** tests under client.
 See `gulpfile.js` on how to implement the `karma` task and `rangle-gulp` code
 for more details. Karma configuration is in `client/tests/karma.conf.js`.
 
-# Skipping Tests
+## Skipping Tests
 
 You can skip the whole suite:
 
@@ -270,7 +271,7 @@ is equivalent to:
   .then(null, done);
 ```
 
-# Mocha's Support for Promises;
+## Mocha's Support for Promises;
 
 Mocha's tests can alternatively just accept a promise. In most case this is
 what you want to use.
@@ -292,7 +293,7 @@ what you want to use.
   });
 ```
 
-# Decompose Tests
+## Decompose Tests
 
 Everything you know about decomposition applies to tests too.
 
@@ -355,7 +356,7 @@ You can then check if they were called:
   });
 ```
 
-# Testing Controllers
+## Testing Controllers
 
 Testing controllers is harder, so generally speaking you want to make
 your controllers so simple that testing them is less of a priority.

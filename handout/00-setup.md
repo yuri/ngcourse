@@ -1,4 +1,4 @@
-# Setup
+# Part 0: Setup
 
 Each attendee should come to the course with their own computer, so that they
 could follow the steps. We also ask all attendees to complete the following
