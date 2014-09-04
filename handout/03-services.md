@@ -19,9 +19,9 @@ If you do not have Postman install, get it here:
 
     <http://http://www.getpostman.com/>
 
-Our server is setup at http://erg.herokuapps.com/. Here is our `tasks` endpoint:
+Our server is setup at http://ngcourse.herokuapps.com/. Here is our `tasks` endpoint:
 
-    http://erg.herokuapps.com/api/v1/tasks
+    http://ngcourse.herokuapps.com/api/v1/tasks
 
 ## Are we going to be using `$resource`?
 
@@ -238,7 +238,7 @@ functionally equivalent promise:
 ```
 
 `p2` is now functionally equivalent to newPromise. It's not the same object,
-`however. Let's discuss why not.
+however. Let's discuss why not.
 
 ```javascript
   p2 = p1.then(function (results) {
@@ -503,7 +503,7 @@ At this point we may want to consider breaking our code up into modules. E.g.,
 let's make `server` its own module:
 
 ```javascript
-  angular.module('erg-server', [])
+  angular.module('erg.server', [])
 
   .constant('API_BASE_URL', 'http://ngcourse.herokuapp.com')
 
@@ -525,7 +525,7 @@ We can then make it a dependency in our `erg` module (in `app.js`):
 
 ```javascript
   angular.module('erg', [
-    'erg-server'
+    'erg.server'
   ]);
 ```
 
@@ -537,7 +537,7 @@ Your `.run()` is essentially you modules's equivalent of the "main" block.
 
 ```javascript
   angular.module('erg', [
-    'erg-server'
+    'erg.server'
   ])
 
   .run(function($log) {
@@ -629,7 +629,7 @@ Or, better yet:
   }
 
   service.get = function (path) {
-    waitForPreconditions()
+    return waitForPreconditions()
       .then(function() {
         return $http.get(API_BASE_URL + path);
       })

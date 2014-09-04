@@ -47,7 +47,7 @@ into `client/app/simple_test.js`.
   // Define a test suite.
   describe('tasks', function () {
     // Define a test.
-    it('2*2 should equal 4', function () {
+    it('should have 2*2 be equal to 4', function () {
       var x;
       // Do something.
       x = 2 * 2;
@@ -91,7 +91,15 @@ You can skip the whole suite:
 Or just an individual test:
 
   ```javascript
-    xit('2*2 should equal 4', function () {
+    xit('should have 2*2 be equal to 4', function () {
+      // ...
+    });
+  ```
+
+Alternatively, we can *only* run a specific test:
+
+  ```javascript
+    it.only('2*2 should equal 4', function () {
       // ...
     });
   ```
@@ -208,10 +216,8 @@ our dependencies.
         }];
 
         service.get = function () {
-          var deferred = Q.defer();
-          deferred.resolve(data);
-          // or try this: deferred.reject(new Error('Some Error'));
-          return deferred.promise;
+          return Q.when(data);
+          // or try this: Q.reject(new Error('Some Error'));
         };
         return service;
       });
@@ -333,10 +339,7 @@ When mocking dependencies, wrap functions with `sinon.spy()`:
     }];
 
     service.get = sinon.spy(function () {
-      var deferred = Q.defer();
-      deferred.resolve(data);
-      // or try this: deferred.reject(new Error('Some Error'));
-      return deferred.promise;
+      return Q.when(data);
     });
     return service;
   });
