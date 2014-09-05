@@ -12,7 +12,7 @@ var parts = [
   '05-authentication.md',
   '06-ui-router.md',
   '07-directives.md',
-  '08-protractor.md'
+  '08-integration-testing.md'
 ];
 
 // Synchronous highlighting with highlight.js

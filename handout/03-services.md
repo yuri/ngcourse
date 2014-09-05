@@ -19,9 +19,9 @@ If you do not have Postman install, get it here:
 
     <http://http://www.getpostman.com/>
 
-Our server is setup at http://ngcourse.herokuapps.com/. Here is our `tasks` endpoint:
+Our server is setup at http://ngcourse.herokuapp.com/. Here is our `tasks` endpoint:
 
-    http://ngcourse.herokuapps.com/api/v1/tasks
+    http://ngcourse.herokuapp.com/api/v1/tasks
 
 ## Are we going to be using `$resource`?
 

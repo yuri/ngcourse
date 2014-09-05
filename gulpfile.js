@@ -20,8 +20,8 @@ gulp.task('karma-watch', rg.karmaWatch({
   // karmaConf: specify which karma config file (optional)
 }));
 
-gulp.task('mocha', rg.karmaWatch({
-  // files: specify which folders (optional)
+gulp.task('api-test', rg.mocha({
+  files: 'server/testing/e2e/api-test.js'
 }));
 
 gulp.task('lint', rg.jshint({
