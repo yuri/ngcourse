@@ -135,13 +135,11 @@ you should be doing, such as using 'use strict'.
 
 ## Debugging 4: Using the Console
 
-Accessing an element's scope.
+Accessing an element's scope. Inspect the element in Chrome, and $scope will be set in the console.
 
 ```javascript
-  var scope = angular.element($0).scope();
-  element.taskList;
-  element.taskList.numberOfTasks = 42;
-  scope.$apply();
+  $scope.numberOfTasks = 42;  // angular.element($0).scope();
+  $scope.$apply();
 ```
 
 Note that you *rarely* need to call `$apply()` on your own. Angular will

@@ -51,6 +51,10 @@ Postman is our preferred tool for interacting with a REST API server.
 
 Postman is less essential and if you have another HTTP client that you prefer, this is fine too.
 
+## Editors
+
+Any text editor will work. At rangle.io the most popular editors/IDEs are Sublime Text 2, WebStorm, VIM, and Atom. We also hear good things about Visual Studio.
+
 ## Verifying the Setup
 
 Once you have all the tools setup correctly, you should be able to do the
