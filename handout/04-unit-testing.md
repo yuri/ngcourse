@@ -53,7 +53,7 @@ into `client/app/simple_test.js`.
       x = 2 * 2;
       // Check that the results are what we expect and throw an error if something is off.
       if (x!==4) {
-        throw new Error('Failure of basic arithmetics.')
+        throw new Error('Failure of basic arithmetics.');
       }
     });
   });
@@ -137,6 +137,11 @@ it.
 For testing Angular code we need to load modules and inject services.
 
 ```javascript
+  'use strict';
+  
+  var expect = chai.expect;  
+  // move expect definitin to client/testing/test-utils.js
+
   describe('tasks service', function () {
     // Load the angular module. Having smaller modules helps here.
     beforeEach(module('erg.tasks'));

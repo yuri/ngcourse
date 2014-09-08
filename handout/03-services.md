@@ -42,7 +42,7 @@ Let's start by just getting a list of tasks:
         scope.tasks = data;
       })
       .error(function(data, status) {
-        $log.error(status, error);
+        $log.error(status, data);
       });
 ```
 
@@ -330,7 +330,7 @@ function that is triggered by Angular.
 
 ## Catch and Release
 
-There is one (common) case when it's ok to not catch the rejection:
+Or you can catch, do something, and still pass the exception onwards:
 
 ```javascript
   .then(null, function(error) {
@@ -376,6 +376,8 @@ Those functions need a better home, however. Take them out of the controller,
 put them in services.
 
 ```javascript
+'use strict';
+
 angular.module('erg')
 .factory('tasks', function($http) {
   var service = {};
@@ -434,7 +436,7 @@ The rule of thumb: code that can be written without referring to a
 controller's scope should be written this way and should be places in a
 service.
 
-## `.factory()` vs `.service()` vs `.provider()`
+## Using `.factory()` vs `.service()` vs `.provider()`
 
 Note our use of `.factory()` to define a service. There is also `.service()`
 and `.provider()`. Let's talk briefly about the differences.
@@ -473,7 +475,7 @@ While our `tasks` code gets simplified to:
 
 But why bother, you might ask? Lets go over some of the benefits.
 
-## `.constant()` and `.value()`
+## Using `.constant()` and `.value()`
 
 We could decompose yet more, though:
 
