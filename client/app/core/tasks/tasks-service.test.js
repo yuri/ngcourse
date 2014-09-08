@@ -48,14 +48,14 @@ describe('tasks service', function () {
     it('testing the controller', function(done) {
       inject(function ($controller, $rootScope) {
         // Create a scope.
-        var scope = {};
+        // var scope = {};
         // Instantiate a controller with the new scope.
         var ctrl = $controller('TaskListCtrl', {
-          $scope: scope
+          // $scope: scope
         });
         // Wait for the controller to run.
         setTimeout(function() {
-          expect(scope.tasks.length).to.equal(1);
+          expect(ctrl.tasks.length).to.equal(1);
           done();
         }, 100);
       });
