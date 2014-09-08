@@ -19,7 +19,7 @@ that it won't do anything at all. Here is what we'll put in our HTML file.
   <html>
     <head>
       ...
-      <script src="/bower_components/angular/angular.min.js"></script>
+      <script src="/bower_components/angular/angular.js"></script>
       <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
     </head>
     <body>
