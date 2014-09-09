@@ -75,7 +75,7 @@ exports.routes = [
     handler: mapper.put({
       model: 'tasks',
       queryDecorator: function(query, req) {
-        query.owner = req.user.data.username;
+        // query.owner = req.user.data.username;
       },
       annotator: annotator
     })
