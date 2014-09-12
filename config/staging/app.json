@@ -1,0 +1,10 @@
+{
+  "portNumber": 3001,
+  "routes" : [
+    {
+      "route" : "/api/v1",
+      "type": "module",
+      "module" : "server/lib/api"    
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "host": "ds061199.mongolab.com",
+    "port": "61199",
+    "db": "ngcourse",
+    "user": "ngcourse",
+    "pass": "ngcourse",
+    "schemas": "./server/schemas.js",
+    "handle" :"_"
+  }
+]
