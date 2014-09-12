@@ -2,18 +2,15 @@
 
 angular.module('erg')
 
-.controller('TaskListCtrl', function($http, $log, tasks) {
-  var scope = this;
-  scope.tasks = [];
+.controller('TaskListCtrl', function($log, tasks, router) {
+    var scope = this;
+    scope.tasks = [];
 
-  tasks.getTasks()
-    .then(function(tasks) {
-      scope.tasks = tasks;
-    })
-    .then(null, $log.error);
+    scope.addTask = router.goToAddTask;
 
-  scope.numberOfTasks = 0;
-  scope.addTask = function() {
-    scope.numberOfTasks += 1;
-  };
+    tasks.getTasks()
+        .then(function(tasks) {
+            scope.tasks = tasks;
+        })
+        .then(null, $log.error);
 });

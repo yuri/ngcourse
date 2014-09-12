@@ -1,16 +1,25 @@
 angular.module('erg', [
   'erg.main-ctrl',
   'erg.tasks',
-  // 'erg.router',
+   'erg.router',
   'koast'
 ])
 
 .run(function($log, koast) {
   $log.info('All ready!');
+  // local
+  
   koast.init({
+    baseUrl: 'http://localhost:3001'
+  });
+  koast.setApiUriPrefix('/api/v1/');
+  // hosted
+  
+  /*koast.init({
     baseUrl: 'http://ngcourse.herokuapp.com'
   });
-  koast.setApiUriPrefix('http://ngcourse.herokuapp.com/api/v1/');
-  koast.addEndpoint('tasks-plus', ':taskId');
+  koast.setApiUriPrefix('http://ngcourse.herokuapp.com/api/v1/');*/
+
+  koast.addEndpoint('tasks-plus', ':taskId',{ useEnvelope: true });
 });
 

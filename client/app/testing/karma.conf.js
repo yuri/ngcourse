@@ -1,17 +1,18 @@
 'use strict';
 module.exports = function (config) {
 
-  console.log(process.cwd());
+  console.log("Here",process.cwd());
+  return;
   config.set({
     basePath: 'client/',
     frameworks: ['mocha', 'chai', 'sinon'],
-    files: [],
-    exclude: [],
+    files: ['**/*.js'],
+    exclude: ['bower_compnents/*'],
     reporters: ['progress'],
     port: 9999,
     colors: true,
     logLevel: config.LOG_ERROR,
-    autoWatch: false,
+    autoWatch: true,
     browsers: ['Chrome'], // Alternatively: 'PhantomJS'
     captureTimeout: 6000,
     singleRun: false
