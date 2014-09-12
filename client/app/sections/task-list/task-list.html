@@ -1,16 +1,19 @@
-        <div>
-          {{main.user.data.displayName}}, we've got {{taskList.tasks.length}} tasks<br/>
-          <button ng-click="taskList.addTask()">Add task</button>
+<div>
+    {{main.user.data.username}}, we've got {{taskList.tasks.length}} tasks
+    <br/>
 
-          <table>
-            <tr>
-              <th>Owner</th>
-              <th>Task description</th>
-            </tr>
-            <tr ng-repeat="task in taskList.tasks">
-              <td>{{task.owner}}</td>
-              <td>{{task.description}}</td>
-              <td><span ng-show="task.can.edit">edit</span></td>
-            </tr>
-          </table>
-        </div>
+   
+    <div ui-view="actionArea"></div>
+    <table>
+        <tr>
+            <th>Owner</th>
+            <th>Task description</th>
+        </tr>
+        <tr ng-repeat="task in taskList.tasks">
+            <td>{{task.owner}}</td>
+            <td>{{task.description}}</td>
+            <td><a ng-show="task.can.edit" ui-sref="tasks.details({_id: task._id})">edit</a>
+            </td>
+        </tr>
+    </table>
+</div>
