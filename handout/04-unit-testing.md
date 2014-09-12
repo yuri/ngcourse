@@ -76,7 +76,7 @@ Run Karma via Gulp using:
 This will run **all** tests under client.
 
 See `gulpfile.js` on how to implement the `karma` task and `rangle-gulp` code
-for more details. Karma configuration is in `client/tests/karma.conf.js`.
+for more details. Karma configuration is in `client/testing/karma.conf.js`.
 
 ## Skipping Tests
 
