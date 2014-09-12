@@ -2,9 +2,13 @@
 
 angular.module('erg')
 
-.controller('MainCtrl', function($scope) {
-  $scope.isAuthenticated = false;
-  $scope.login = function() {
-    $scope.isAuthenticated = true;
-  };
-});
+.controller('MainCtrl', function() {
+        var scope = this;
+        scope.isAuthenticated = false;
+
+        scope.login = function(username, password) {
+            scope.isAuthenticated = true;
+            scope.username = username;
+        }
+    });
+

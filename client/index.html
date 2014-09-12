@@ -9,25 +9,38 @@
   </head>
   <body>
     <div ng-app="erg">
-      <div ng-controller="MainCtrl">
-        <div ng-hide="isAuthenticated">
-          Enter username: <input ng-model="username"/><br/>
-          Password: <input type="password" ng-model="password"/><br/>
-          <button ng-click="login()">Login</button>
+      <div ng-controller="MainCtrl as main">
+        <div ng-hide="main.isAuthenticated" ng-controller="LoginFormCtrl as loginForm">
+          Enter username: <input ng-model="loginForm.username"/><br/>
+          Password: <input type="password" ng-model="loginForm.password"/><br/>
+          <div ng-show="main.errorMessage">{{ main.errorMessage}}</div>
+          <button ng-click="main.login(loginForm.username, loginForm.password)">Login</button>
         </div>
 
-        <div ng-show="isAuthenticated">
-          Hello, {{username}}! {{numberOfTasks || 'No tasks'}}
+        <div ng-show="main.isAuthenticated">
+          Hello, {{main.username}}!
         </div>
 
-        <div ng-show="isAuthenticated" ng-controller="TaskListCtrl">
-          {{username}}, you've got {{numberOfTasks}} tasks<br/>
-          <button ng-click="addTask()">Add task</button>
+        <div ng-show="main.isAuthenticated" ng-controller="TaskListCtrl as taskList">
+          {{main.username}}, you've got {{taskList.numberOfTasks}} tasks<br/>
+          <button ng-click="taskList.addTask()">Add task</button>
+
+          <table>
+            <tr>
+              <th>Owner</th>
+              <th>Task description</th>
+            </tr>
+            <tr ng-repeat="task in taskList.tasks">
+              <td>{{task.owner}}</td>
+              <td>{{task.description}}</td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
     <script src="/app/app.js"></script>
     <script src="/app/components/main/main-controller.js"></script>
+    <script src="/app/components/login-form/login-form-controller.js"></script>
     <script src="/app/sections/task-list/task-list-controller.js"></script>
 
   </body>
