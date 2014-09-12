@@ -24,7 +24,7 @@
         </div>
 
         <div ng-show="main.user.isAuthenticated" ng-controller="TaskListCtrl as taskList">
-          {{main.user.data.displayName}}, you've got {{taskList.numberOfTasks}} tasks<br/>
+          {{main.user.data.displayName}}, you've got {{taskList.tasks.length}} tasks<br/>
           <button ng-click="taskList.addTask()">Add task</button>
 
           <table>

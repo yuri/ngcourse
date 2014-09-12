@@ -7,7 +7,8 @@ angular.module('erg.tasks', [
   var service = {};
 
   service.getTasks = function () {
-    return koast.queryForResources('tasks-plus');
+    return server.get('/api/v1/tasks')
+    //return koast.queryForResources('tasks-plus');
   };
 
   // service.getMyTasks = function () {
