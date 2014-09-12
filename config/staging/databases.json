@@ -5,6 +5,7 @@
     "db": "ngcourse",
     "user": "ngcourse",
     "pass": "ngcourse",
-    "schemas": "./server/schemas.js"
+    "schemas": "./server/schemas.js",
+    "handle": "_"
   }
 ]
