@@ -46,7 +46,10 @@ angular.module('erg.tasks', [
         service.getTask = function(id) {
             return koast.user.whenAuthenticated()
                 .then(function() {
-                    return server.get('/api/v1/tasks/' + id);
+                    return server.get('/api/v1/tasks/' + id).then(function(response)
+                    {
+                        return setMetaData(response)[0];
+                    });
 
                 });
         }
