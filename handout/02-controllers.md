@@ -18,7 +18,7 @@ that it won't do anything at all. Here is what we'll put in our HTML file.
   <!DOCTYPE html>
   <html>
     <head>
-      ...
+    
       <script src="/bower_components/angular/angular.js"></script>
       <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
     </head>
