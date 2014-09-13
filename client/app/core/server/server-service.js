@@ -1,6 +1,6 @@
 angular.module('erg.server', [])
 
-.constant('API_BASE_URL', 'http://ngcourse.heroku.com')
+.constant('API_BASE_URL', 'http://localhost:5000')
 
 .factory('server', function($http, API_BASE_URL) {
     var service = {};
