@@ -6,6 +6,6 @@
     "user": "ngcourse",
     "pass": "ngcourse",
     "schemas": "./server/schemas.js",
-    "handle": "_"
+    "handle": "ngcourse"
   }
 ]
