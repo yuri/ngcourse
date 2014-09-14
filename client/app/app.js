@@ -7,7 +7,7 @@ angular.module('erg', [
 .run(function($log, koast) {
   $log.info('All ready!');
   koast.init({
-    baseUrl: 'http://localhost:3001'
+    baseUrl: 'http://ngcourse.herokuapp.com'
   });
   koast.setApiUriPrefix('/api/v1/');
   koast.addEndpoint('tasks-plus', ':taskId',{useEnvelope: true});
