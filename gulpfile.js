@@ -40,7 +40,7 @@ gulp.task('concat', rg.concatAndUglify({
 
 gulp.task('dev', rg.connectWatch({
   root : 'client',
-  port : 3000,
+  port : 8080,
   livereload : true,
   // Files to watch for live re-load
   glob : ['./client/**/*.html', './client/**/*.js']
