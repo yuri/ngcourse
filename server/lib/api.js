@@ -10,7 +10,7 @@ exports.defaults = {};
 
 function isOwner(data, req) {
     // return data.owner === 'alice';
-    console.log(req.user.data.username,data.owner);
+    //console.log(req.user.data.username,data.owner);
     return req.user && (data.owner === req.user.data.username);
 }
 
