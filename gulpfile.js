@@ -5,23 +5,27 @@ var karmaVendorFiles = [
     'client/bower_components/angular/angular.js',
     'client/bower_components/angular-mocks/angular-mocks.js',
     'client/bower_components/sinon-chai/lib/sinon-chai.js',
+    'client/bower_components/koast/client/dist/koast.js',
     'client/testing/lib/q.js',
-    'client/testing/test-utils.js'
+    'client/testing/test-utils.js',
+    'client/bower_components/lodash/dist/lodash.js'
 ];
 
 gulp.task('karma', rg.karma({
     // files: specify which folders (optional)
     // karmaConf: specify which karma config file (optional)
+    //karmaConf: 'client/testing/karma.conf.js',
     vendor: karmaVendorFiles
 }));
 
 gulp.task('karma-watch', rg.karmaWatch({
     // files: specify which folders (optional)
     // karmaConf: specify which karma config file (optional)
+    vendor: karmaVendorFiles
 }));
 
-gulp.task('mocha', rg.karmaWatch({
-    // files: specify which folders (optional)
+gulp.task('api-test', rg.mocha({
+    files: 'server/testing/e2e/api-test.js'
 }));
 
 gulp.task('lint', rg.jshint({
@@ -43,7 +47,13 @@ gulp.task('dev', rg.connectWatch({
     port: 8080,
     livereload: true,
     // Files to watch for live re-load
-    glob: ['./client/**/*.html', './client/**/*.js']
+    glob: ['./client/app/**/*.html', './client/app/**/*.js', './client/app/testing/**/*.js']
 }));
 
 gulp.task('default', ['lint', 'concat', 'mocha', 'karma']);
+
+gulp.task('protractor', rg.protractor({
+    files: [
+        'client/testing/scenarios/*.scenario.js'
+    ]
+}));
