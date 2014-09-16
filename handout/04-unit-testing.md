@@ -382,7 +382,7 @@ If you do want to test controllers, you do so using the following steps:
       });
       // Wait for the controller to run.
       setTimeout(function() {
-        expect(scope.tasks.length).to.equal(1);
+        expect(ctrl.tasks.length).to.equal(1);
         done();
       }, 100);
     });
