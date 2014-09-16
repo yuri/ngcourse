@@ -1,1 +1,1 @@
-angular.module('erg', []);
+var erg= angular.module('erg', []);

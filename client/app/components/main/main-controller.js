@@ -1,6 +1,16 @@
-angular.module('erg')
+'use strict';
 
-  .controller('MainCtrl', function($scope) {
-    $scope.username = 'alice';
-    $scope.numberOfTasks = 0;
+  angular.module('erg')
+
+  .controller('MainCtrl', function($log) {
+  	var scope=this;
+    scope.isAuthenticated = false;
+    scope.login = function(username, password) {
+      scope.isAuthenticated = true;
+      scope.username = username;
+      scope.password= password;
+    };    
+  })
+  .controller('LoginFormCtrl', function(){
+  	
   });
