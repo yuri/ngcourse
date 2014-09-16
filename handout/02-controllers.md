@@ -370,8 +370,10 @@ We'll also need to change our controllers. First, `MainCtrl`:
   .controller('MainCtrl', function($log) {
     var scope = this;
     scope.isAuthenticated = false;
-    scope.login = function() {
+    scope.login = function(username,password) {
       scope.isAuthenticated = true;
+      scope.username = username;
+      scope.password=password;
     };
   });
 ```
