@@ -415,6 +415,7 @@ We can now simplify our controller code:
     tasks.getTasks()
       .then(function(tasks) {
         scope.tasks = tasks;
+        scope.numberOfTasks = tasks.length;
       })
       .then(null, $log.error);
 
