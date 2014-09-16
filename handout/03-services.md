@@ -137,7 +137,7 @@ You might have seen chained promises:
       return response.data;
     })
     .then(function(tasks) {
-      $log.info(response);
+      $log.info(tasks);
       scope.tasks = tasks;
     })
     .then(null, function(error) {
@@ -154,7 +154,7 @@ We could also make this more complicated:
       return filterTasks(tasks);
     })
     .then(function(tasks) {
-      $log.info(response);
+      $log.info(tasks);
       scope.tasks = tasks;
     })
     .then(null, function(error) {
@@ -173,7 +173,7 @@ Or even:
       return filterTasksAsynchronously(tasks);
     })
     .then(function(tasks) {
-      $log.info(response);
+      $log.info(tasks);
       scope.tasks = tasks;
     })
     .then(null, function(error) {
@@ -192,7 +192,7 @@ To make sense, let's "unchain" this using variables:
     return filterTasksAsynchronously(tasks);
   });
   var scopeUpdatePromise = filteredTasksPromise.then(function(tasks) {
-    $log.info(response);
+    $log.info(tasks);
     scope.tasks = tasks;
   })
   var errorHandlerPromise = scopeUpdatePromise.then(null, function(error) {
@@ -268,7 +268,7 @@ So, catch rejections:
       return filterTasksAsynchronously(tasks);
     })
     .then(function(tasks) {
-      $log.info(response);
+      $log.info(tasks);
       scope.tasks = tasks;
     }, function(error) {
       $log.error(error);
@@ -288,7 +288,7 @@ So, the following is better.
       return filterTasksAsynchronously(tasks);
     })
     .then(function(tasks) {
-      $log.info(response);
+      $log.info(tasks);
       scope.tasks = tasks;
     })
     .then(null, function(error) {
