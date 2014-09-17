@@ -1,25 +1,48 @@
- <!DOCTYPE html>
-  <html>
-    <head>
+<!DOCTYPE html>
+<html>
 
-      <script src="/bower_components/angular/angular.js"></script>
-      <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-      <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
-    </head>
-    <body>
-      <div ng-app="erg">
+<head>
 
-       <div ui-view></div>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
 
+<body>
+    <div ng-app="erg">
+
+        <h1>My Tasks2</h1>
+
+        <div ng-controller="MainCtrl as main">
+
+            <div ng-hide="main.isAuthenticated" ng-controller="LoginFormCtrl as loginForm">
+                Enter username:
+                <input ng-model="loginForm.username" />
+                <br/>Password:
+                <input type="password" ng-model="loginForm.password" />
+                <br/>
+                <div ng-show="main.errorMessage">{{ main.errorMessage}}</div>
+                username: {{loginForm.username}}
+                <button ng-click="main.login(loginForm.username, loginForm.password)">Login</button>
+            </div>
+
+            <div ng-show="main.isAuthenticated">
+                Hello, {{main.username}}!
+                <div ui-view></div>
+            </div>
+
+
+        </div>
         <div ui-view="parent"></div>
 
-      </div>
-      <script src="/app/app.js"></script>
-      <script src="/app/components/main/main-controller.js"></script>      
-      <script src="/app/components/directives/user-directives.js"></script>      
-      <script src="/app/sections/task-list/task-list-controller.js"></script>
-      <script src="/app/sections/task-list/task-details-controller.js"></script>
-      <script src="/app/core/tasks/tasks-service.js"></script>
-      <script src="/app/core/server/server-service.js"></script>
-    </body>
-  </html>
+    </div>
+    <script src="/app/app.js"></script>
+    <script src="/app/components/main/main-controller.js"></script>
+    <script src="/app/components/directives/user-directives.js"></script>
+    <script src="/app/sections/task-list/task-list-controller.js"></script>
+    <script src="/app/sections/task-list/task-details-controller.js"></script>
+    <script src="/app/core/tasks/tasks-service.js"></script>
+    <script src="/app/core/server/server-service.js"></script>
+</body>
+
+</html>

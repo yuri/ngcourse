@@ -1,4 +1,7 @@
 <h1>Task Details</h1>
 <erg-user user="taskDetails.user" cost="hours * rate"></erg-user>
-<hr>
-Task id: {{taskDetails._id}}
+<hr>Task id: {{taskDetails._id}} Owner:
+<input ng-model='taskDetails.task.owner' />
+<br/>Description:
+<input ng-model='taskDetails.task.description' />
+<button ng-click='taskDetails.updateTask(taskDetails.task)'>Save</button>
