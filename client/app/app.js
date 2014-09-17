@@ -1,4 +1,10 @@
-angular.module('erg', ['erg.server', 'erg.tasks', 'ui.router'])
+angular.module('erg', 
+  [
+   'erg.server', 
+   'erg.tasks',
+   'erg.components',
+   'ui.router'
+  ])
 
 .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
