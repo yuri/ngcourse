@@ -25,7 +25,7 @@ angular.module('erg', [
                 }
             }
         }).state('tasks.detail', {
-            url: '/{_id}:[0-9a-fA-F]{24}}',
+            url: '/{_id:[0-9a-fA-F]{24}}',
             views: {
                 'taskDetail@tasks': {
                     controller: 'TaskDetailsCtrl as taskDetails',
