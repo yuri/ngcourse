@@ -16,9 +16,9 @@ angular.module('erg', [
   // hosted
 
   koast.init({
-    //  baseUrl: 'http://ngcourse.herokuapp.com'
+      baseUrl: 'http://ngcourse.herokuapp.com'
     //  baseUrl: 'http://localhost:3001'
-    baseUrl: 'http://ngcourse-dev.herokuapp.com'
+    //baseUrl: 'http://ngcourse-dev.herokuapp.com'
   });
   koast.setApiUriPrefix('/api/v1/');
 
