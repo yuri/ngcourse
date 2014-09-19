@@ -6,7 +6,7 @@
   "author": "Yuri Takhteyev <yuri@rangle.io>",
   "license": "MIT",
   "dependencies": {
-    "koast": "0.2.5",
+    "koast": "0.4.1",
     "lodash": "^2.4.1"
   },
   "devDependencies": {

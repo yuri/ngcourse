@@ -1,3 +1,3 @@
 var koast = require('koast');
-koast.setEnvironment(); // Default to NODE_ENV or 'local'
+koast.config.setEnvironment(); // Default to NODE_ENV or 'local'
 koast.serve();
