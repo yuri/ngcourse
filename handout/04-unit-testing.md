@@ -4,6 +4,34 @@
 
 Why bother with unit tests?
 
+## What is the difference between an Integration Test and a Unit Test?
+
+A **unit test** is used to test individual components of the system. An **integration test** is a test which tests the system as a whole, and how it will run in production.
+
+Unit tests contain knowledge about the behavior of  a single unit of code. If the unit's behavior is modified, then the unit test must be updated as well. Unit tests do not contain any knowledge or assumptions about other parts of your codebase. When other parts of your codebase are modified, your unit tests **should not fail**. If they do fail, you have written a test that relies on other components, it is therefore not a unit test. Unit tests are cheap to maintain, and should only be updated when the individual units are modified.
+
+An integration test has no knowledge of how your system is broken down into individual components. Instead it it makes assumptions about how the entire system works together in production. Integration tests will test whether features are actually working.
+
+Anything in between the two are considered hybrid tests. Hybrid tests are expensive to maintain as they rely on several components, and are tightly coupled to the way the system functions. Any modification to a component, or the way they interact with each other, will require a long process of updating a hybrid test.
+
+## Best Practices for Unit Testing
+
+(A quick summary of the article [Writing Great Unit Tests: Best and Worst Practices by Steven Sanderson](http://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/))
+
+- Make each test independent of each other
+- Mock out all external dependencies and state
+  - If you have to write your tests in a certain order to test them, this is not a good sign
+- Don't make unnecessary assertions
+  - It is counter productive to assert anything that is tested by another test
+- Test only one code unit at a time
+  - Avoid overlaps between tests, one unit can cascade outwards and cause failures everywhere
+- The architecture of your code will determine how testable it is
+  - If you are having a hard time testing your code, you should consider refactoring it to make it more testable
+- Avoid repeating setup code
+- Name your unit tests clearly and consistently
+  - Unit tests should be viewed as documentation, it allows other developers to clearly see how your code operates and what it is expected to perform
+  - Maintenance is hard if you don't know what you are trying to maintain
+
 ## The Toolchain
 
 Let's talk about some of the available tools. Our preferred toolchain consists
@@ -14,10 +42,12 @@ of:
 * Sinon - a spy library.
 * Karma - a test "runner".
 * Gulp - a task automation tool.
- 
-While we see this as the best combination of tools, a common alternative is
-Jasmine, a somewhat older tool that combines features of Mocha, Chai and
-Sinon.
+
+## Why Mocha?
+
+While we see this as the best combination of tools, a common alternative is Jasmine, a somewhat older tool that combines features of Mocha, Chai and Sinon.
+
+Mocha provides better support for asynchronous testing by adding support for the `done()` function. If you use it, your test doesn't pass until the `done()` function is called. This is a nice to have when testing asynchronous code. Mocha also allows for use of any assertion library that throws exceptions on failure, such as Chai.
 
 ## Setup
 
@@ -43,7 +73,7 @@ Now we can proceed to writing tests.
 First, let's write a simple test and run it just using Mocha. Put this code
 into `client/app/simple_test.js`.
 
-```javascript 
+```javascript
   // Define a test suite.
   describe('tasks', function () {
     // Define a test.
@@ -86,7 +116,7 @@ You can skip the whole suite:
   xdescribe('tasks', function () {
     // ...
   });
-```  
+```
 
 Or just an individual test:
 
@@ -107,8 +137,8 @@ Alternatively, we can *only* run a specific test:
 ## Mocha with Chai
 
 Chai is an assertion library. It makes it easy to throw errors when things are
-not as we expect them to be. Chai has two styles: "TDD" and "BDD". We'll be
-using the "BDD" style.
+not as we expect them to be. Chai has two styles: "[TDD](http://en.wikipedia.org/wiki/Test-driven_development)" and "[BDD](http://en.wikipedia.org/wiki/Behavior-driven_development)". We'll be
+using the "[BDD](http://en.wikipedia.org/wiki/Behavior-driven_development)" style.
 
 We have already installed Chai when we ran `bower install` and we are already
 loading it when we run Karma via `gulp`. So, now we can go straight to using
@@ -138,8 +168,8 @@ For testing Angular code we need to load modules and inject services.
 
 ```javascript
   'use strict';
-  
-  var expect = chai.expect;  
+
+  var expect = chai.expect;
   // move expect definitin to client/testing/test-utils.js
 
   describe('tasks service', function () {
@@ -231,7 +261,7 @@ our dependencies.
         return Q;
       });
     }));
-  
+
     it('should get tasks', function(done) {
       // Notice that we've specified that our function takes a 'done' argument.
       // This tells Mocha this is an asynchronous test. An asynchronous test will
@@ -287,7 +317,7 @@ is equivalent to:
 Mocha's tests can alternatively just accept a promise. In most case this is
 what you want to use.
 
-```javascript 
+```javascript
   it('should get tasks', function() {
     // Setup a variable to store injected services.
     var injected = {};
@@ -333,7 +363,13 @@ it comes to globals for tests.
 
 ## Spying with Sinon
 
-When mocking dependencies, wrap functions with `sinon.spy()`:
+A test spy is a function that records arguments, return value, the value of `this`, and exception thrown (if any) for all its calls. A test spy can be an anonymous function or it can wrap an existing function.
+
+Test spies can be used to test callbacks, how certain functions are used throughout the system, and asset whether specific functions were called.
+
+When spying on existing functions, the original function will behave as normal, but we will obtain access to data about the calls, for example, how many times a function was called.
+
+We can use spies When mocking dependencies, wrap functions with `sinon.spy()`:
 
 ```javascript
   // Mock 'server'.
