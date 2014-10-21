@@ -5,7 +5,7 @@ var karmaVendorFiles = [
   'client/bower_components/angular/angular.js',
   'client/bower_components/angular-mocks/angular-mocks.js',
   'client/bower_components/sinon-chai/lib/sinon-chai.js',
-  'client/bower_components/koast/client/dist/koast.js',
+  'client/bower_components/koast-angular/dist/koast.js',
   'client/testing/lib/q.js',
   'client/testing/test-utils.js',
   'client/bower_components/lodash/dist/lodash.js'

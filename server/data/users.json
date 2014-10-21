@@ -1,9 +1,0 @@
-[{
-  "username": "alice",
-  "password": "$2a$10$t4R1ndYMcEpT7.qZfPb2lO6rQXA0sNKFrm5S6Z0XH9cIptKg68Y3K",
-  "displayName": "Alice Beeblebrox"
-},{
-  "username": "bob",
-  "password": "$2a$10$t4R1ndYMcEpT7.qZfPb2lO6rQXA0sNKFrm5S6Z0XH9cIptKg68Y3K",
-  "displayName": "Bob Dent"
-}]
