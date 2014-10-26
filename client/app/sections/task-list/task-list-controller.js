@@ -1,16 +1,15 @@
 'use strict';
 
-angular.module('erg')
+angular.module('ngcourse')
 
-.controller('TaskListCtrl', function($log, tasks, router) {
-    var scope = this;
-    scope.tasks = [];
+.controller('TaskListCtrl', function ($log, tasks, router) {
+  var vm = this;
+  vm.tasks = [];
+  vm.addTask = router.goToAddTask;
 
-    scope.addTask = router.goToAddTask;
-
-    tasks.getTasks()
-        .then(function(tasks) {
-            scope.tasks = tasks;
-        })
-        .then(null, $log.error);
+  tasks.getTasks()
+    .then(function (tasks) {
+      vm.tasks = tasks;
+    })
+    .then(null, $log.error);
 });

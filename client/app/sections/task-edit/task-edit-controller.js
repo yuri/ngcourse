@@ -1,21 +1,23 @@
 'use strict';
 
-angular.module('erg')
+angular.module('ngcourse')
 
-.controller('TaskEditCtrl', function($http, $log, tasks, $stateParams, router) {
-    var scope = this;
+.controller('TaskEditCtrl', function ($http, $log, tasks, $stateParams, router) {
+  var vm = this;
 
-    tasks.getTask($stateParams._id).then(function(response) {
-        scope.task = response;
-    }).then(null, $log.error);
+  tasks.getTask($stateParams._id)
+    .then(function (response) {
+      vm.task = response;
+    })
+    .then(null, $log.error);
 
-    scope.cancel = router.goToTaskList;
+  vm.cancel = router.goToTaskList;
 
-    scope.updateTask = function(task) {
-        tasks.updateTask($stateParams._id, task)
-            .then(function() {
-                router.goToTaskList();
-            })
-            .then(null, $log.error);
-    }
+  vm.updateTask = function (task) {
+    tasks.updateTask($stateParams._id, task)
+      .then(function () {
+        router.goToTaskList();
+      })
+      .then(null, $log.error);
+  }
 });
