@@ -14,7 +14,7 @@ angular.module('ngcourse')
   vm.cancel = router.goToTaskList;
 
   vm.updateTask = function (task) {
-    tasks.updateTask($stateParams._id, task)
+    tasks.updateTask(task)
       .then(function () {
         router.goToTaskList();
       })

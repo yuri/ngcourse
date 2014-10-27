@@ -1,6 +1,7 @@
 angular.module('ngcourse', [
   'ngcourse.main-ctrl',
   'ngcourse.tasks',
+  'ngcourse.users',
   'ngcourse.router',
   'koast'
 ])
@@ -15,7 +16,10 @@ angular.module('ngcourse', [
     baseUrl: API_BASE_URL
   });
   koast.setApiUriPrefix('/api/v2/');
-  koast.addEndpoint('tasks', ':taskId', {
+  koast.addEndpoint('tasks', ':_id', {
+    useEnvelope: true
+  });
+  koast.addEndpoint('users', ':_id', {
     useEnvelope: true
   });
 });
