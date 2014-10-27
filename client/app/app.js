@@ -3,6 +3,6 @@ angular.module('ngcourse', [
   'ngcourse.tasks'
 ])
 
-.run(function ($log) {
+.run(function($log) {
   $log.info('All ready!');
 });

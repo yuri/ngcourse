@@ -9,6 +9,38 @@
     <link href="http://fonts.googleapis.com/css?family=Dosis:400,600" rel="stylesheet" type="text/css">
   </head>
   <body ng-app="ngcourse">
+    <div ng-controller="MainCtrl as main">
+      <div ng-hide="main.isAuthenticated" ng-controller="LoginFormCtrl as login">
+        Enter username: <input ng-model="login.username"/><br/>
+        Password: <input type="password" ng-model="login.password"/><br/>
+        <button ng-click="main.login(login.username, login.password)">Login</button>
+      </div>
+
+      <hr>
+
+      Outside the TaskListCtrl:
+
+      <div ng-show="main.isAuthenticated">
+        Hello, {{main.username}}!
+      </div>
+
+      <div ng-show="main.isAuthenticated" ng-controller="TaskListCtrl as taskList" style="border:1px solid red">
+        Inside the TaskListCtrl:
+        {{main.username}}, you've got {{taskList.numberOfTasks}} tasks<br/>
+        <button ng-click="taskList.addTask()">Add task</button>
+
+        <table>
+          <tr>
+            <th>Owner</th>
+            <th>Task description</th>
+          </tr>
+          <tr ng-repeat="task in taskList.tasks">
+            <td>{{task.owner}}</td>
+            <td>{{task.description}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
     <script src="/bower_components/lodash/dist/lodash.js"></script>
     <script src="/bower_components/koast-angular/dist/koast.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
