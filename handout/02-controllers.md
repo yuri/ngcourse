@@ -368,12 +368,12 @@ We'll also need to change our controllers. First, `MainCtrl`:
 
 ```javascript
   .controller('MainCtrl', function($log) {
-    var scope = this;
-    scope.isAuthenticated = false;
-    scope.login = function(username, password) {
-      scope.isAuthenticated = true;
-      scope.username = username;
-      scope.password=password;
+    var vm = this;
+    vm.isAuthenticated = false;
+    vm.login = function(username, password) {
+      vm.isAuthenticated = true;
+      vm.username = username;
+      vm.password=password;
     };
   });
 ```
@@ -382,10 +382,10 @@ Then `TaskListCtrl`:
 
 ```javascript
   .controller('TaskListCtrl', function($log) {
-    var scope = this;
-    scope.numberOfTasks = 0;
-    scope.addTask = function() {
-      scope.numberOfTasks += 1;
+    var vm = this;
+    vm.numberOfTasks = 0;
+    vm.addTask = function() {
+      vm.numberOfTasks += 1;
     };
   });
 ```
@@ -405,10 +405,10 @@ Note that $scope is still injectable!
 ```javascript
   .controller('TaskListCtrl', function($scope, $log) {
     $log.debug('$scope:', $scope);
-    var scope = this;
+    var vm = this;
     $scope.numberOfTasks = 0;
-    scope.addTask = function() {
-      scope.numberOfTasks += 1;
+    vm.addTask = function() {
+      vm.numberOfTasks += 1;
     };
   });
 ```
@@ -446,7 +446,7 @@ each item.
 In the controller all we do is set `tasks` to an array:
 
 ```javascript
-  scope.tasks = [
+  vm.tasks = [
     {
       owner: 'alice',
       description: 'Build the dog shed.'
