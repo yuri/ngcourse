@@ -113,7 +113,7 @@ assumptions about the context in which they are dropped.
 ## Defining a Really Basic Directive
 
 ```javascript
-  .directive('ergUser',
+  .directive('ngcUser',
     function () {
       return {
         restrict: 'E', // vs 'A', 'AE'
@@ -129,11 +129,11 @@ Note that we use "camelCase" when we define the directives, but we'll use
 hyphens when inserting them into the HTML. In this case:
 
 ```html
-  <erg-user></erg-user>
+  <ngc-user></ngc-user>
 ```
 
-Angular will figure out that "erg-user" refers to the directive that we
-defined as "ergUser".
+Angular will figure out that "ngc-user" refers to the directive that we
+defined as "ngcUser".
 
 ## Transclusion
 
@@ -141,14 +141,14 @@ If we set `replace: true` then the original content of the directive would be
 ignored:
 
 ```html
-  <erg-user>This text will be thrown away.</erg-user>
+  <ngc-user>This text will be thrown away.</ngc-user>
 ```
 
 If we do want to make use of that content, we can "transclude" it into our
 template:
 
 ```javascript
-  .directive('ergUser',
+  .directive('ngcUser',
     function () {
       return {
         restrict: 'E', // vs 'A', 'AE'
@@ -169,7 +169,7 @@ Directives usually have templates that are too complex to include as a string.
 So, instead we often provide a URL to the template file:
 
 ```javascript
-  .directive('ergUser',
+  .directive('ngcUser',
     function () {
       return {
         restrict: 'E', // vs 'A', 'AE'
@@ -187,7 +187,7 @@ To make the directive do anything remotely interesting we would usually need
 to provide a "link" function:
 
 ```javascript
-  .directive('ergUser',
+  .directive('ngcUser',
     function () {
       var directive = {
         restrict: 'E',
@@ -222,7 +222,7 @@ If we do want to do dependency injectin with a directive (and we usually do),
 we can do that using the function definiting the directive:
 
 ```javascript
-  .directive('ergUser',
+  .directive('ngcUser',
     function (users) {
       ...
     }
@@ -241,7 +241,7 @@ There are a few ways of doing this, but our best approach is often to rely on
 services at least for a large part of that communication.
 
 ```javascript
-  .directive('ergUser',
+  .directive('ngcUser',
     function (users) {
       ...
       directive.link = function(scope, element, attrs) {
@@ -261,7 +261,7 @@ argument. The most isolated way is to pass it in as a string value.
 If we want to use the directive like this:
 
 ```html
-  <erg-user username="alice"></erg-user>
+  <ngc-user username="alice"></ngc-user>
 ```
 
 we would need to define it this way:
@@ -295,7 +295,7 @@ specific property of the parent scope. In other words, we want to be able to
 use the directive as follows:
 
 ```html
-  <erg-user username="user"></erg-user>
+  <ngc-user username="user"></ngc-user>
 ```
 
 where "user" is a name of a variable on the scope. This is a less isolated
@@ -329,7 +329,7 @@ a controller. We can let the user attach a listener to this event by setting
 "on-ban" attribute to the desired scope function:
 
 ```html
-  <erg-user username="user" on-ban="handleBan(user)"></erg-user>
+  <ngc-user username="user" on-ban="handleBan(user)"></ngc-user>
 ```
 
 When the user gets banned (from inside the directive), `handleBan(user)` will
@@ -380,7 +380,7 @@ One neat thing we can do is use an attribute to provide an expression that
 would be used by the directive:
 
 ```html
-  <erg-user username="{{user}}" cost="hours * rate"></erg-user>
+  <ngc-user username="{{user}}" cost="hours * rate"></ngc-user>
 ```
 
 We set up the directive as follows:
@@ -406,7 +406,7 @@ Suppose we want to clone the widget created by the directive a number of
 times, where the number would be specified in an attribute:
 
 ```html
-  <erg-user username="{{user}}" cost="hours * rate" repeat="5"></erg-user>
+  <ngc-user username="{{user}}" cost="hours * rate" repeat="5"></ngc-user>
 ```
 
 We can achieve this by providing a compile function which will handle the

@@ -378,7 +378,7 @@ put them in services.
 ```javascript
 'use strict';
 
-angular.module('erg')
+angular.module('ngcourse')
 .factory('tasks', function($http) {
   var service = {};
 
@@ -448,7 +448,7 @@ When it comes to services, the more the better. Let's refactor some of the
 code from our `tasks` service into a new `server` services.
 
 ```javascript
-  angular.module('erg')
+  angular.module('ngcourse')
 
   .factory('server', function($http) {
     var service = {};
@@ -506,7 +506,7 @@ At this point we may want to consider breaking our code up into modules. E.g.,
 let's make `server` its own module:
 
 ```javascript
-  angular.module('erg.server', [])
+  angular.module('ngcourse.server', [])
 
   .constant('API_BASE_URL', 'http://ngcourse.herokuapp.com')
 
@@ -524,11 +524,11 @@ let's make `server` its own module:
   });
 ```
 
-We can then make it a dependency in our `erg` module (in `app.js`):
+We can then make it a dependency in our `ngcourse` module (in `app.js`):
 
 ```javascript
-  angular.module('erg', [
-    'erg.server'
+  angular.module('ngcourse', [
+    'ngcourse.server'
   ]);
 ```
 
@@ -539,8 +539,8 @@ Each module can define `.config()` and `.run()` sections. You will rarely see
 Your `.run()` is essentially you modules's equivalent of the "main" block.
 
 ```javascript
-  angular.module('erg', [
-    'erg.server'
+  angular.module('ngcourse', [
+    'ngcourse.server'
   ])
 
   .run(function($log) {
