@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('erg')
+angular.module('ngcourse')
 
-.controller('LoginFormCtrl', function() {
+.controller('LoginFormCtrl', function () {
   // Let's do nothing for now.
 });

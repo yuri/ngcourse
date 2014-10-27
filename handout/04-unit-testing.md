@@ -144,7 +144,7 @@ For testing Angular code we need to load modules and inject services.
 
   describe('tasks service', function () {
     // Load the angular module. Having smaller modules helps here.
-    beforeEach(module('erg.tasks'));
+    beforeEach(module('ngcourse.tasks'));
     it('should get loaded', function() {
       // Inject the service.
       inject(function(tasks) {
@@ -174,7 +174,7 @@ the promise to resolve.
 ```javascript
   describe('tasks service', function () {
     // Load the angular module. Having smaller modules helps here.
-    beforeEach(module('erg.tasks'));
+    beforeEach(module('ngcourse.tasks'));
     it('should get tasks', function(done) {
       // Notice that we've specified that our function takes a 'done' argument.
       // This tells Mocha this is an asynchronous test. An asynchronous test will
@@ -211,7 +211,7 @@ our dependencies.
 ```javascript
   describe('tasks service', function () {
     // Load the angular module. Having smaller modules helps here.
-    beforeEach(module('erg.tasks'));
+    beforeEach(module('ngcourse.tasks'));
     beforeEach(module(function($provide){
       // Mock 'server'.
       $provide.service('server', function() {

@@ -33,13 +33,13 @@ Let's start by just getting a list of tasks:
 
 ```javascript
   .controller('TaskListCtrl', function($http, $log) {
-    var scope = this;
-    scope.tasks = [];
+    var vm = this;
+    vm.tasks = [];
 
     $http.get('http://ngcourse.herokuapp.com/api/v1/tasks')
       .success(function(data, status) {
         $log.info(data);
-        scope.tasks = data;
+        vm.tasks = data;
       })
       .error(function(data, status) {
         $log.error(status, data);
@@ -50,13 +50,13 @@ We'll focus on a different approach, though:
 
 ```javascript
   .controller('TaskListCtrl', function($http, $log) {
-    var scope = this;
-    scope.tasks = [];
+    var vm = this;
+    vm.tasks = [];
 
     $http.get('http://ngcourse.herokuapp.com/api/v1/tasks')
       .then(function(response) {
         $log.info(response);
-        scope.tasks = response.data;
+        vm.tasks = response.data;
       })
       .then(null, function(error) {
         $log.error(error);
@@ -138,7 +138,7 @@ You might have seen chained promises:
     })
     .then(function(tasks) {
       $log.info(tasks);
-      scope.tasks = tasks;
+      vm.tasks = tasks;
     })
     .then(null, function(error) {
       $log.error(error);
@@ -155,7 +155,7 @@ We could also make this more complicated:
     })
     .then(function(tasks) {
       $log.info(tasks);
-      scope.tasks = tasks;
+      vm.tasks = tasks;
     })
     .then(null, function(error) {
       $log.error(error);
@@ -174,7 +174,7 @@ Or even:
     })
     .then(function(tasks) {
       $log.info(tasks);
-      scope.tasks = tasks;
+      vm.tasks = tasks;
     })
     .then(null, function(error) {
       $log.error(error);
@@ -191,11 +191,11 @@ To make sense, let's "unchain" this using variables:
   var filteredTasksPromise = tasksPromise.then(function(tasks) {
     return filterTasksAsynchronously(tasks);
   });
-  var scopeUpdatePromise = filteredTasksPromise.then(function(tasks) {
+  var vmUpdatePromise = filteredTasksPromise.then(function(tasks) {
     $log.info(tasks);
-    scope.tasks = tasks;
+    vm.tasks = tasks;
   })
-  var errorHandlerPromise = scopeUpdatePromise.then(null, function(error) {
+  var errorHandlerPromise = vmUpdatePromise.then(null, function(error) {
     $log.error(error);
   });
 ```
@@ -269,7 +269,7 @@ So, catch rejections:
     })
     .then(function(tasks) {
       $log.info(tasks);
-      scope.tasks = tasks;
+      vm.tasks = tasks;
     }, function(error) {
       $log.error(error);
     });
@@ -289,7 +289,7 @@ So, the following is better.
     })
     .then(function(tasks) {
       $log.info(tasks);
-      scope.tasks = tasks;
+      vm.tasks = tasks;
     })
     .then(null, function(error) {
       $log.error(error);
@@ -365,7 +365,7 @@ A better approach is to break them up into meaningful functions.
   getMyTasks()
     .then(function(tasks) {
       $log.info(tasks);
-      scope.tasks = tasks;
+      vm.tasks = tasks;
     })
     .then(null, $log.error);
 ```
@@ -378,7 +378,7 @@ put them in services.
 ```javascript
 'use strict';
 
-angular.module('erg')
+angular.module('ngcourse')
 .factory('tasks', function($http) {
   var service = {};
 
@@ -409,19 +409,19 @@ We can now simplify our controller code:
 
 ```javascript
   .controller('TaskListCtrl', function($http, $log, tasks) {
-    var scope = this;
-    scope.tasks = [];
+    var vm = this;
+    vm.tasks = [];
 
     tasks.getTasks()
       .then(function(tasks) {
-        scope.tasks = tasks;
-        scope.numberOfTasks = tasks.length;
+        vm.tasks = tasks;
+        vm.numberOfTasks = tasks.length;
       })
       .then(null, $log.error);
 
-    scope.numberOfTasks = 0;
-    scope.addTask = function() {
-      scope.numberOfTasks += 1;
+    vm.numberOfTasks = 0;
+    vm.addTask = function() {
+      vm.numberOfTasks += 1;
     };
   });
 ```
@@ -448,7 +448,7 @@ When it comes to services, the more the better. Let's refactor some of the
 code from our `tasks` service into a new `server` services.
 
 ```javascript
-  angular.module('erg')
+  angular.module('ngcourse')
 
   .factory('server', function($http) {
     var service = {};
@@ -506,7 +506,7 @@ At this point we may want to consider breaking our code up into modules. E.g.,
 let's make `server` its own module:
 
 ```javascript
-  angular.module('erg.server', [])
+  angular.module('ngcourse.server', [])
 
   .constant('API_BASE_URL', 'http://ngcourse.herokuapp.com')
 
@@ -524,11 +524,11 @@ let's make `server` its own module:
   });
 ```
 
-We can then make it a dependency in our `erg` module (in `app.js`):
+We can then make it a dependency in our `ngcourse` module (in `app.js`):
 
 ```javascript
-  angular.module('erg', [
-    'erg.server'
+  angular.module('ngcourse', [
+    'ngcourse.server'
   ]);
 ```
 
@@ -539,8 +539,8 @@ Each module can define `.config()` and `.run()` sections. You will rarely see
 Your `.run()` is essentially you modules's equivalent of the "main" block.
 
 ```javascript
-  angular.module('erg', [
-    'erg.server'
+  angular.module('ngcourse', [
+    'ngcourse.server'
   ])
 
   .run(function($log) {

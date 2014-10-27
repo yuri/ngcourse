@@ -1,21 +1,28 @@
 'use strict';
 
-angular.module('erg.main-ctrl', [
+angular.module('ngcourse.main-ctrl', [
+  'ngcourse.users',
   'koast'
 ])
 
-.controller('MainCtrl', function($log, koast) {
-  var scope = this;
-  scope.user = koast.user;
-  scope.login = function(form) {
+.controller('MainCtrl', function ($log, koast, users) {
+  var vm = this;
+  vm.user = koast.user;
+
+  koast.user.whenAuthenticated()
+    .then(function() {
+      return users.whenReady()
+    })
+    .then(function() {
+      vm.userDisplayName = users.getUserDisplayName(koast.user.data.username);
+    })
+    .then(null, $log.error);
+
+  vm.login = function (form) {
     koast.user.loginLocal(form)
-      .then(function(response) {
-        $log.info('response:', response);
-        $log.info('koast:', koast.user);
-      })
       .then(null, $log.error);
   };
-  scope.logout = function() {
+  vm.logout = function () {
     koast.user.logout()
       .then(null, $log.error);
   };

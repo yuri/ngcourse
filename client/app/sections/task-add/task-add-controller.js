@@ -1,17 +1,17 @@
 'use strict';
 
-angular.module('erg')
+angular.module('ngcourse')
 
-.controller('TaskAddCtrl', function($log, tasks, router) {
-    var scope = this;
+.controller('TaskAddCtrl', function ($log, tasks, router) {
+  var vm = this;
 
-    scope.cancel = router.goToTaskList;
+  vm.cancel = router.goToTaskList;
 
-    scope.save = function(task) {
-
-        tasks.addTask(task).then(function() {
-            router.goToTaskList();
-        }).then(null, $log.error);
-    }
-
+  vm.save = function (task) {
+    tasks.addTask(task)
+      .then(function () {
+        router.goToTaskList();
+      })
+      .then(null, $log.error);
+  }
 });

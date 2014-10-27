@@ -23,7 +23,7 @@ that it won't do anything at all. Here is what we'll put in our HTML file.
       <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
     </head>
     <body>
-      <div ng-app="erg">
+      <div ng-app="ngcourse">
         Hello!
       </div>
       <script src="/app/app.js"></script>
@@ -34,7 +34,7 @@ that it won't do anything at all. Here is what we'll put in our HTML file.
 We'll also need a very very simple JavaScript file - our "app":
 
 ```javascript
-  angular.module('erg', []);
+  angular.module('ngcourse', []);
 ```
 
 ## A "Classic" Controller
@@ -42,7 +42,7 @@ We'll also need a very very simple JavaScript file - our "app":
 This app doesn't do anything at all. To make it do something remotely interesting we'll need to add a controller. We'll define the controller in a separate javascript file:
 
 ```javascript
-  angular.module('erg')
+  angular.module('ngcourse')
 
   .controller('MainCtrl', function($scope) {
     $scope.username = 'alice';
@@ -54,7 +54,7 @@ We can now attach the controller to an element and start using the content of it
 
 ```html
   <body>
-    <div ng-app="erg">
+    <div ng-app="ngcourse">
       <div ng-controller="MainCtrl">
         Hello, {{username}}!
         You've got {{numberOfTasks}} tasks.
@@ -309,7 +309,7 @@ In `client/app/components/main/main-controller.js`:
 ```javascript
   'use strict';
 
-  angular.module('erg')
+  angular.module('ngcourse')
 
   .controller('MainCtrl', function($scope, $log) {
     $scope.isAuthenticated = false;
@@ -324,7 +324,7 @@ In `client/app/sections/task-list/task-list-controller.js`:
 ```javascript
   'use strict';
 
-  angular.module('erg')
+  angular.module('ngcourse')
 
   .controller('TaskListCtrl', function($scope, $log) {
     $scope.numberOfTasks = 0;
@@ -368,12 +368,12 @@ We'll also need to change our controllers. First, `MainCtrl`:
 
 ```javascript
   .controller('MainCtrl', function($log) {
-    var scope = this;
-    scope.isAuthenticated = false;
-    scope.login = function(username,password) {
-      scope.isAuthenticated = true;
-      scope.username = username;
-      scope.password=password;
+    var vm = this;
+    vm.isAuthenticated = false;
+    vm.login = function(username, password) {
+      vm.isAuthenticated = true;
+      vm.username = username;
+      vm.password=password;
     };
   });
 ```
@@ -382,10 +382,10 @@ Then `TaskListCtrl`:
 
 ```javascript
   .controller('TaskListCtrl', function($log) {
-    var scope = this;
-    scope.numberOfTasks = 0;
-    scope.addTask = function() {
-      scope.numberOfTasks += 1;
+    var vm = this;
+    vm.numberOfTasks = 0;
+    vm.addTask = function() {
+      vm.numberOfTasks += 1;
     };
   });
 ```
@@ -405,10 +405,10 @@ Note that $scope is still injectable!
 ```javascript
   .controller('TaskListCtrl', function($scope, $log) {
     $log.debug('$scope:', $scope);
-    var scope = this;
+    var vm = this;
     $scope.numberOfTasks = 0;
-    scope.addTask = function() {
-      scope.numberOfTasks += 1;
+    vm.addTask = function() {
+      vm.numberOfTasks += 1;
     };
   });
 ```
@@ -446,7 +446,7 @@ each item.
 In the controller all we do is set `tasks` to an array:
 
 ```javascript
-  scope.tasks = [
+  vm.tasks = [
     {
       owner: 'alice',
       description: 'Build the dog shed.'

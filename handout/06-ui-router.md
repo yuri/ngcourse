@@ -23,7 +23,7 @@ Let's start by adding our own "router" module which will serve as a wrapper
 around ui-router. Our module will have a `.config()` section.
 
 ```javascript
-  angular.module('erg.router', [
+  angular.module('ngcourse.router', [
     'ui.router'
   ])
 

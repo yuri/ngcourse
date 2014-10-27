@@ -1,59 +1,37 @@
-angular.module('erg.tasks', [
-    'erg.server',
-    'koast'
+angular.module('ngcourse.tasks', [
+  'koast'
 ])
-    .factory('tasks', function(server, koast) {
-        var service = {};
 
-        function setMetaData(response) {
-            var tasks = _.map(response, function(task) {
-                task.can = {
-                    edit: task.owner == koast.user.data.username
-                }
+.factory('tasks', function (koast) {
+  var service = {};
 
-                return task;
-            });
-            return tasks;
-        }
-        
-        service.getTasks = function() {
-            return koast.user.whenAuthenticated()
-                .then(function() {
-                    return server.get('/api/v1/tasks')
-                        .then(setMetaData);
+  function makeAuthenticatedMethod(functionToDelay) {
+    return function () {
+      var myArgs = arguments;
+      return koast.user.whenAuthenticated()
+        .then(function () {
+          return functionToDelay.apply(service, myArgs);
+        });
+    };
+  }
 
-                });
+  service.getTasks = makeAuthenticatedMethod(function () {
+    return koast.queryForResources('tasks');
+  });
 
-        };
+  service.addTask = makeAuthenticatedMethod(function (task) {
+    return koast.createResource('tasks', task)
+  });
 
-        service.addTask = function(task) {
-            return koast.user.whenAuthenticated()
-                .then(function() {
-                    return server.post('/api/v1/tasks', task)
-                });
-        }
+  service.updateTask = makeAuthenticatedMethod(function (task) {
+    return task.save();
+  });
 
-        service.updateTask = function(id, task) {
-            return koast.user.whenAuthenticated()
-                .then(function() {
-                    return server.put('/api/v1/tasks', id, {
-                        owner: task.owner,
-                        description: task.description
-                    });
-                });
-        }
-
-        service.getTask = function(id) {
-            return koast.user.whenAuthenticated()
-                .then(function() {
-                    return server.get('/api/v1/tasks/' + id).then(function(response)
-                    {
-                        return setMetaData(response)[0];
-                    });
-
-                });
-        }
-
-
-        return service;
+  service.getTask = makeAuthenticatedMethod(function (id) {
+    return koast.getResource('tasks', {
+      _id: id
     });
+  });
+
+  return service;
+});
