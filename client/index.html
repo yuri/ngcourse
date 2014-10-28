@@ -9,8 +9,23 @@
     <link href="http://fonts.googleapis.com/css?family=Dosis:400,600" rel="stylesheet" type="text/css">
   </head>
   <body ng-app="ngcourse">
+
     <div ng-controller="MainCtrl as main">
-      <div ng-hide="main.isAuthenticated" ng-controller="LoginFormCtrl as login">
+
+      <div ng-show="main.isAuthenticated">
+        Hello, {{main.username}}!
+      </div>
+
+      <p>
+        <button ng-click="main.goToMyAccount()">My account</button> <button ng-click="main.goToTasks()">Tasks</button>
+      </p>
+      <hr>
+
+      <div ui-view></div>
+
+    </div>
+
+      <!--div ng-hide="main.isAuthenticated" ng-controller="LoginFormCtrl as login">
         Enter username: <input ng-model="login.username"/><br/>
         Password: <input type="password" ng-model="login.password"/><br/>
         <button ng-click="main.login(login.username, login.password)">Login</button>
@@ -40,7 +55,7 @@
           </tr>
         </table>
       </div>
-    </div>
+    </div-->
     <script src="/bower_components/lodash/dist/lodash.js"></script>
     <script src="/bower_components/koast-angular/dist/koast.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>

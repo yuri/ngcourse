@@ -2,7 +2,7 @@
 
 angular.module('ngcourse')
 
-.controller('MainCtrl', function ($log) {
+.controller('MainCtrl', function ($log, router) {
   var vm = this;
   vm.username = 'alice';
   vm.userNameError = '';
@@ -15,6 +15,9 @@ angular.module('ngcourse')
       vm.loginError = 'Bad password';
     }
   }
+
+  vm.goToMyAccount = router.goToMyAccount;
+  vm.goToTasks = router.goToTasks;
 
   function userNameIsGood(username) {
     return username === 'yuri' || username === 'alice';

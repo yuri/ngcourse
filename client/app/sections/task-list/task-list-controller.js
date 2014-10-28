@@ -2,8 +2,10 @@
 
 angular.module('ngcourse')
 
-.controller('TaskListCtrl', function ($log, tasks) {
+.controller('TaskListCtrl', function ($log, tasks, router) {
   var vm = this;
+
+  vm.goToTaskEdit = router.goToTaskEdit;
 
   tasks.getTasks()
     .then(function(taskArray) {
