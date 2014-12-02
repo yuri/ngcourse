@@ -142,8 +142,8 @@ Accessing an element's scope. Inspect the element in Chrome, and $scope will be 
   $scope.$apply();
 ```
 
-Note that you *rarely* need to call `$apply()` on your own. Angular will
-normally do it for you.
+We'll talk a bit more about `$apply` later, but for now let's just note that
+you will *very rarely* need to use it yourself.
 
 ## A Look at Dependency Injection (DI)
 
@@ -232,7 +232,8 @@ Our controller can get alerted if the value on the scope changes:
   });
 ```
 
-However: *this is rarely useful*. We'll see better ways of handling such things.
+However: *this is rarely useful*. We'll see better ways of handling such
+things.
 
 ## Basic Form Validation
 
@@ -337,6 +338,100 @@ In `client/app/sections/task-list/task-list-controller.js`:
 ## Oddities
 
 Let's observe some inheritance oddities.
+
+## Broadcasting and Catching Events.
+
+Angular provides a system for broadcasting events and listening to them. This
+system is tied to scopes. Use `$scope.$on` to subscribe to messages. The method used for sendind messages depends on whether we want to communicate *up* or *down* the scope.
+
+Let's use `$scope.$broadcast` to send a message *down* the scope system. We'll
+put this in `main-controller.js`:
+
+```javascript
+  .controller('MainCtrl', function($scope, $log) {
+    $scope.isAuthenticated = false;
+    $scope.messageChild = function() {
+      $scope.$broadcast('hello.child', {fruit: 'peaches'});
+    };
+  });
+```
+
+We'll subscribe to this message in `task-list-controller.js` using `$scope.$on`.
+
+```javascript
+  .controller('TaskListCtrl', function($scope, $log, $window) {
+    $scope.$on('hello.child', function(event, payload) {
+      $window.alert(payload.fruit);
+    });
+  });
+```
+
+To communicate *up* the scope, we use `$emit` instead of `$broadcast`.
+
+```javascript
+  .controller('TaskListCtrl', function($scope, $log, $window) {
+    $scope.messageParent = function() {
+      $scope.$emit('hello.parent', {animal: 'turtle'})
+    };
+  });
+```
+
+## Using `$apply` and `$timeout`.
+
+We saw this example before when using the console:
+
+```javascript
+  $scope.numberOfTasks = 42;  // angular.element($0).scope();
+  $scope.$apply();
+```
+
+We had to use `$scope.$apply` to make the update to the scope reflected in the
+UI. In practice, however, you will only *very rarely* have a good reason to
+use `$apply`.
+
+To understand why `$apply` is rarely needed, let's talk a bit about Angular's
+"digest cycle".
+
+Developers somtimes use `$apply` is to "apply" changes to the scope introduced
+in a function called inside `setTimeout()`. A better solution, however, is to
+never use `setTimeout()` in your Angular code.
+
+Instead, use `$timeout()`, which will call `$apply()` for you.
+
+```js
+  $timeout(function() {
+    // This code will run after the current digest cycle (if any) completes.
+    // When this function returns, another digest cycle will run.
+  });
+```
+
+In fact, most things that can be achieved with `$apply` are better done with
+`$timeout`.
+
+## Angular's Nested Scope System Considered Harmful
+
+Angular's nested scope make it easy to setup controller-to-controller
+communication. There are three problems with this, however.
+
+1. The nested scope system is ununtuitive and hard to debug.
+2. Improper use of scope as a communication can lead to performance problems.
+3. Your controllers shouldn't be talking to each other directly in the first
+   place.
+
+Of those three, the third one is often the least appreciated, but it is
+actually the most important. Let's talk more about it.
+
+Consequently, we recommend avoiding the use of `$scope` altogether.
+
+## `$rootScope`
+
+All Angular scopes are nested inside `$rootScope`. This means
+`$rootScope.$broadcast` allows you to send messages to all scopes. This is
+tempting, but it's rarely a good idea. Say no to `$rootScope`.
+
+Unlike individual scopes, which are only available inside controllers and
+directives, `$rootScope` can be dependency-injected into services. This may
+seem like a reason to use it, but it's actually another reason to avoid it.
 
 ## The "Controller As" Pattern
 

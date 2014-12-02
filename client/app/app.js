@@ -6,8 +6,8 @@ angular.module('ngcourse', [
   'koast'
 ])
 
-.constant('API_BASE_URL', 'http://localhost:7000')
-// .constant('API_BASE_URL', 'http://ngcourse.herokuapp.com')
+// .constant('API_BASE_URL', 'http://localhost:7000')
+.constant('API_BASE_URL', 'http://ngcourse.herokuapp.com')
 
 .run(function ($log, koast, API_BASE_URL) {
   $log.info('All ready!');
