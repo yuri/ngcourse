@@ -135,7 +135,7 @@ you should be doing, such as using 'use strict'.
 
 ## Debugging 4: Using the Console
 
-Accessing an element's scope. Inspect the element in Chrome, and $scope will be set in the console.
+Accessing an element's scope. Inspect the element in Chrome, and $scope will be set in the console. For this to work, ensure that the Angular Batarang extension is enabled in chrome.
 
 ```javascript
   $scope.numberOfTasks = 42;  // angular.element($0).scope();
