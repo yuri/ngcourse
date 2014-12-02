@@ -9,6 +9,31 @@
     <link href="http://fonts.googleapis.com/css?family=Dosis:400,600" rel="stylesheet" type="text/css">
   </head>
   <body ng-app="ngcourse">
+    <div ng-controller="MainCtrl as main">
+        <div ng-hide="main.isAuthenticated" ng-controller="LoginFormCtrl as loginForm">
+          Enter username: <input ng-model="loginForm.username"/><br/>
+          Password: <input type="password" ng-model="loginForm.password"/><br/>
+          <div ng-show="main.errorMessage">{{ main.errorMessage}}</div>
+          <button ng-click="main.login(loginForm.username, loginForm.password)">Login</button>
+        </div>
+
+        <div ng-show="main.isAuthenticated">
+          Hello, {{main.username}}!
+        </div>
+
+        <div ng-show="main.isAuthenticated" ng-controller="TaskListCtrl as taskList">
+          {{main.username}}, you've got {{taskList.task.length}} tasks<br/>
+
+          <ul>
+              <li ng-repeat="task in taskList.tasks">
+                {{task.owner}}: {{task.description}}
+                <span ng-click="taskList.removeTask($idx)">x</span>
+              </li>
+          </ul>
+          <button ng-click="taskList.addTask()">Add task</button>
+        </div>
+
+      </div>
     <script src="/bower_components/lodash/dist/lodash.js"></script>
     <script src="/bower_components/koast-angular/dist/koast.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
