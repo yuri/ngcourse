@@ -2,23 +2,15 @@
 
 angular.module('ngcourse')
 
-.controller('TaskListCtrl', function ($log) {
+.controller('TaskListCtrl', function ($log, tasks) {
   var vm = this;
 
-  vm.tasks = [
-    {
-      owner: 'alice',
-      description: 'Build the dog shed.'
-    },
-    {
-      owner: 'bob',
-      description: 'Get the milk.'
-    },
-    {
-      owner: 'alice',
-      description: 'Fix the door handle.'
-    }
-  ];
+  tasks.getTasks()
+    .then(function(tasks) {
+      $log.debug('Got tasks.');
+      vm.tasks = tasks;
+    })
+    .then(null, $log.error);
 
   vm.addTask = function() {
     $log.info('Adding a new task');
