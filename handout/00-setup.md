@@ -43,6 +43,10 @@ This should install two commands: "node" and "npm".
 Please install a recent version of Google Chrome, since we'll be using
 Chrome's Javascript development tools.
 
+
+## Angular Batarang
+
+Batarang is an extension for chrome which makes it easier to debug and inspect Angular applications, it can be installed from the Google Webstore: [Angular Batarang](https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk?hl=en-US&utm_source=chrome-ntp-launcher)
 ## Postman HTTP client:
 
 Postman is our preferred tool for interacting with a REST API server.
