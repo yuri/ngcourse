@@ -2,28 +2,27 @@ angular.module('ngcourse.tasks', [
   'ngcourse.server'
 ])
 
-.factory('tasks', function (server) {
+.factory('tasks', function (server, user, $q) {
   var service = {};
 
   var taskPromise;
 
   service.getTasks = function () {
-    taskPromise = taskPromise || server.get('/api/v1/tasks');
+    taskPromise = server.get('/api/v1/tasks');
     return taskPromise;
   };
 
-  function filterTasks(list) {
-    return list; // todo
-  };
+  function filterUsersTasks(tasks) {
+    return _.filter(tasks, function(task) {
+      return task.owner === user.getUsername();
+    });
+  }
 
   service.getMyTasks = function () {
     return service.getTasks()
-      .then(function(tasks) {
-        return filterTasks(tasks, {
-          owner: user.username
-        });
-      });
+      .then(filterUsersTasks);
   };
 
   return service;
 });
+
