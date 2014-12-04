@@ -9,6 +9,7 @@
     <link href="http://fonts.googleapis.com/css?family=Dosis:400,600" rel="stylesheet" type="text/css">
   </head>
   <body ng-app="ngcourse">
+    Blah blah blah blah blah blah blah blah blah blah blah
     <div ng-controller="MainCtrl as main">
         <div ng-hide="main.isAuthenticated" ng-controller="LoginFormCtrl as loginForm">
           Enter username: <input ng-model="loginForm.username"/><br/>
@@ -21,16 +22,12 @@
           Hello, <span>{{main.username}}</span>!
         </div>
 
-        <div ng-show="main.isAuthenticated" ng-controller="TaskListCtrl as taskList">
+        <div ng-show="main.isAuthenticated">
+          <!--div ui-view="parent@main"></div-->
+          <div ui-view></div>
+          <!--ng-controller="TaskListCtrl as taskList"
           {{main.username}}, you've got {{taskList.task.length}} tasks<br/>
-
-          <ul>
-              <li ng-repeat="task in taskList.tasks">
-                {{task.owner}}: {{task.description}}
-                <span ng-click="taskList.removeTask($idx)">x</span>
-              </li>
-          </ul>
-          <button ng-click="taskList.addTask()">Add task</button>
+          -->
         </div>
 
       </div>

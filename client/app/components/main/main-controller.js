@@ -7,7 +7,7 @@ angular.module('ngcourse')
   var vm = this;
 
   vm.username = 'alice';
-
+  vm.isAuthenticated = true;
   vm.login = function(username, password) {
     if (username === 'alice' && password === 'x') {
       $log.info('The password is good.');

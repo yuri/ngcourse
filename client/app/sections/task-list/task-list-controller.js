@@ -2,7 +2,7 @@
 
 angular.module('ngcourse')
 
-.controller('TaskListCtrl', function ($log, tasks) {
+.controller('TaskListCtrl', function ($log, tasks, $state) {
   var vm = this;
 
   tasks.getTasks()
@@ -22,6 +22,10 @@ angular.module('ngcourse')
 
   vm.removeTask = function(index) {
     vm.tasks.splice(index, 1);
+  };
+
+  vm.goToTask = function(taskId) {
+    $state.go('taskDetail', {id: taskId});
   };
 
 });
