@@ -14,11 +14,11 @@
           Enter username: <input ng-model="loginForm.username"/><br/>
           Password: <input type="password" ng-model="loginForm.password"/><br/>
           <div ng-show="main.errorMessage">{{ main.errorMessage}}</div>
-          <button ng-click="main.login(loginForm.username, loginForm.password)">Login</button>
+          <button id="login-button" ng-click="main.login(loginForm.username, loginForm.password)">Login</button>
         </div>
 
         <div ng-show="main.isAuthenticated">
-          Hello, {{main.username}}!
+          Hello, <span>{{main.username}}</span>!
         </div>
 
         <div ng-show="main.isAuthenticated" ng-controller="TaskListCtrl as taskList">
