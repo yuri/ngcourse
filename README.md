@@ -8,14 +8,15 @@ information.
 ## The Handouts
 
 See the [handout](https://github.com/rangle/ngcourse/tree/master/handout) for
-the handout.
+the handout. You can either view it in your browser or build it into a PDF
+using the instructions in the README file in the handout directory.
 
 ## The Code
 
 The repository also contains the codebase that we'll work on in throughout the
 course. The project has a server and the client component. This repository
-only contains the client code. The server code is available at
-https://github.com/rangle/ngcourse-api/. You do not need the server code to
+contains only the *client* code. The server code is available at
+https://github.com/rangle/ngcourse-api/. You do **not** need the server code to
 run the front end, however. Instead, you can access the API server deployed to
 http://ngcourse.herokuapp.com/ and will develop the client-side code on your
 own machine.
