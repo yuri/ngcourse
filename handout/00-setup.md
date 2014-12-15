@@ -6,7 +6,8 @@ installation steps before the first day of the course.
 
 ## The Command Line Terminal
 
-The AngularJS tool-chain is quite command-line oriented, so we recommend installing a good command line terminal program. For OSX we recommend iTerm2:
+The AngularJS tool-chain is quite command-line oriented, so we recommend
+installing a good command line terminal program. For OSX we recommend iTerm2:
 
 <http://iterm2.com/>
 
@@ -18,7 +19,7 @@ However, we have also heard good things about ConEmu:
 
 <http://www.hanselman.com/blog/ConEmuTheWindowsTerminalConsolePromptWeveBeenWaitingFor.aspx>
 
-Which specific tool to use is up to the attendees, but they'll want something
+Which specific tool to use is up to each attendee, but you will want something
 like this rather than struggling with the Windows "Command Prompt" tool.
 
 ## Git
@@ -38,16 +39,17 @@ command line, so we recommend having this available as a backup.
 
 This should install two commands: "node" and "npm".
 
-## Google Chrome
+## Google Chrome and Batarang
 
 Please install a recent version of Google Chrome, since we'll be using
-Chrome's Javascript development tools.
+tools that assume it.
 
+Once you have installed Chrome, please install Angular Batarang, which is an
+Google Chrome extension that makes it easier to debug and inspect Angular
+applications. You can get it from the Google Webstore here:
+[Angular Batarang](https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk?hl=en-US&utm_source=chrome-ntp-launcher)
 
-## Angular Batarang
-
-Batarang is an extension for chrome which makes it easier to debug and inspect Angular applications, it can be installed from the Google Webstore: [Angular Batarang](https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk?hl=en-US&utm_source=chrome-ntp-launcher)
-## Postman HTTP client:
+## Postman HTTP Client
 
 Postman is our preferred tool for interacting with a REST API server.
 
@@ -55,9 +57,11 @@ Postman is our preferred tool for interacting with a REST API server.
 
 Postman is less essential and if you have another HTTP client that you prefer, this is fine too.
 
-## Editors
+## A Code Editor
 
-Any text editor will work. At rangle.io the most popular editors/IDEs are Sublime Text 2, WebStorm, VIM, and Atom. We also hear good things about Visual Studio.
+Any text editor will work. At rangle.io the most popular editors/IDEs are
+Sublime Text 2, WebStorm, VIM, and Atom. We also hear good things about Visual
+Studio.
 
 ## Verifying the Setup
 
@@ -84,6 +88,8 @@ Install the projects bower components using bower:
     bower install
 ```
 
+*If you get an error while running this command, see the next section.*
+
 Install http-server using npm (skip `sudo` on Windows):
 
 ```javascript
@@ -99,3 +105,22 @@ Fire up the server:
 Once you've run those commands, you should be able to access the server at
 <http://localhost:8080>. If you see a login form at that point, then you did
 everything correctly and are ready for the course.
+
+## Proxy Issues
+
+While running the above commands you might get an error saying:
+
+```
+  ECMDERR Failed to execute "git ls-remote..."
+```
+
+This most likely means that you are behind a proxy that blocks SSH access to
+Github. In this case, run the following command:
+
+```
+  git config --global url."https://".insteadOf git://
+```
+
+Then re-run the failed command.
+
+It's a somewhat blunt weapon, but should work in most cases.
