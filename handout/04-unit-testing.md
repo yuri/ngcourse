@@ -4,33 +4,20 @@
 
 Why bother with unit tests?
 
-## What is the difference between an Integration Test and a Unit Test?
+## Unit Tests vs Integration Tests
 
-A **unit test** is used to test individual components of the system. An **integration test** is a test which tests the system as a whole, and how it will run in production.
+A **unit test** is used to test individual components of the system. An
+**integration test** is a test which tests the system as a whole, and how it
+will run in production.
 
-Unit tests contain knowledge about the behavior of  a single unit of code. If the unit's behavior is modified, then the unit test must be updated as well. Unit tests do not contain any knowledge or assumptions about other parts of your codebase. When other parts of your codebase are modified, your unit tests **should not fail**. If they do fail, you have written a test that relies on other components, it is therefore not a unit test. Unit tests are cheap to maintain, and should only be updated when the individual units are modified.
-
-An integration test has no knowledge of how your system is broken down into individual components. Instead it it makes assumptions about how the entire system works together in production. Integration tests will test whether features are actually working.
-
-Anything in between the two are considered hybrid tests. Hybrid tests are expensive to maintain as they rely on several components, and are tightly coupled to the way the system functions. Any modification to a component, or the way they interact with each other, will require a long process of updating a hybrid test.
-
-## Best Practices for Unit Testing
-
-(A quick summary of the article [Writing Great Unit Tests: Best and Worst Practices by Steven Sanderson](http://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/))
-
-- Make each test independent of each other
-- Mock out all external dependencies and state
-  - If you have to write your tests in a certain order to test them, this is not a good sign
-- Don't make unnecessary assertions
-  - It is counter productive to assert anything that is tested by another test
-- Test only one code unit at a time
-  - Avoid overlaps between tests, one unit can cascade outwards and cause failures everywhere
-- The architecture of your code will determine how testable it is
-  - If you are having a hard time testing your code, you should consider refactoring it to make it more testable
-- Avoid repeating setup code
-- Name your unit tests clearly and consistently
-  - Unit tests should be viewed as documentation, it allows other developers to clearly see how your code operates and what it is expected to perform
-  - Maintenance is hard if you don't know what you are trying to maintain
+Unit tests should only verify the behavior of a specific unit of code. If
+the unit's behavior is modified, then the unit test would be updated as well.
+Unit tests should not make assumptions about the behavior of _other_ parts of
+your codebase or your dependencies. When other parts of your codebase are
+modified, your unit tests **should not fail**. (If they do fail, you have
+written a test that relies on other components, it is therefore not a unit
+test.) Unit tests are cheap to maintain, and should only be updated when the
+individual units are modified.
 
 ## The Toolchain
 
@@ -94,6 +81,13 @@ We can now run this code with:
 ```bash
   mocha client/app/simple_test.js
 ```
+
+## The Importance of Test Documentation
+
+The first argument to `it()` should explain what your test aims to verify.
+Beyond that, consider adding additional information through comments. Well-
+documented tests can serve as documentation for your code and can simplify
+maintenance.
 
 ## Mocha with Karma and Gulp
 
@@ -170,7 +164,7 @@ For testing Angular code we need to load modules and inject services.
   'use strict';
 
   var expect = chai.expect;
-  // move expect definitin to client/testing/test-utils.js
+  // We can move expect definition to client/testing/test-utils.js
 
   describe('tasks service', function () {
     // Load the angular module. Having smaller modules helps here.
@@ -179,8 +173,8 @@ For testing Angular code we need to load modules and inject services.
       // Inject the service.
       inject(function(tasks) {
         // Notice that the service is available inside the closure.
-        // We can assert that the service has loaded.
-        expect(tasks).to.not.be.undefined;
+        // We can assert that the service has loaded by calling
+        // getTasks().
         expect(tasks.getTasks()).to.not.be.undefined;
       });
     });
@@ -363,13 +357,10 @@ it comes to globals for tests.
 
 ## Spying with Sinon
 
-A test spy is a function that records arguments, return value, the value of `this`, and exception thrown (if any) for all its calls. A test spy can be an anonymous function or it can wrap an existing function.
-
-Test spies can be used to test callbacks, how certain functions are used throughout the system, and asset whether specific functions were called.
-
-When spying on existing functions, the original function will behave as normal, but we will obtain access to data about the calls, for example, how many times a function was called.
-
-We can use spies When mocking dependencies, wrap functions with `sinon.spy()`:
+A test spy is a function that records arguments, return value, the value of
+`this`, and exception thrown (if any) for all its calls. A test spy can be an
+anonymous function or it can wrap an existing function. When using Sinon,
+we'll wrap the existing function with `sinon.spy()`:
 
 ```javascript
   // Mock 'server'.
@@ -386,19 +377,30 @@ We can use spies When mocking dependencies, wrap functions with `sinon.spy()`:
   });
 ```
 
-You can then check if they were called:
+When spying on existing functions, the original function will behave as
+normal, but we will be proxied through the spy, which will collect information
+about the calls. For example, we can check if the function has been called:
 
 ```javascript
-  it('should get tasks', function() {
+  it('should only call server.get once', function() {
     var tasks = getService('tasks');
     var server = getService('server');
-    return tasks.getTasks()
-      .then(function (receivedTasks) {
-        expect(receivedTasks.length).to.equal(1);
-        server.get.should.have.been.calledOnce;
+    server.get.reset(); // Reset the spy.
+    return tasks.getTasks() // Call getTasks the first time.
+      .then(function () {
+        return tasks.getTasks(); // Call it again.
+      })
+      .then(function () {
+        server.get.should.have.been.calledOnce; // Check the number of calls.
       });
   });
 ```
+
+Note that here we created a new test to verify that `server.get` is only
+getting called once. We also do not attempt to verify in this test that the
+promise returned by `getTasks()` actual resolves to the value we expect, since
+this is already being verified by another test. Keeping tests small and
+focused greately facilitates test maintenance.
 
 ## Testing Controllers
 
@@ -424,3 +426,12 @@ If you do want to test controllers, you do so using the following steps:
     });
   });
 ```
+
+## Refactor Hard-to-Test Code
+
+As you start writing unit tests, you may find that a lot of your code is hard
+to test. For example, if most of your code is in controllers, you would need
+to may have to write controller tests, which is more work. The best strategy
+is often to refactor your code so as to make it easy to test. For example,
+consider refactoring your controller code into services and focusing on
+service tests.
