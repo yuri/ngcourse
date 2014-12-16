@@ -3,6 +3,7 @@ angular.module('ngcourse', [
   'ngcourse.tasks'
 ])
 
-.run(function ($log) {
+.run(function ($log, $rootScope) {
   $log.info('All ready!');
+  $rootScope.title="Root Title";
 });
