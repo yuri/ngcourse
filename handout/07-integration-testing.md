@@ -87,17 +87,17 @@ This starts selenium on port 4444.
 ## Writing a Simple Test
 
 ```javascript
-  describe('localhost', function() {
-    it('should allow login', function() {
-      var username;
-      browser.get('http://localhost:8080/');
-      element(by.model('loginForm.username')).sendKeys('alice');
-      element(by.model('loginForm.password')).sendKeys('x');
-      element(by.id('login-button')).click();
-      username = element(by.binding('main.username')).getText();
-      expect(username).toEqual('alice');
-    });
+describe('localhost', function() {
+  it('should allow login', function() {
+    var username;
+    browser.get('http://localhost:8080/');
+    element(by.model('main.username')).sendKeys('alice');
+    element(by.model('main.password')).sendKeys('x');
+    element(by.id('login-button')).click();
+    username = element(by.binding('main.username')).getText();
+    expect(username).toEqual('Hello, alice!');
   });
+});
 ```
 
 Note: we'll be using Jasmine in this case.
