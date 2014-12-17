@@ -1,4 +1,9 @@
-# Part 8: End-to-End Testing
+# Part 7: Integration Testing
+
+Integration tests verify that multiple components work together in
+combination. This could involve just a handleful of components or a lot of
+them. A test that interacts with your web application's user interface and
+involves no mocking is an "end-to-end" test.
 
 ## Testing the API Server
 

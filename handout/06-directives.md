@@ -1,4 +1,4 @@
-# Part 7: Custom Directives
+# Part 6: Custom Directives
 
 ## Built in and 3rd Party Directives
 
@@ -466,4 +466,3 @@ be required as modules.
 Keep in mind, however, that your time may be better spent on refactoring your
 code to maximize the amount of work that you do in services and writing tests
 for those services.
-
