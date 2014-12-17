@@ -3,7 +3,7 @@
 function main_controller ($log, $window) {
   var vm = this;
   vm.username = 'Alice';
-  vm.isAuthenticated = true;
+  vm.isAuthenticated = false;
 
   vm.login = function() {
     vm.isAuthenticated = true;
