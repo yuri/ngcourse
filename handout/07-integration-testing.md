@@ -89,13 +89,13 @@ This starts selenium on port 4444.
 ```javascript
   describe('localhost', function() {
     it('should allow login', function() {
-      var displayName;
+      var username;
       browser.get('http://localhost:8080/');
       element(by.model('loginForm.username')).sendKeys('alice');
       element(by.model('loginForm.password')).sendKeys('x');
       element(by.id('login-button')).click();
-      displayName = element(by.binding('main.user.data.displayName')).getText();
-      expect(displayName).toEqual('Alice');
+      username = element(by.binding('main.username')).getText();
+      expect(username).toEqual('alice');
     });
   });
 ```
