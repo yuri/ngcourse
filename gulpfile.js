@@ -25,7 +25,7 @@ gulp.task('karma-watch', rg.karmaWatch({
 }));
 
 gulp.task('api-test', rg.mocha({
-  files: 'server/testing/e2e/api-test.js'
+  files: 'server/testing/*.js'
 }));
 
 gulp.task('lint', rg.jshint({
