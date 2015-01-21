@@ -10,7 +10,24 @@ toolchain has tools to help you:
 In this section, we'll describe the tools that we'll be using for the
 rest of the course.
 
-## Command-line JavaScript: [NodeJS](http://nodejs.org)
+## Source Control: [Git](http://git-scm.com/)
+
+`git` is a distributed versioning system for source code.  It allows developers
+to collaborate on the same codebase without stepping on each other's toes.  It
+has become the de-facto source control system for open source development
+because of it's decentralized model and cheap branching features.
+
+## The Command Line
+
+JavaScript development tools are very command-line oriented.  If you come from
+a Windows background you may find this unfamiliar.  However the command-line
+provides better support for automating development tasks, so it's worth getting
+comfortable with it.
+
+We will provide examples for all command-line activities required by this
+course.
+
+## Command-line JavaScript: [Node.JS](http://nodejs.org)
 
 NodeJS is an environment that lets you write JavaScript programs that live
 outside the browser.  It provides:
@@ -56,3 +73,11 @@ At a high level, it allows you to specify 'build targets' for the various tasks
 you need to automate.
 
 `gulp` build targets are specified in a file called `Gulpfile.js`.
+
+## Chrome
+
+Chrome is the web browser from Google.  We will be using it for this course
+because of it's cutting-edge JavaScript engine and excellent debugging tools.
+
+Code written with AngularJS should work on any modern web browser however
+(Firefox, IE9+, Chrome, Safari).
