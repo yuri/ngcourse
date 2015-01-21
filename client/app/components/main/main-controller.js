@@ -20,10 +20,15 @@ angular.module('ngcourse.main-ctrl', [
 
   vm.login = function (form) {
     koast.user.loginLocal(form)
-      .then(null, $log.error);
+      .then(null, showLoginError);
   };
   vm.logout = function () {
     koast.user.logout()
       .then(null, $log.error);
   };
+
+  function showLoginError(errorMessage) {
+    vm.errorMessage = 'Login failed.';
+    $log.error(errorMessage);
+  }
 });

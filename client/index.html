@@ -11,12 +11,31 @@
   <body ng-app="ngcourse">
     <div>
       <div ng-controller="MainCtrl as main">
-        <div ng-hide="main.user.isAuthenticated" ng-controller="LoginFormCtrl as loginForm" class="login">
-          Enter username: <input ng-model="loginForm.username"/><br/>
-          Password: <input type="password" ng-model="loginForm.password"/><br/>
+
+        <form
+          ng-hide="main.user.isAuthenticated"
+          ng-controller="LoginFormCtrl as loginFormCtrl"
+          class="login"
+          name="loginFormCtrl.form"
+          novalidate>
+
+          Enter username: <input
+            ng-model="loginFormCtrl.username"
+            name="username"
+            ng-pattern="/^[a-z]+$/"
+            required><br>
+
+          Password: <input
+            type="password"
+            ng-model="loginFormCtrl.password"
+            name="password"
+            required><br>
+
           <div ng-show="main.errorMessage">{{ main.errorMessage}}</div>
-          <button id="login-button" ng-click="main.login(loginForm)">Login</button>
-        </div>
+          <button id="login-button"
+            ng-click="main.login(loginFormCtrl)"
+            ng-disabled="loginFormCtrl.form.$invalid">Login</button>
+        </form>
 
         <div ng-show="main.user.isAuthenticated">
           Hello, <span>{{main.userDisplayName}}</span>!

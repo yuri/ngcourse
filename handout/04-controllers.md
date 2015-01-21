@@ -18,7 +18,7 @@ that it won't do anything at all. Here is what we'll put in our HTML file.
   <!DOCTYPE html>
   <html>
     <head>
-    
+
       <script src="/bower_components/angular/angular.js"></script>
       <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
     </head>
@@ -234,17 +234,6 @@ Our controller can get alerted if the value on the scope changes:
 
 However: *this is rarely useful*. We'll see better ways of handling such
 things.
-
-## Basic Form Validation
-
-Angular provides us a few facilities to quickly validate forms:
-
-```html
-  <form name="form" novalidate>
-    Enter username: <input ng-model="username" ng-maxlength="5" name="username"/>
-    <span ng-show="form.username.$invalid">Oops</span>
-  </form>
-```
 
 ## Implementing "Login"
 
