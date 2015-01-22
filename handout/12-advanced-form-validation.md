@@ -45,7 +45,7 @@ state for the form fields.
 
 AngularJS now gives us a controller variable, called `form`, which contains the
 results of validating each field and the form itself.  Try sticking the
-following expressions in after the '<button>' element:
+following expressions in after the `<button>` element:
 
 ```html
 <p>
@@ -88,7 +88,7 @@ untrusted environment: a malicious end user can bypass any of the input
 validation by messing around with the browser.
 
 This means that __login and data validation always needs to be enforced on
-the server side!__.
+the server side!__
 
 AngularJS's form features are there to give you the tools to make the end-user
 experience better, not to enforce security constraints.
@@ -126,7 +126,7 @@ Copy the following into `client/css/styles.css` and see what happens:
 ```
 
 Here, we're assigning a custom background colour to each input box based on
-data validity and whether the user has interacted with it yet.
+data validity and whether the user has moved focus away from the control.
 
 ## HTML5 Input Types
 
@@ -144,7 +144,7 @@ Email: <input type="email" name="email" ng-model="loginFormCtrl.email">
 
 ## Providing Custom Validation
 
-The build-in AngularJS form validators are simple and powerful.  But what if
+The built-in AngularJS form validators are simple and powerful.  But what if
 you need more complex validation?
 
 You can always build your own validator by creating a directive.  Place the
@@ -184,8 +184,6 @@ Make the following change to your index.html:
 Enter username: <input
   ng-model="loginFormCtrl.username"
   name="username"
-  ng-pattern="/^[a-z]+$/"
-  required
   input-white-list white-list="['alice', 'bob', 'dan']"><br>
 
 <span ng-show="loginFormCtrl.form.username.$error.whiteList">
