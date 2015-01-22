@@ -1,4 +1,4 @@
-# Part 1: The JavaScript Toolchain
+# Part 2: The JavaScript Toolchain
 
 JavaScript isn't exclusive to the web browser any more.  The modern JavaScript
 toolchain has tools to help you:
