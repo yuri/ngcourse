@@ -2,7 +2,7 @@
 
 Angular is the leading open source JavaScript application framework backed by
 Google. This course ("ngCourse") provides an introduction to AngularJS based
-on experience of [rangle.io](http://rangle.io).
+on our experience at [rangle.io](http://rangle.io).
 
 ## AngularJS, the Good Parts
 
@@ -12,25 +12,27 @@ has this to say about JavaScript:
 
 > Most languages contain good parts and bad parts. I discovered that I could
 > be a better programmer by using only the good parts and avoiding the bad
-> parts... JavaScript is a language with more than its sahre of bads parts.
+> parts... JavaScript is a language with more than its share of bads parts.
 
-He goes on to point out that JavaScript also has lots of _good_ parts which
+Crockford goes on to point out that JavaScript also has lots of _good_ parts which
 can make it a great language to use. The key is avoiding the bad parts.
 
-Crockford's book should be required reading for all JavaScript developers. At
+(Crockford's book should be required reading for all JavaScript developers. At
 rangle.io, we keep a few extra copies on hand on the of chance that one of our
-developers has not already read this great book.
+developers has not already read this great book.)
 
-Our approach to AngularJS somewhat resembles Crockford's approach to
-JavaScript. AngularJS does not have the same kind of warts as JavaScript, but
-it does have features that will help you make your code cleaner as well as
-features that will help you shoot yourself in the foot. This course aims to
-highlight "the good parts" and to show how you can use them to your advantage.
+What Crockford says about programming languages applies equally well to
+frameworks: most have good parts and bad parts. Our approach to AngularJS
+somewhat resembles Crockford's approach to JavaScript. AngularJS does not have
+nearly the same kind of warts as JavaScript, but it does have features that
+will help you shoot yourself in the foot, even as many of its other features
+help you build highly scalable software. This course aims to highlight "the
+good parts" and to show how you can use them to your advantage.
 
-We avoid covering in depth in this course those parts of AngularJS that we
-avoid in our own use of the framework. In those cases that such parts are
-widely used in the community, the course will mention them and explain why we
-believe their usage should be minimized.
+We won't cover in depth in this course those parts of AngularJS that we avoid
+in our own use of the framework. In those cases that such parts are widely
+used in the community, the course will mention them and explain why we believe
+their usage should be minimized.
 
 Despite this "picky" approach, however, we do think AngularJS offers great
 value. This is the framework we ourselves work with predominantly. Let's talk
