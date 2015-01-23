@@ -46,66 +46,88 @@ Here is how this is often illustrated:
 
 ![Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/feat-part-2-intro-to-angular/handout/images/simple-mvc.gif)
 
-However, Angular can be better understood as a "MVVM" ("Model-View-ViewModel")
-framework. Additionally, only the simplest applications can be understood as
-consisting of a single model, a single view and a single view-model. More
-commonly, an application will include multiple views, multiple view-models,
-and multiple models. So, the reality often looks closer to this:
+This picture, however, is far too simple.
+
+First, only the most trivial applications can be understood as
+consisting of a single model, a single view and a single controller. More
+commonly, an application will include multiple views, multiple controllers,
+and multiple data models. So, it might look more like this:
 
 ![Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/feat-part-2-intro-to-angular/handout/images/mvvm-initial.gif)
 
-Now let's see how this maps onto AngularJS?
+The figure above makes another important substitution, however. "Controllers"
+are replaced with "view models". Angular can be better understood as a "MVVM"
+("Model-View-ViewModel") framework. In this approach, we have "view models"
+mediating between views and (data) models. While this may seem like just a
+minor change of terminology, the idea of "view model" helps clarify the path
+towards better AngularJS architecture. A view model is a mediating object that
+takes data from a data model and presents it to a view in a "digested" form.
+Because of that, the view model superficially looks like a model. It should
+not be confused with the applications real data models. Misusing the view
+model as the model is one of the most common sources of problems in AngularJS.
+
+Now let's see how MVVM model is realized in AngularJS.
 
 ## View Synchronization
 
+Most introductions to Angular start with a look at the "frone-end" of the
+framework. Let's do the same here, even though most of your AngularJS code
+should be in the model layer.
+
 ![Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/feat-part-2-intro-to-angular/handout/images/mvvm-front-end.gif)
 
-Views: HTML templates.
+AngularJS views are HTML templates that are extended with custom elements and
+attributes called "directives". AngularJS provides you with a lot of
+directives and you will also be developing some yourself.
 
-Views go hand-in-hand with controllers and directives, which introduces behaviours
-to the DOM.
+Views are linked with view models that take the form of "controllers" and
+custom "directives". In either case we are looking at some code that controls
+JavaScript objects (the actual "view model") that are referenced in the
+templates. Angular refers to those as "scopes." AngularJS automatically
+synchronizes DOM with view models through what it calls "two way data
+binding": when an property of a view model is changed, the DOM is updated to
+reflect it and when an input field is changed in the DOM, the view model is
+updated.
 
-View models, controllers and directives.
-
-Automatic view synchronization.
-
-Angular supports two way data binding.  For example, a variable in the controller scope can
-be bound to the view and updates in the model will be reflected in the view and vice versa.
-
-Digest cycle.
-
-Designer-friendly.
-
-The importance of not abusing view models. View models are not models.
+This makes AngularJS very "designer-friendly": designers can modify HTML
+templates without worrying too much about the code. The reverse is also true:
+as long as there is a designer on the team, developers are largely freed from
+worrying about HTML and CSS.
 
 Angular "scopes" (view models) can be organized into a hierarchy that partly
-mirrors DOM structure. We strongly recommend avoiding this, because such design introduces complex
-dependencies and make testing difficult. Instead, we recommend keeping view models isolated and doing as little work as possible. Instead, most of the work (in particular, all of the business logic) should be moved to the lower "model" level.
+mirrors DOM structure. We strongly recommend avoiding this, however, because
+such design introduces complex dependencies and make testing difficult.
+Instead, we recommend keeping view models isolated and doing as little work as
+possible. Instead, most of the work (in particular, all of the business logic)
+should be moved to the lower "model" level.
 
-The same applies to directives.
+More generally, it is important to understand that view models are a temporary
+staging area for your data on the way to the view. They should not be abused
+by being forced to act as your primary model.
 
 ## Model in Services
 
-Your "real" models should be implemented using AngularJS services.
+AngularJS does provide us with a great way to implement our data models at
+arms length from the views using a mechanism called "services".
 
 ![Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/feat-part-2-intro-to-angular/handout/images/mvvm-final.gif)
 
-Services are singletons that can be dependency injected into controllers,
-directives and other services.  The bulk of your application's business logic
-should belong in services. We'll spend a lot of time talking about this.
+Services are singleton objects that normally do not concern themselves with
+the DOM but instead take care of your data. The bulk of your application's
+business logic should belong in services. We'll spend a lot of time talking
+about this.
 
 Services get linked together through an approach that AngularJS calls
-"dependency injection". This is also how they are exposed to the controllers.
-In case of Angular, what "dependency injection" practically means is that the
-view layer does not get to create and define services. Rather, services are
-created _first_, before any part of the view-model layer is instantiated. Each
-component's definition specifies what dependencies will be provided to the
-component.
+"dependency injection". This is also how they are exposed to view models
+(controllers and custom directives).
 
-This approach makes your code more modular, reusable and easier to test. 
-For example, you can inject your code into your unit test.
+In case of Angular, what "dependency injection" practically means is that view
+models do not get to create and define their dependencies. Instead, services
+are created _first_, before any part of the view-model layer is instantiated.
+Each component's definition specifies what dependencies should be provided to
+the component.
 
-### Data Binding in Angular
+Angular's dependency injection is one of the best things about the framework.
+This approach makes your code more modular, reusable, and easier to test.
+Those features are essential when building larger applications.
 
-Angular supports two way data binding.  For example, a variable in the controller scope can
-be bound to the view and updates in the model will be reflected in the view and vice versa.
