@@ -44,7 +44,7 @@ things we'll have to keep in mind.
 AngularJS is often described as an MVC ("Model-View-Controller") framework.
 Here is how this is often illustrated:
 
-<center>[!Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/feat-part-2-intro-to-angular/handout/images/simple-mvc.gif)</center>
+<center>![Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/feat-part-2-intro-to-angular/handout/images/simple-mvc.gif)</center>
 
 However, Angular can be better understood as a "MVVM" ("Model-View-ViewModel")
 framework. Additionally, only the simplest applications can be understood as
