@@ -89,7 +89,7 @@ Any text editor will work. At Rangle.io the most popular editors/IDEs are:
 
 ## Verifying the Setup
 
-Once you have all the tools setup correctly, you should be able to do the
+Once you have all the tools set up correctly, you should be able to do the
 following steps through the command line. This is the best way to check that
 `git`, `node`, and `npm` were installed correctly.
 
