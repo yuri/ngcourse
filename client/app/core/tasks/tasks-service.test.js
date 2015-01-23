@@ -13,32 +13,21 @@ describe('tasks service', function () {
           data: {
             username: 'alice'
           }
-        }
-      }
-      return service;
+        },
 
-    });
+        queryForResources: sinon.spy(function() {
+          return Q.when([{
+              description: 'Mow the lawn',
+              owner: 'alice',
 
-    // mock server
-    $provide.service('server', function () {
-      var service = {};
-      var data = [{
-        description: 'Mow the lawn',
-        owner: 'alice'
-      }, {
-        description: 'Fix the car',
-        owner: 'bob'
-      }];
+            },
+            {
+              description: 'Fix the car',
+              owner: 'bob'
+            }]);
+        })
+      };
 
-      service.get = sinon.spy(function () {
-
-        var deferred = Q.defer();
-        deferred.resolve(data);
-        // deferred.reject(new Error('Some Error'));
-        return deferred.promise;
-      });
-
-      console.log(service.get)
       return service;
     });
 
@@ -50,25 +39,11 @@ describe('tasks service', function () {
 
   it('should get tasks', function () {
     var tasks = getService('tasks');
-    var server = getService('server');
+    var koast = getService('koast');
     return tasks.getTasks()
       .then(function (receivedTasks) {
         expect(receivedTasks.length).to.equal(2);
-        server.get.should.have.been.calledOnce;
+        koast.queryForResources.should.have.been.calledOnce;
       });
-  });
-
-  it('should set can.edit to true if current user is the owner', function () {
-    var tasks = getService('tasks');
-    return tasks.getTasks().then(function (receivedTasks) {
-      expect(receivedTasks[0].can.edit).to.equal(true);
-    });
-  });
-
-  it('should set can.edit to false if current user is the owner', function () {
-    var tasks = getService('tasks');
-    return tasks.getTasks().then(function (receivedTasks) {
-      expect(receivedTasks[1].can.edit).to.equal(false);
-    });
   });
 });
