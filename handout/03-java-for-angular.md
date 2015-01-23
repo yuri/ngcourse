@@ -117,8 +117,8 @@ You will see extensive use of inner functions in Angular:
    		$scope.username = 'alice';
    		$scope.numberOfTasks = 0;
    		$scope.addTask = function() {
-      			$scope.numberOfTasks += 1;
-    		};
+   			$scope.numberOfTasks += 1;
+   		};
  	});
 ```
 The function addTask has access to the variables such as $scope.numberOfTasks in the outer function.  
