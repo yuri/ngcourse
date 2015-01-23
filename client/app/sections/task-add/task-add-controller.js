@@ -8,7 +8,7 @@ angular.module('ngcourse')
   vm.cancel = router.goToTaskList;
 
   vm.save = function (task) {
-    tasks.addTask(task)
+    return tasks.addTask(task)
       .then(function () {
         router.goToTaskList();
       })
