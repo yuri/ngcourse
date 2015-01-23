@@ -331,7 +331,7 @@ Let's observe some inheritance oddities.
 ## Broadcasting and Catching Events.
 
 Angular provides a system for broadcasting events and listening to them. This
-system is tied to scopes. Use `$scope.$on` to subscribe to messages. The method used for sendind messages depends on whether we want to communicate *up* or *down* the scope.
+system is tied to scopes. Use `$scope.$on` to subscribe to messages. The method used for sending messages depends on whether we want to communicate *up* or *down* the scope.
 
 Let's use `$scope.$broadcast` to send a message *down* the scope system. We'll
 put this in `main-controller.js`:
@@ -548,5 +548,5 @@ In the controller all we do is set `tasks` to an array:
 
 ## Next Steps
 
-Enough controllers for now. That not where you code should go in most cases!
+Enough controllers for now. That not where your code should go in most cases!
 Our next step will be to look at how to organize our code with using services.
