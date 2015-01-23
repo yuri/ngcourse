@@ -7,7 +7,7 @@ module.exports = function (config) {
     basePath: 'client/',
     frameworks: ['mocha', 'chai', 'sinon'],
     files: ['**/*.js'],
-    exclude: ['bower_compnents/*'],
+    exclude: ['bower_components/*'],
     reporters: ['progress'],
     port: 9999,
     colors: true,
