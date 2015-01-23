@@ -113,7 +113,6 @@ You will see extensive use of inner functions in Angular:
 
 ```javascript
 	angular.module('ngcourse')
-
  	.controller('MainCtrl', function($scope) {
    		$scope.username = 'alice';
    		$scope.numberOfTasks = 0;
