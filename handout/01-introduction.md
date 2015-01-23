@@ -44,17 +44,21 @@ things we'll have to keep in mind.
 AngularJS is often described as an MVC ("Model-View-Controller") framework.
 Here is how this is often illustrated:
 
-<center>![Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/feat-part-2-intro-to-angular/handout/images/simple-mvc.gif)</center>
+![Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/feat-part-2-intro-to-angular/handout/images/simple-mvc.gif)
 
 However, Angular can be better understood as a "MVVM" ("Model-View-ViewModel")
 framework. Additionally, only the simplest applications can be understood as
 consisting of a single model, a single view and a single view-model. More
 commonly, an application will include multiple views, multiple view-models,
-and multiple models. So, the reality often looks closer to this.
+and multiple models. So, the reality often looks closer to this:
 
-How does this map onto AngularJS?
+![Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/feat-part-2-intro-to-angular/handout/images/mvvm-initial.gif)
+
+Now let's see how this maps onto AngularJS?
 
 ## View Synchronization
+
+![Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/feat-part-2-intro-to-angular/handout/images/mvvm-front-end.gif)
 
 Views: HTML templates.
 
@@ -83,6 +87,8 @@ The same applies to directives.
 ## Model in Services
 
 Your "real" models should be implemented using AngularJS services.
+
+![Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/feat-part-2-intro-to-angular/handout/images/mvvm-final.gif)
 
 Services are singletons that can be dependency injected into controllers,
 directives and other services.  The bulk of your application's business logic
