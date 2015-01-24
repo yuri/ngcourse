@@ -93,6 +93,7 @@ Here is a pure JavaScript example with multiple scopes:
 	    var aVar = 'Inner Function Scope';
 	    console.log('aVar in innerFunc: ' + aVar); 
 	  }
+	  innerFunc();
 	};
 	
 	console.log('aVar in Global: ' + aVar);
