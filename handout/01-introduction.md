@@ -44,7 +44,7 @@ things we'll have to keep in mind.
 AngularJS is often described as an MVC ("Model-View-Controller") framework.
 Here is how this is often illustrated:
 
-![Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/master/handout/images/simple-mvc.gif)
+![Simple MVC](https://raw.githubusercontent.com/rangle/ngcourse/master/handout/images/simple-mvc.gif)
 
 This picture, however, is far too simple.
 
@@ -53,7 +53,7 @@ consisting of a single model, a single view and a single controller. More
 commonly, an application will include multiple views, multiple controllers,
 and multiple data models. So, it might look more like this:
 
-![Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/master/handout/images/mvvm-initial.gif)
+![Simple MVC](https://raw.githubusercontent.com/rangle/ngcourse/master/handout/images/mvvm-initial.gif)
 
 The figure above makes another important substitution, however. "Controllers"
 are replaced with "view models". Angular can be better understood as a "MVVM"
@@ -74,7 +74,7 @@ Most introductions to Angular start with a look at the "front-end" of the
 framework. Let's do the same here, even though most of your AngularJS code
 should be in the model layer.
 
-![Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/master/handout/images/mvvm-front-end.gif)
+![Simple MVC](https://raw.githubusercontent.com/rangle/ngcourse/master/handout/images/mvvm-front-end.gif)
 
 AngularJS views are HTML templates that are extended with custom elements and
 attributes called "directives". AngularJS provides you with a lot of
@@ -110,7 +110,7 @@ by being forced to act as your primary model.
 AngularJS does provide us with a great way to implement our data models at
 arms length from the views using a mechanism called "services".
 
-![Simple MVC](https://raw.githubusercontent.com/yuri/ngcourse/master/handout/images/mvvm-final.gif)
+![Simple MVC](https://raw.githubusercontent.com/rangle/ngcourse/master/handout/images/mvvm-final.gif)
 
 Services are singleton objects that normally do not concern themselves with
 the DOM but instead take care of your data. The bulk of your application's
