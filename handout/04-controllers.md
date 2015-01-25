@@ -1,4 +1,4 @@
-# Part 2: Getting Started with the Client
+# Part 4: Getting Started with the Client
 
 This course will be organized around building a collaborative task manager. We
 will start by building a client app, which we will later connect to a REST
@@ -49,6 +49,10 @@ This app doesn't do anything at all. To make it do something remotely interestin
     $scope.numberOfTasks = 0;
   });
 ```
+
+We already saw this code in Part 2, so we recognize JavaScript's "fluent"
+chaining style and the use of a function expression in the second argument to
+`controller()`.
 
 We can now attach the controller to an element and start using the content of its scope:
 

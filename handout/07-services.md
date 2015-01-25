@@ -1,11 +1,13 @@
-# Part 3: $http.get, Services and Promises
+# Part 7: Services
 
-
+In Part 6 we wrote functions that call `$http` methods and process resulting
+promises. We started by putting those functions in our controller. This,
+however, is a poor practice. Those functions are working with business logic
+and they should be kept out of controllers.
 
 ## Services
 
-Those functions need a better home, however. Take them out of the controller,
-put them in services.
+Instead, we'll put those functions in an AngularJS service:
 
 ```javascript
 'use strict';
