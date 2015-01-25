@@ -1,3 +1,5 @@
+# Part 5. Making HTTP Requests.
+
 After setting up a basic view we will set up the app to receive data from the
 server using `$http.get`. To avoid doing server interaction in the controller,
 we will start writing custom services using Angular’s `.factory()` method.

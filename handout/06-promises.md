@@ -1,6 +1,7 @@
-# Promises
+# Part 6: Promises.
 
-But what exactly is a promise?
+In Part 5 we saw that `$http` methods give us promises. But what exactly is a
+promise?
 
 ## Promises vs Callbacks
 

@@ -1,12 +1,5 @@
 # Part 2: The JavaScript Toolchain
 
-JavaScript isn't exclusive to the web browser any more.  The modern JavaScript
-toolchain has tools to help you:
-
-* build your own back-end HTTP server,
-* use and distribute code modules,
-* automate build and testing tasks.
-
 In this section, we'll describe the tools that we'll be using for the
 rest of the course.
 
@@ -35,6 +28,11 @@ outside the browser.  It provides:
 * the V8 JavaScript interpreter
 * modules for doing OS tasks like file I/O, HTTP, etc.
 
+While NodeJS was initially intended for writing server code in JavaScript,
+today it is widely used by JavaScript tools, which makes it relevant to front-
+end developers also. A lot of the tools we'll be using in this code will be
+leveraging NodeJS.
+
 ## Back-End Code Sharing and Distribution: [npm](https://www.npmjs.com/)
 
 `npm` is the "node package manager".  It installs with NodeJS, and gives you
@@ -46,7 +44,7 @@ will resolve, download and install your back-end application's dependencies.
 
 ## Front-End Code Sharing and Distribution: [bower](https://bower.io)
 
-`bower` is very similar to nodeJS, but for the front-end part of your application.
+`bower` is very similar to `npm`, but for the front-end part of your application.
 Any frameworks or 3rd-party libraries that need to be accessible in the user's
 browser will be managed by `bower`.
 
@@ -72,7 +70,7 @@ If you come from a java or C background, `gulp` conceptually fills the role of
 At a high level, it allows you to specify 'build targets' for the various tasks
 you need to automate.
 
-`gulp` build targets are specified in a file called `Gulpfile.js`.
+`gulp` build targets are specified in a file called `gulpfile.js`.
 
 ## Chrome
 
