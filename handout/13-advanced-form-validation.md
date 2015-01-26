@@ -1,4 +1,4 @@
-# Part 12: Advanced Form Validation
+# Part 13: Advanced Form Validation
 
 AngularJS provides a lot of built-in functionality to improve the user
 experience around HTML form validation.  Using the two-way binding features of
