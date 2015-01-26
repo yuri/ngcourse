@@ -19,7 +19,7 @@ update it, or delete it.
 Before we begin talking to the server from our web application, let's get
 comfortable interacting with the REST API using Postman.
 
-If you do not have Postman install, get it here: <http://http://www.getpostman.com/>
+If you do not have Postman installed, get it here: <http://http://www.getpostman.com/>
 
 Our server is setup at http://ngcourse.herokuapp.com/. Here is our `tasks` endpoint:
 
