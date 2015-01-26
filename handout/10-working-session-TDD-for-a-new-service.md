@@ -133,13 +133,46 @@ to:
 
   and cause that task to be 'created' in the mock server.  Try using a sinon spy
   to verify this.
+
+  It should also return a promise.
+
+  Also write some tests for error cases: null parameter, empty `owner` or
+  `description` fields, etc. Your `createTask()` function should return a
+  rejected promise in these scenarios.
 4. Hook the `task-service.js createTask()` function up to a button in `index.html`
   via `task-controller.js`.
 
-# Exercise 2: Build out a 'Users Service'
+# Exercise 2: Update tasks-service.js createTask() to Check the Owner
 
-The server also exposes some APIs to manipulate users.  Let's build a service,
-similar to `tasks-service.js`, that allows the caller to get a list of users.
+We would like to be able to check that the user.owner field passed to
+`tasks-service.js createTask()` is actually a valid user.  We'll do this
+for now by creating a mock 'users service' that returns some hard-coded names.
+
+Tips:
+* Create a service at `app/client/core/users/users-service.js`, and give
+  it an empty method, `getUsers()`.  We'll come back to this later.
+* Inject your users service into the `tasks-service.js` using dependency
+  injection.
+* Create a mock users service in `tasks-service.test.js` with a getUsers()
+  implementation that gives you a hard-coded list of users.  Each item in the
+  list should be an object of the form:
+
+  ```javascript
+  {
+    username: 'bob'
+    displayName: 'Bob BeebleBrox'
+  }
+  ```
+
+* Add tests to `tasks-service.js createTask()` to validate the passed in owner
+  field against the `username` fields from your mock users service.
+* Add some unit tests for the happy case and the error case.  Remember that
+  `createTask()` should _always return a promise_.
+
+# Exercise 3: Build out the real 'Users Service'
+
+The server exposes some APIs to manipulate users.  We can use these to supply
+a real implementation for the fake users-service.js we created in exercise 2.
 
 The HTTP call in question is `GET /api/v1/users`.  It will give you a response
 like this:
@@ -166,24 +199,9 @@ like this:
 
 Tip: Just follow the pattern set by `tasks-service.js`.
 * Expose the users API call from `app/core/server/server-service.js`
-* Define `app/core/users/user-service.js` and
-  `app/core/users/user-service.test.js`
+* Fill out `app/core/users/user-service.js` and
+`app/core/users/user-service.test.js`
 * Follow same mocking and testing strategy as in `tasks-service.test.js`
-
-# Exercise 3: Update tasks-service.js createTask() to Check the Owner
-
-Now that you know how to get a list of users, you can update your
-`tasks-service.js` to check that the given owner is valid before creating the
-task.
-
-Tips:
-* Inject your users service into the `tasks-service.js` using dependency
-  injection.
-* Create a mock users service in `tasks-service.test.js` that gives you a
-  controlled list of users.
-* Add tests to `tasks-service.js createTask()` to validate the passed in owner
-  field against the `username` fields from your mock users service.
-* Add some unit tests for the happy case and the error case.
 
 # Bonus Exercise:
 
