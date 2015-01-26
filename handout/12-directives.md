@@ -1,4 +1,4 @@
-# Part 6: Custom Directives
+# Part 12: Custom Directives
 
 ## Built in and 3rd Party Directives
 

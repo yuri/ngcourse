@@ -1,4 +1,4 @@
-# Part 7: Integration Testing
+# Part 17: Integration Testing
 
 Integration tests verify that multiple components work together in
 combination. This could involve just a handleful of components or a lot of
