@@ -76,7 +76,7 @@ where we actually save the objects in variables:
   ngCourseModule.controller('TaskListCtrl', function($scope){ ... });
 ```
 
-Not that the return value of `ngCourseModule.controller()` is the same object
+Note that the return value of `ngCourseModule.controller()` is the same object
 as `ngCourseModule`.
 
 This style may seem more intuitive to those coming to JavaScript from other
@@ -85,7 +85,7 @@ example above defines a new variable `ngCourseModule`. Unfortunately, a
 variable defined outside of a function becomes _global_ in JavaScript. We'll
 come back to global variables and ways to avoid them in a short while.
 
-For now, however, let's not that chained method calls provide us with a way of
+For now, however, let's note that chained method calls provide us with a way of
 avoiding defining new variables. We will see this pattern often in AngularJS
 applications, for example when defining services or directives.
 
