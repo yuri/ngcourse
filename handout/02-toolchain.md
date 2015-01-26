@@ -79,3 +79,40 @@ because of it's cutting-edge JavaScript engine and excellent debugging tools.
 
 Code written with AngularJS should work on any modern web browser however
 (Firefox, IE9+, Chrome, Safari).
+
+## Getting the Code
+
+Before we proceed, get the code from Git if you have not done so:
+
+```bash
+  git clone https://github.com/rangle/ngcourse.git
+  cd ngcourse
+```
+
+Now, switch to the branch that we'll be using for today's course:
+
+```bash
+  git branch --track 2015-01-26 origin/2015-01-26
+  git checkout 2014-12-16
+```
+
+This gives us a hollowed-out version of the application we'll be building.
+
+Install NPM and Bower packages:
+
+```
+  npm install
+  bower install
+```
+
+Finally, install `http-server` if you have not yet done so:
+
+```
+  npm install -g http-server
+```
+
+We can run the app with:
+
+```
+  http-server client/
+```
