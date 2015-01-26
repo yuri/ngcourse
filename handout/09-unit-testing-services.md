@@ -190,7 +190,7 @@ this test until we know what that promise resolves to.
 ## An Asynchronous Test
 
 So, we want to check what the promise resolves too, but this only will happen
-*later*. One solution is to setup an asynchronous promise.
+*later*. One solution is to set up an asynchronous promise.
 
 So, we need to use an asynchronous test that would wait for
 the promise to resolve.
