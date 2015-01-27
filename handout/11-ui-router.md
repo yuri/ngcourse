@@ -49,6 +49,33 @@ We'll also need to add a a placeholder to our template:
 
 Let's talk about why this need to happen in the "config" section.
 
+## .config() and Providers
+
+Up until now, we've mostly been dealing with services and controllers.
+However the example above introduces a couple of new concepts: providers and
+`.config()` blocks.
+
+When an AngularJS application starts up, it goes throw several 'phases':
+1. Set constants defined in `.constant()` blocks.
+2. Create any registered providers.
+3. Run .config() blocks.
+4. Create services.
+5. Run .run() blocks.
+
+A provider is something Angular's dependency injector can use to
+create a service.  The provider is configured with various data in the app's
+`config` phase, so that during the dependency injection phase, services can be
+created that depend on that custom configuration.
+
+In practical terms, any javascript object that exposes a function called $get()
+can serve as a provider.  We'll cover this in more detail in part 15 of this
+course.
+
+So in this example, we're configuring ui-router's `$stateProvider`,
+`$urlRouterProvider`, and `$locationProvider` with settings that will later
+be used to generate state, route, and state services with the correct path
+and parameter data for use in our own controllers.
+
 ## More States
 
 ```javascript
