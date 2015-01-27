@@ -12,7 +12,7 @@ Instead, we'll put those functions in an AngularJS service:
 ```javascript
 'use strict';
 
-angular.module('ngcourse')
+angular.module('ngcourse.tasks', [])
 .factory('tasks', function($http) {
   var service = {};
 
@@ -34,6 +34,12 @@ angular.module('ngcourse')
 
   return service;
 });
+```
+
+Note we have added a new module definition and need to update app.js.
+
+```javascript
+angular.module('ngcourse', ['ngcourse.tasks', 'ngcourse.server'])
 ```
 
 Let's put this in `client/app/core/tasks/tasks-service.js` and add the path
@@ -82,7 +88,7 @@ When it comes to services, the more the better. Let's refactor some of the
 code from our `tasks` service into a new `server` services (app/core/server/server-service.js).
 
 ```javascript
-  angular.module('ngcourse')
+  angular.module('ngcourse.server', [])
 
   .factory('server', function($http) {
     var service = {};
