@@ -400,38 +400,13 @@ Note that here we created a new test to verify that `server.get` is only
 getting called once. We also do not attempt to verify in this test that the
 promise returned by `getTasks()` actual resolves to the value we expect, since
 this is already being verified by another test. Keeping tests small and
-focused greately facilitates test maintenance.
-
-## Testing Controllers
-
-Testing controllers is harder, so generally speaking you want to make
-your controllers so simple that testing them is less of a priority.
-
-If you do want to test controllers, you do so using the following steps:
-
-```javascript
-  it('testing the controller', function(done) {
-    inject(function ($controller, $rootScope) {
-      // Create a scope.
-      var scope = {};
-      // Instantiate a controller with the new scope.
-      var ctrl = $controller('TaskListCtrl', {
-        $scope: scope
-      });
-      // Wait for the controller to run.
-      setTimeout(function() {
-        expect(ctrl.tasks.length).to.equal(1);
-        done();
-      }, 100);
-    });
-  });
-```
+focused greatly facilitates test maintenance.
 
 ## Refactor Hard-to-Test Code
 
 As you start writing unit tests, you may find that a lot of your code is hard
 to test. For example, if most of your code is in controllers, you would need
-to may have to write controller tests, which is more work. The best strategy
+to write controller tests, which is more work. The best strategy
 is often to refactor your code so as to make it easy to test. For example,
 consider refactoring your controller code into services and focusing on
 service tests.
