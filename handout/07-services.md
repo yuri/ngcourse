@@ -85,7 +85,7 @@ and `.provider()`. Let's talk briefly about the differences.
 ## More Services
 
 When it comes to services, the more the better. Let's refactor some of the
-code from our `tasks` service into a new `server` services (app/core/server/server-service.js).
+code from our `tasks` service into a new `server` service (app/core/server/server-service.js).
 
 ```javascript
   angular.module('ngcourse.server', [])
