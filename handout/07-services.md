@@ -108,7 +108,7 @@ While our `tasks` service code gets simplified to:
   };
 ```
 
-And we have a layered service architecture with the tasks service calling the service service.
+And we have a layered service architecture with the tasks service calling the server service.
 
 But why bother, you might ask? Lets go over some of the benefits.
 
