@@ -15,7 +15,7 @@ If you've been following along with the course so far, your
 `client/app/task-service.js` file should look like this:
 
 ```javascript
-angular.module('ngcourse')
+angular.module('ngcourse.tasks', ['ngcourse.server'])
 .factory('tasks', function(server) {
   var service = {};
 

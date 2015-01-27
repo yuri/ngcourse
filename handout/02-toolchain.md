@@ -93,7 +93,7 @@ Now, switch to the branch that we'll be using for today's course:
 
 ```bash
   git branch --track 2015-01-26 origin/2015-01-26
-  git checkout 2014-12-16
+  git checkout 2015-01-26
 ```
 
 This gives us a hollowed-out version of the application we'll be building.
