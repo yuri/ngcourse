@@ -85,6 +85,8 @@ And your `client/app/server/server-service.js` file should look like this after 
 ```javascript
 angular.module('ngcourse.server', [])
 
+.constant('API_BASE_URL', 'http://ngcourse.herokuapp.com')
+
 .factory('server', function ($http, API_BASE_URL) {
   var service = {};
 
