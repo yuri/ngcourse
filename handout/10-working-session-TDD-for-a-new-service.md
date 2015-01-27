@@ -80,7 +80,7 @@ describe('tasks service', function () {
 });
 ```
 
-And your `client/app/server/server-service.js` file should look like this:
+And your `client/app/server/server-service.js` file should look like this after adding the post, put, and delete functions:
 
 ```javascript
 angular.module('ngcourse.server', [])
