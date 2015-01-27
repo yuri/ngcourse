@@ -79,7 +79,7 @@ and `.provider()`. Let's talk briefly about the differences.
 ## More Services
 
 When it comes to services, the more the better. Let's refactor some of the
-code from our `tasks` service into a new `server` services.
+code from our `tasks` service into a new `server` services (app/core/server/server-service.js).
 
 ```javascript
   angular.module('ngcourse')
@@ -100,13 +100,15 @@ code from our `tasks` service into a new `server` services.
   });
 ```
 
-While our `tasks` code gets simplified to:
+While our `tasks` service code gets simplified to:
 
 ```javascript
   service.getTasks = function () {
     return server.get('/api/v1/tasks');
   };
 ```
+
+And we have a layered service architecture with the tasks service calling the service service.
 
 But why bother, you might ask? Lets go over some of the benefits.
 
