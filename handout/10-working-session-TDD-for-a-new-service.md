@@ -41,7 +41,7 @@ Your `client/app/task-service.test.js` file should look like this:
 ```javascript
 describe('tasks service', function () {
   // Load the angular module. Having smaller modules helps here.
-  beforeEach(module('ngcourse'));
+  beforeEach(module('ngcourse.tasks'));
   beforeEach(module(function($provide){
     // Mock 'server'.
     $provide.service('server', function() {
