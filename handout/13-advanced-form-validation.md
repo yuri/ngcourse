@@ -6,8 +6,7 @@ experience around HTML form validation.  Using the two-way binding features of
 
 ## Disabling Login for Missing Data
 
-Let's revise the basic login UI we built earlier in this course.  Replace the
-existing username and password fields in `index.html` with the following markup:
+Let's revise the basic login UI we built earlier in this course.  Create a `main.html` at `app/components/main/main.html` with the following markup:
 
 ```html
 <div ng-controller="MainCtrl as main">
@@ -42,6 +41,29 @@ existing username and password fields in `index.html` with the following markup:
 * We've given the form a `name`; this causes Angular to begin tracking validation
 state for the form fields.
 * We've also named the input fields and marked them as `required`.
+
+and update our router-service to load the main form.
+
+```
+    $urlRouterProvider.otherwise('/');
+
+    $locationProvider.html5Mode(false);
+
+    $stateProvider
+      .state('home', {
+        url: '/',
+        controller: 'MainCtrl as main',
+        templateUrl: '/app/components/main/main.html'
+      })
+      .state('tasks', {
+        url: '/tasks',
+        controller: 'TaskListCtrl as taskList',
+        templateUrl: '/app/sections/task-list/task-list.html'
+    })
+```
+
+with the rest of the file remaining the same.
+
 
 AngularJS now gives us a controller variable, called `form`, which contains the
 results of validating each field and the form itself.  Try sticking the
