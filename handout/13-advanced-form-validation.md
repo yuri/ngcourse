@@ -146,7 +146,7 @@ a regular expression:
 
 ```html
 Enter username: <input
-  ng-model="loginFormCtrl.username"
+  ng-model="loginForm.username"
   name="username"
   ng-pattern="/^[a-z]+$/"
   required><br>
