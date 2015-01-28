@@ -15,7 +15,7 @@ by "ui-router". We'll be using that. To install UI-Router with Bower:
   bower install --save angular-ui-router
 ```
 
-Then add `client/bower_components/angular-ui-router/release/angular-ui-router.js` to your `index.html`.
+Then add `client/bower_components/angular-ui-router/release/angular-ui-router.js` to your `index.html` if it's not there already.
 
 You'll also need to update your `client/app/app.js` to inject the new module into your main module:
 
@@ -53,13 +53,26 @@ This goes in `client/app/core/router/router-service.js`
   });
 ```
 
-We'll also need to add a placeholder for ui-router in index.html:
+We'll also need to add a directive for ui-router in index.html:
 
 ```html
-  <div ui-view ng-show="main.user.isAuthenticated"></div>
+  <div ui-view></div>
+```
+
+Your index.html main section should now look like this:
+
+```
+  <body ng-app="ngcourse">
+    <div>
+     <div ui-view></div>
+    </div>
+
+    <script src="/bower_components/lodash/dist/lodash.js"></script>
 ```
 
 ui-view is a directive that ui-router users to manage it's views. It will be replaced by the template or templateURL that is configured for each ui-router state.
+
+All the content we just removed will be added to templates, and ui-router will insert them into ui-view based on state.
 
 Let's talk about why this need to happen in the "config" section.
 
