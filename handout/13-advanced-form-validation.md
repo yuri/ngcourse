@@ -212,10 +212,10 @@ HTML5 provides some additional input types, like `number`, `url`, `email`, etc.
 AngularJS has built-in validation for them.  Give this a try:
 
 ```html
-Email: <input type="email" name="email" ng-model="loginFormCtrl.email">
+Email: <input type="email" name="email" ng-model="loginForm.email">
 </input><br>
 
-<span ng-show="loginFormCtrl.form.email.$invalid">
+<span ng-show="loginForm.form.email.$invalid">
   Please enter a valid email address.
 </span>
 ```
@@ -260,11 +260,11 @@ Make the following change to your index.html:
 
 ```html
 Enter username: <input
-  ng-model="loginFormCtrl.username"
+  ng-model="loginForm.username"
   name="username"
   input-white-list white-list="['alice', 'bob', 'dan']"><br>
 
-<span ng-show="loginFormCtrl.form.username.$error.whiteList">
+<span ng-show="loginForm.form.username.$error.whiteList">
   Username must be one of 'alice', 'bob', or 'dan'.
 </span><br>
 ```
