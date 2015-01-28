@@ -79,7 +79,7 @@ angular.module('ngcourse', [
 });
 ```
 
-and update our router-service to load the main form. We adding the .state('home' and changing .otherwise to '/':
+and update our router-service to load the main form. We are adding the .state 'home' and changing .otherwise to '/':
 
 ```
     $urlRouterProvider.otherwise('/');
