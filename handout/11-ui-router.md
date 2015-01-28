@@ -146,7 +146,7 @@ and parameter data for use in our own controllers.
 ```javascript
   .state('tasksDetail', {
     url: '/tasks/{_id}',
-    template: 'task details'
+    template: 'task details with id'
   })
 ```
 
@@ -155,7 +155,7 @@ This can include regular expressions:
 ```javascript
   .state('tasksDetail', {
     url: '/tasks/{_id:[A-Za-z0-9-_]{0,}}',
-    template: 'task details'
+    template: 'task details with regex'
   })
 ```
 
