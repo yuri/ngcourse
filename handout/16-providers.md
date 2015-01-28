@@ -187,7 +187,7 @@ provider function.
       sectionMethods[sectionName] = sectionMethods[sectionName] || {};
       sectionMethods[sectionName][methodName] = handler;
     };
-    
+
     // Creates the service.
     this.$get = function ($state, $stateParams, $window, $location) {
       ...
@@ -247,13 +247,13 @@ In other words, when we call `router.tasks.getTaskId()`, we would actually
 have to do this: `router.tasks.getTaskId(router)`. This way, our
 implementation of this method, which we provided in the config block will have
 access to the instance of `router` that we didn't have when we defined (but
-which we do have now). This is uggly, though.
+which we do have now). This is ugly, though.
 
-We can fix this by making our implementation of the `$get()` method a bit more
-smart. Let's take advantage of the fact that while router service is not
+We can fix this by making our implementation of the `$get()` method a bit
+smarter. Let's take advantage of the fact that while router service is not
 available in the scope of the config block, it _is_ available inside `$get()`.
 So, instead of simply copying all methods from `sectionMethods`, let's tweak
-each one of them, inserting passing the service as the first argument. We can
+each one of them, passing the service as the first argument. We can
 do this by wrapping each of the provided methods in a new function, taking the
 list of arguments with which this function was called (available to us as
 `arguments`), converting it into an array using `slice()` and inserting the
