@@ -4,7 +4,7 @@ AngularJS provides a lot of built-in functionality to improve the user
 experience around HTML form validation.  Using the two-way binding features of
 `ng-model`, telling the user about invalid form data is quick and easy.
 
-## Disabling Login for Missing Data
+## Initial Prep
 
 Let's revise the basic login UI we built earlier in this course.  Create a `main.html` at `app/components/main/main.html` with the following markup:
 
@@ -36,6 +36,40 @@ Let's revise the basic login UI we built earlier in this course.  Create a `main
   </form>
 </div>
 ```
+
+Also, to prepare for sharing information across services, lets update our user service.
+
+```
+angular.module('ngcourse.users', [])
+
+.factory('users', function () {
+  var service={};
+  
+  service.username= null;
+  service.password= null;
+  service.login= function(name, password){
+    service.username=name;
+    service.password=password;
+  };
+  return service;
+});
+```
+
+and our app.js:
+
+```
+angular.module('ngcourse', [
+  'ngcourse.tasks', 
+  'ngcourse.server',
+  'ngcourse.router',
+  'ngcourse.users'
+])
+.run(function ($log) {
+  $log.info('Ready to go.');
+});
+```
+
+## Disabling Login for Missing Data
 
 * We've converted the `<div>` to an HTML `<form>` with the `novalidate` attribute
 * We've given the form a `name`; this causes Angular to begin tracking validation
