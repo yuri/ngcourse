@@ -21,7 +21,8 @@ var parts = [
   '15-providers.md',
   '16-integration-testing.md',
   '17-unit-testing-controllers-and-directives.md',
-  '20-gulp.md'
+  '20-gulp.md',
+  '21-sublime.md'
 ];
 
 // Synchronous highlighting with highlight.js
