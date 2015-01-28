@@ -159,6 +159,8 @@ This can include regular expressions:
   })
 ```
 
+Now we are going to rebuild our view around ui-router. First, let's do tasks.
+
 ## Controllers and Template URLs
 
 ```javascript
@@ -178,7 +180,21 @@ This can include regular expressions:
     });
 ```
 
+If you look at task-list.hmtl, you'll see a new controller function in the html, getUserDisplayName. Let's add that to client/app/sections/task-list/task-list-controller.js.
+
+```
+    vm.getUserDisplayName= function(name){
+      return name;
+    }
+``
+
+Now refresh the page and visit /tasks to see your tasks table displayed via ui-router.
+
+Let's take a moment to review a few other aspects of ui-router.
+
 ## Adding "Resolves"
+
+We'll add a resolve: parameter to our state to demonstrate the user of resolves. Note that resolves isn't used to often and we'll remove this once we've learned the functionality.
 
 ```javascript
   .state('account', {
@@ -218,6 +234,8 @@ usually produces a more natural experience for the user.
 
 ## Nesting Views
 
+One of the most powerful features of ui-router versus the out-of-the-box AngularJS router is nested views. To enable ui-router to know what view it's update, we can add a name to the view as seen in `ui-view="child@parent"` below.
+
 ```javascript
   .state('parent', {
     url: '/parent',
@@ -245,7 +263,7 @@ usually produces a more natural experience for the user.
   });
 ```
 
-Include the initial view using `<div ui-router="parent"/>`.
+Update the parent index.html to be named using `<div ui-router="parent"/>`.
 
 Nesting views allows sophisticated routing where parts of the view are defined
 by the parent state and parts are defined (or, overridden) by child states.
