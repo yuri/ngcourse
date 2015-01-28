@@ -64,6 +64,19 @@ and update our router-service to load the main form.
 
 with the rest of the file remaining the same.
 
+Finally, let's update our login function in our MainCtrl to transition our state.
+
+```
+    vm.login = function(username, password) {
+      vm.isAuthenticated = true;
+      vm.username = username;
+      vm.password=password;
+      $state.go('tasks');
+    };
+```
+
+Don't forget to inject $state into the controller.
+
 
 AngularJS now gives us a controller variable, called `form`, which contains the
 results of validating each field and the form itself.  Try sticking the
