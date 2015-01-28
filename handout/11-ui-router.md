@@ -53,7 +53,7 @@ This goes in `client/app/core/router/router-service.js`
   });
 ```
 
-We'll also need to add a placeholder to our template:
+We'll also need to add a placeholder for ui-router in index.html:
 
 ```html
   <div ui-view ng-show="main.user.isAuthenticated"></div>
