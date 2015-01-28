@@ -56,18 +56,38 @@ However the example above introduces a couple of new concepts: providers and
 `.config()` blocks.
 
 When an AngularJS application starts up, it goes throw several 'phases':
-1. Set constants defined in `.constant()` blocks.
-2. Create any registered providers.
-3. Run .config() blocks.
-4. Create services.
-5. Run .run() blocks.
 
-A provider is something Angular's dependency injector can use to
-create a service.  The provider is configured with various data in the app's
-`config` phase, so that during the dependency injection phase, services can be
-created that depend on that custom configuration.
+0. Angular executes your code that contains calls to methods such as
+  `.service()`, `.constant()`, `.config()`, etc. However, at this point all of
+  those entities are only defined. They are not yet instantiated. In other
+  words, Angular takes note of the fact that will want to create a service
+  'tasks' using the provided function. It does _not_ however, call this
+  function at this point.
 
-In practical terms, any javascript object that exposes a function called $get()
+1. Constants defined in `.constant()` blocks are set.
+
+2. Registered providers are created. The order is determined by dependencies
+  between providers.
+
+3. All `.config()` blocks are executed in order in which they were defined.
+  The code in config blocks can refer to constants and can call methods on
+  providers.
+
+4. Values are set.
+
+5. Services are instantiated. This includes services defined by `.factory()`
+  and `.service()`, as well as those defined via providers. The order depends
+  on the dependencies between the services.
+
+6. All .run() blocks are executed in the order in which they were defined.
+
+A provider is something Angular's dependency injector can use to create a
+service. The provider can be configured with various data in the app's
+`config` phase, _before any services are instantiated_. When services are
+instantiated later, they can customize them based on configuration requests it
+received in the config phase.
+
+In practical terms, any JavaAcript object that exposes a function called $get()
 can serve as a provider.  We'll cover this in more detail in part 15 of this
 course.
 
