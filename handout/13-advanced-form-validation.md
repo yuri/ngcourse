@@ -156,7 +156,7 @@ Node that we now have two validators on this field: `required` and `ng-pattern`.
 If you need to know which one failed, you can do this:
 
 ```html
-<p>{{ loginFormCtrl.form.username.$error }}</p>
+<p>{{ loginForm.form.username.$error }}</p>
 ```
 
 ## An Important Caveat
