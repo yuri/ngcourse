@@ -6,6 +6,17 @@ experience around HTML form validation.  Using the two-way binding features of
 
 ## Initial Prep
 
+Make sure your index.html only has ui-view in it. It should look something like this:
+
+```
+  <body ng-app="ngcourse">
+    <div>
+      <div ui-view></div>
+    </div>
+  
+    <script src="/bower_components/lodash/dist/lodash.js"></script>
+```
+
 Let's revise the basic login UI we built earlier in this course.  Create a `main.html` at `app/components/main/main.html` with the following markup:
 
 ```html
@@ -68,13 +79,6 @@ angular.module('ngcourse', [
 });
 ```
 
-## Disabling Login for Missing Data
-
-* We've converted the `<div>` to an HTML `<form>` with the `novalidate` attribute
-* We've given the form a `name`; this causes Angular to begin tracking validation
-state for the form fields.
-* We've also named the input fields and marked them as `required`.
-
 and update our router-service to load the main form.
 
 ```
@@ -110,6 +114,12 @@ Finally, let's update our login function in our MainCtrl to transition our state
 
 Don't forget to inject $state into the controller.
 
+## Disabling Login for Missing Data
+
+* We've converted the `<div>` to an HTML `<form>` with the `novalidate` attribute
+* We've given the form a `name`; this causes Angular to begin tracking validation
+state for the form fields.
+* We've also named the input fields and marked them as `required`.
 
 AngularJS now gives us a controller variable, called `form`, which contains the
 results of validating each field and the form itself.  Try sticking the
