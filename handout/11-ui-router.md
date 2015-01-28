@@ -186,7 +186,7 @@ If you look at task-list.hmtl, you'll see a new controller function in the html,
     vm.getUserDisplayName= function(name){
       return name;
     }
-``
+```
 
 Now refresh the page and visit /tasks to see your tasks table displayed via ui-router.
 
