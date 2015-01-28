@@ -47,7 +47,7 @@ Let's revise the basic login UI we built earlier in this course.  Create a `main
 </div>
 ```
 
-Also, to prepare for sharing information across services, lets update our user service.
+Also, to prepare for sharing information across services, lets update our user service in `app/components/users/users-service.js`:
 
 ```
 angular.module('ngcourse.users', [])
@@ -79,7 +79,7 @@ angular.module('ngcourse', [
 });
 ```
 
-and update our router-service to load the main form.
+and update our router-service to load the main form. We adding the .state('home' and changing .otherwise to '/':
 
 ```
     $urlRouterProvider.otherwise('/');
@@ -101,7 +101,7 @@ and update our router-service to load the main form.
 
 with the rest of the file remaining the same.
 
-Finally, let's update our login function in our MainCtrl to transition our state.
+Finally, let's update our login function in our MainCtrl to transition our state by adding $stage.go('tasks'):
 
 ```
     vm.login = function(username, password) {
