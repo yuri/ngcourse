@@ -9,7 +9,7 @@ experience around HTML form validation.  Using the two-way binding features of
 Let's revise the basic login UI we built earlier in this course.  Create a `main.html` at `app/components/main/main.html` with the following markup:
 
 ```html
-<div ng-controller="MainCtrl as main">
+<div>
   <form
     ng-hide="main.user.isAuthenticated"
     ng-controller="LoginFormCtrl as loginForm"
