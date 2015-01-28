@@ -32,6 +32,8 @@ You'll also need to update your `client/app/app.js` to inject the new module int
 Let's start by adding our own "router" module which will serve as a wrapper
 around ui-router. Our module will have a `.config()` section.
 
+This goes in `client/app/core/router/router-service.js`
+
 ```javascript
   angular.module('ngcourse.router', [
     'ui.router'
