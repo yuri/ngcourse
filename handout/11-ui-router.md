@@ -21,7 +21,7 @@ You'll also need to update your `client/app/app.js` to inject the new module int
 
 ```javascript
   angular.module('ngcourse', [
-    'ngcourse.tasks', 
+    'ngcourse.tasks',
     'ngcourse.server',
     'ngcourse.router'
   ])
@@ -82,7 +82,7 @@ Up until now, we've mostly been dealing with services and controllers.
 However the example above introduces a couple of new concepts: providers and
 `.config()` blocks.
 
-When an AngularJS application starts up, it goes throw several 'phases':
+When an AngularJS application starts up, it goes through several 'phases':
 
 0. Angular executes your code that contains calls to methods such as
   `.service()`, `.constant()`, `.config()`, etc. However, at this point all of
@@ -114,7 +114,7 @@ service. The provider can be configured with various data in the app's
 instantiated later, they can customize them based on configuration requests it
 received in the config phase.
 
-In practical terms, any JavaAcript object that exposes a function called $get()
+In practical terms, any JavaScript object that exposes a function called $get()
 can serve as a provider.  We'll cover this in more detail in part 15 of this
 course.
 
