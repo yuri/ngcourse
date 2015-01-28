@@ -11,7 +11,6 @@ Let's revise the basic login UI we built earlier in this course.  Create a `main
 ```html
 <div>
   <form
-    ng-hide="main.isAuthenticated"
     ng-controller="LoginFormCtrl as loginForm"
     class="login"
     name="loginForm.form"
