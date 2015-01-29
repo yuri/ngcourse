@@ -203,6 +203,49 @@ of that login is effectively cached simply by holding onto the promise.  The
 code to update the view model can be completely decoupled from the login
 invocation itself.
 
+### Users Service
+We've also created a users service in `app/core/users/users-service.js` for managing some of the user logic.
+
+```javascript
+'use strict';
+
+angular.module('ngcourse.users', [
+  'koast'
+])
+
+.factory('users', function (koast) {
+  var service = {};
+  var byUserName = {};
+  var usersPromise = koast.user.whenAuthenticated()
+    .then(function () {
+      return koast.queryForResources('users')
+        .then(function (userArray) {
+          service.all = userArray;
+          userArray.forEach(function(user) {
+            if (user.username) {
+              byUserName[user.username] = user;
+            }
+          });
+        });
+    });
+
+  service.whenReady = function () {
+    return usersPromise;
+  };
+
+  service.getUserByUsername = function(username) {
+    return byUserName[username];
+  };
+
+  service.getUserDisplayName = function(username) {
+    var user = service.getUserByUsername(username);
+    return user.displayName;
+  };
+
+  return service;
+});
+```
+
 ### Logout
 
 Logout is implemented in a similar way, but with one additional detail: when you
