@@ -323,9 +323,7 @@ angular.module('ngcourse.tasks', [ 'koast' ])
   service.getTask = makeAuthenticatedMethod(function (id) {
     return koast.getResource('tasks', {
       _id: id
-    }).then(function(taskArray){
-        return taskArray[0];
-      });
+    });
   });
 
   return service;
