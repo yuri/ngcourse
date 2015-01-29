@@ -111,6 +111,8 @@ lot about the server's features with a very small amount of configuration.
 Take a look at the final version of client/app/app.js:
 
 ```javascript
+'use strict';
+
 angular.module('ngcourse', [
   'ngcourse.main-ctrl',
   'ngcourse.tasks',
@@ -155,6 +157,8 @@ of asynchronicity.
 You can see the app use this in the final version of `main-controller.js`:
 
 ```javascript
+'use strict';
+
 angular.module('ngcourse.main-ctrl', [
   'ngcourse.users',
   'koast'
@@ -288,6 +292,8 @@ the server tell us what she can edit.
 First let's look at getting the tasks from the authenticated v2 endpoint:
 
 ```javascript
+'use strict';
+
 angular.module('ngcourse.tasks', [ 'koast' ])
 .factory('tasks', function (koast) {
   var service = {};
@@ -306,7 +312,21 @@ angular.module('ngcourse.tasks', [ 'koast' ])
     return koast.queryForResources('tasks');
   });
 
-  // ...
+  service.addTask = makeAuthenticatedMethod(function (task) {
+    return koast.createResource('tasks', task)
+  });
+
+  service.updateTask = makeAuthenticatedMethod(function (task) {
+    return task.save();
+  });
+
+  service.getTask = makeAuthenticatedMethod(function (id) {
+    return koast.getResource('tasks', {
+      _id: id
+    }).then(function(taskArray){
+        return taskArray[0];
+      });
+  });
 
   return service;
 });
