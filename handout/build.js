@@ -14,13 +14,14 @@ var parts = [
   '07-services.md',
   '08-advanced-promises.md',
   '09-unit-testing-services.md',
-  '10-ui-router.md',
-  '11-directives.md',
-  '12-advanced-form-validation.md',
-  '13-authentication.md',
-  '14-providers.md',
-  '15-unit-testing-controllers-and-directives.md',
-  '16-integration-testing.md'
+  '11-ui-router.md',
+  '12-directives.md',
+  '13-advanced-form-validation.md',
+  '14-authentication.md',
+  '15-providers.md',
+  '16-integration-testing.md',
+  '17-unit-testing-controllers-and-directives.md',
+  '20-gulp.md'
 ];
 
 // Synchronous highlighting with highlight.js
@@ -45,4 +46,3 @@ buffer = buffer.replace(/&#39;/g, '\'');
 buffer = typogr(buffer).typogrify();
 
 console.log(buffer);
-
