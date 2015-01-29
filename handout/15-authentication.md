@@ -160,7 +160,7 @@ angular.module('ngcourse.main-ctrl', [
   'koast'
 ])
 
-.controller('MainCtrl', function ($log, koast, users) {
+.controller('MainCtrl', function ($log, $state, koast, users) {
   var vm = this;
   vm.user = koast.user;
 
@@ -175,6 +175,9 @@ angular.module('ngcourse.main-ctrl', [
 
   vm.login = function (form) {
     koast.user.loginLocal(form)
+      .then(function(){
+        $state.go('tasks');
+      })
       .then(null, showLoginError);
   };
   vm.logout = function () {
@@ -202,6 +205,15 @@ The advantage of this method is that we only need to log in once.  The result
 of that login is effectively cached simply by holding onto the promise.  The
 code to update the view model can be completely decoupled from the login
 invocation itself.
+
+### Main Form
+Change login call to pass a single form argument:
+```html
+    <button
+      ng-click="main.login(loginForm)"
+      ng-disabled="loginForm.form.$invalid">Login
+    </button>
+```
 
 ### Users Service
 We've also created a users service in `app/core/users/users-service.js` for managing some of the user logic.
