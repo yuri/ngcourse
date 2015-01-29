@@ -3,7 +3,8 @@ angular.module('ngcourse', [
   'ngcourse.tasks',
   'ngcourse.users',
   'ngcourse.router',
-  'koast'
+  'koast',
+  'ngcourse-example-directives'
 ])
 
 // .constant('API_BASE_URL', 'http://localhost:7000')
