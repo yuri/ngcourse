@@ -219,6 +219,25 @@ Change login call to pass a single form argument:
     </button>
 ```
 
+### Index.html
+We can add header type information to index.html to have it show on all pages.
+```html
+  ...
+  <body ng-app="ngcourse">
+
+    <div ng-controller="MainCtrl as main">
+        <div ng-show="main.user.isAuthenticated">
+          Hello, <span>{{main.userDisplayName}}</span>!
+          <button ng-click="main.logout()">Logout</button>
+        </div>
+
+      <div ui-view></div>
+    </div>
+  
+    <script src="/bower_components/lodash/dist/lodash.js"></script>
+    ...
+```
+
 ### Users Service
 We've also created a users service in `app/core/users/users-service.js` for managing some of the user logic.
 
@@ -329,6 +348,10 @@ angular.module('ngcourse.tasks', [ 'koast' ])
   return service;
 });
 ```
+
+Make these changes to your `app/core/tasks/tasks-service.js`.
+
+Also, update your `app/sections/task-add/task-add-controller.js` and `app/sections/task-edit/task-edit-controller.js` to use 'addTask' and updateTask' in case your prior service signatures were different.
 
 This is also an example about 'good-cop' _authentication_ on the client-side:
 
