@@ -4,8 +4,15 @@ For the last working session let's branch off `master` and extend the
 application with additional features. To do this, do the following:
 
 ```bash
+  # store your current work locally
+  git add .
+  git commit -am "my current work"
+
+  # get the updated master
   git checkout master
   git pull
+
+  # create your own working branch
   git checkout -b my-branch
 ```
 
