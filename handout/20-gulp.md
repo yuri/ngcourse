@@ -16,9 +16,9 @@ and checks (linting, unit tests, etc.) need be performed and then written to a
 build folder.
 
 __Lots of Available Plugins__: Simple, chainable tasks make it easy to develop
-small, targetted plugins that do one thing well. Such smaller plugins can be
+small, targeted plugins that do one thing well. Such smaller plugins can be
 easily reused modules to be added, reordered and removed without affecting
-upstream and downstream tasks. This helsp grow a healthy ecosystem of plugins.
+upstream and downstream tasks. This helps grow a healthy ecosystem of plugins.
 
 __JavaScript__: Gulp tasks are written in JavaScript, which means we get to
 use the same language as we do throughout the application.
@@ -63,7 +63,7 @@ With this code, running `gulp lint` will run JSHint on all files that match
 the following pattern: `client/app/**/*.js`.
 
 Note that the files are read with `gulp.src` then piped through tasks defined
-by `jshint` plugin using `.pipe()`. The plugin is installed and loaded as an
+by the `jshint` plugin using `.pipe()`. The plugin is installed and loaded as an
 NPM package (`gulp-jshint`).
 
 Running JSHint is usually the first step in the build process, which catches
@@ -133,7 +133,7 @@ This task injects all client app files and external dependencies and runs the cl
 ```
 
 Here we need to inject quite a few files and we cannot capture them with a
-single patter. So, we use the fact that `gulp.src` can take an _array_ of
+single pattern. So, we use the fact that `gulp.src` can take an _array_ of
 patterns.
 
 ## Minification
