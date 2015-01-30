@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('ngcourse.tasks', [
   'koast'
 ])
@@ -20,7 +22,7 @@ angular.module('ngcourse.tasks', [
   });
 
   service.addTask = makeAuthenticatedMethod(function (task) {
-    return koast.createResource('tasks', task)
+    return koast.createResource('tasks', task);
   });
 
   service.updateTask = makeAuthenticatedMethod(function (task) {

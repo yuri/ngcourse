@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('ngcourse.users', [
   'koast'
 ])
@@ -10,7 +12,7 @@ angular.module('ngcourse.users', [
       return koast.queryForResources('users')
         .then(function (userArray) {
           service.all = userArray;
-          userArray.forEach(function(user) {
+          userArray.forEach(function (user) {
             if (user.username) {
               byUserName[user.username] = user;
             }
@@ -22,11 +24,11 @@ angular.module('ngcourse.users', [
     return usersPromise;
   };
 
-  service.getUserByUsername = function(username) {
+  service.getUserByUsername = function (username) {
     return byUserName[username];
   };
 
-  service.getUserDisplayName = function(username) {
+  service.getUserDisplayName = function (username) {
     var user = service.getUserByUsername(username);
     return user.displayName;
   };

@@ -13,5 +13,5 @@ angular.module('ngcourse')
         router.goToTaskList();
       })
       .then(null, $log.error);
-  }
+  };
 });

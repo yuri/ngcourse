@@ -73,7 +73,7 @@ angular.module('ngcourse.router', [
 
   service.goToAddTask = function () {
     $state.go('tasks.add');
-  }
+  };
 
   service.goToTask = function (taskId) {
     $state.go('tasks.details', {
@@ -85,7 +85,7 @@ angular.module('ngcourse.router', [
     $state.go('tasks', {}, {
       reload: true
     });
-  }
+  };
 
   return service;
 });

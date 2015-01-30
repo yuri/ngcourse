@@ -12,7 +12,7 @@ angular.module('ngcourse')
   tasks.getTasks()
     .then(function (tasks) {
       return users.whenReady()
-        .then(function() {
+        .then(function () {
           vm.tasks = tasks;
         });
     })

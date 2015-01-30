@@ -6,24 +6,34 @@
   "author": "Yuri Takhteyev <yuri@rangle.io>",
   "license": "MIT",
   "dependencies": {
-    "gulp": "^3.8.8",
-    "rangle-gulp": "0.0.7"
+    "gulp": "^3.8.8"
   },
   "devDependencies": {
     "chai": "^1.9.1",
     "chai-as-promised": "^4.1.1",
     "gulp": "^3.8.6",
-    "q": "^1.0.1",
-    "supertest": "^0.15.0",
-    "supertest-as-promised": "^1.0.0",
-    "karma": "~0.12.31",
+    "gulp-concat": "^2.4.3",
+    "gulp-connect": "^2.2.0",
+    "gulp-filter": "^2.0.0",
+    "gulp-js-beautify": "0.0.2",
+    "gulp-jshint": "^1.9.0",
     "gulp-karma": "0.0.4",
-    "mocha": "~2.1.0",
-    "karma-mocha": "~0.1.10",
+    "gulp-mocha": "^2.0.0",
+    "gulp-ng-annotate": "^0.5.0",
+    "gulp-protractor": "0.0.12",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^1.1.0",
+    "gulp-watch": "^4.1.0",
+    "karma": "~0.12.31",
     "karma-chai": "~0.1.0",
-    "sinon": "~1.12.2",
-    "karma-sinon": "~1.0.4",
     "karma-chrome-launcher": "~0.1.7",
-    "karma-ng-html2js-preprocessor": "~0.1.2"
+    "karma-mocha": "~0.1.10",
+    "karma-ng-html2js-preprocessor": "~0.1.2",
+    "karma-sinon": "~1.0.4",
+    "mocha": "~2.1.0",
+    "q": "^1.0.1",
+    "sinon": "~1.12.2",
+    "supertest": "^0.15.0",
+    "supertest-as-promised": "^1.0.0"
   }
 }
