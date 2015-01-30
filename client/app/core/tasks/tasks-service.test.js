@@ -15,16 +15,15 @@ describe('tasks service', function () {
           }
         },
 
-        queryForResources: sinon.spy(function() {
+        queryForResources: sinon.spy(function () {
           return Q.when([{
-              description: 'Mow the lawn',
-              owner: 'alice',
+            description: 'Mow the lawn',
+            owner: 'alice',
 
-            },
-            {
-              description: 'Fix the car',
-              owner: 'bob'
-            }]);
+          }, {
+            description: 'Fix the car',
+            owner: 'bob'
+          }]);
         })
       };
 
