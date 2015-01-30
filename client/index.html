@@ -11,7 +11,6 @@
   <body ng-app="ngcourse">
     <div>
       <div ng-controller="MainCtrl as main">
-
         <form
           ng-hide="main.user.isAuthenticated"
           ng-controller="LoginFormCtrl as loginFormCtrl"
@@ -62,5 +61,9 @@
     <script src="/app/sections/task-list/task-list-controller.js"></script>
     <script src="/app/sections/task-add/task-add-controller.js"></script>
     <script src="/app/sections/task-edit/task-edit-controller.js"></script>
+
+    <script src="/app/sections/examples/index.js"></script>
+    <script src="/app/sections/examples/ngc-user-directive.js"></script>
+    <script src="/app/sections/examples/ngc-user-directive-with-template-url.js"></script>
   </body>
 </html>

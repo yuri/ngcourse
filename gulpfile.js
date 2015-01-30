@@ -1,7 +1,8 @@
 var gulp = require('gulp');
 var rg = require('rangle-gulp');
+var karma = require('gulp-karma');
 
-var karmaVendorFiles = [
+var karmaFiles = [
   'client/bower_components/angular/angular.js',
   'client/bower_components/angular-mocks/angular-mocks.js',
   'client/bower_components/sinon-chai/lib/sinon-chai.js',
@@ -9,21 +10,32 @@ var karmaVendorFiles = [
   'client/bower_components/angular-ui-router/release/angular-ui-router.js',
   'client/testing/lib/q.js',
   'client/testing/test-utils.js',
-  'client/bower_components/lodash/dist/lodash.js'
+  'client/bower_components/lodash/dist/lodash.js',
+  'client/app/**/*.html',
+  'client/app/**/*.js'
 ];
 
-gulp.task('karma', rg.karma({
-  // files: specify which folders (optional)
-  // karmaConf: specify which karma config file (optional)
-  //karmaConf: 'client/testing/karma.conf.js',
-  vendor: karmaVendorFiles
-}));
+gulp.task('karma', function() {
+  return gulp.src(karmaFiles)
+    .pipe(karma({
+      configFile: 'karma.conf.js',
+      action: 'run'
+    }))
+    .on('error', function(err) {
+      throw err;
+    });
+});
 
-gulp.task('karma-watch', rg.karmaWatch({
-  // files: specify which folders (optional)
-  // karmaConf: specify which karma config file (optional)
-  vendor: karmaVendorFiles
-}));
+gulp.task('karma-watch', function() {
+  return gulp.src(karmaFiles)
+    .pipe(karma({
+      configFile: 'karma.conf.js',
+      action: 'watch'
+    }))
+    .on('error', function(err) {
+      throw err;
+    });
+});
 
 gulp.task('api-test', rg.mocha({
   files: 'server/testing/*.js'
