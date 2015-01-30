@@ -58,7 +58,7 @@ Now we can proceed to writing tests.
 ## A Basic Mocha Test
 
 First, let's write a simple test and run it just using Mocha. Put this code
-into `client/app/simple_test.js`.
+into `client/app/simple.test.js`.
 
 ```javascript
   // Define a test suite.
