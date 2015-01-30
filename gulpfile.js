@@ -33,7 +33,6 @@ var skipTestFiles = gulpFilter(function (file) {
 });
 
 gulp.task('lint', function () {
-  console.log('linting');
   return gulp.src(clientFiles)
     .pipe(skipTestFiles)
     .pipe(jshint())

@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('ngcourse', [
   'ngcourse.main-ctrl',
   'ngcourse.tasks',

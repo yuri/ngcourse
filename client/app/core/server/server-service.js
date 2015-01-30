@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('ngcourse.server', [])
 
 .factory('server', function ($http, API_BASE_URL) {
@@ -12,11 +14,11 @@ angular.module('ngcourse.server', [])
 
   service.post = function (path, data) {
     return $http.post(API_BASE_URL + path, data);
-  }
+  };
 
   service.put = function (path, id, data) {
     return $http.put(API_BASE_URL + path + '/' + id, data);
-  }
+  };
 
   return service;
 });

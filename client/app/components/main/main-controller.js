@@ -11,7 +11,7 @@ angular.module('ngcourse.main-ctrl', [
 
   koast.user.whenAuthenticated()
     .then(function () {
-      return users.whenReady()
+      return users.whenReady();
     })
     .then(function () {
       vm.userDisplayName = users.getUserDisplayName(koast.user.data.username);
