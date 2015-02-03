@@ -52,7 +52,7 @@ mkdir /c/Users/$USER/AppData/Roaming/npm
 echo 'export PATH="$PATH:/c/Program Files/nodejs"' >> ~/.bashrc
 ~/.bashrc
 ```
-__Note:__ if you installed the 32-bit windows version of node, the second line
+__Note:__ if you installed the 32-bit Windows version of node, the second line
 above should instead read:
 
 ```

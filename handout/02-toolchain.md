@@ -29,9 +29,9 @@ outside the browser.  It provides:
 * modules for doing OS tasks like file I/O, HTTP, etc.
 
 While NodeJS was initially intended for writing server code in JavaScript,
-today it is widely used by JavaScript tools, which makes it relevant to front-
-end developers also. A lot of the tools we'll be using in this code will be
-leveraging NodeJS.
+today it is widely used by JavaScript tools, which makes it relevant to
+front-end developers too. A lot of the tools we'll be using in this code
+leverage NodeJS.
 
 ## Back-End Code Sharing and Distribution: [npm](https://www.npmjs.com/)
 
@@ -64,7 +64,7 @@ deployment.  Examples include:
 
 For this course, we'll be using a task runner called [gulp](http://gulpjs.com/).
 
-If you come from a java or C background, `gulp` conceptually fills the role of
+If you come from a Java or C background, `gulp` conceptually fills the role of
 `ant` or `make` (although the implementation is quite different).
 
 At a high level, it allows you to specify 'build targets' for the various tasks
