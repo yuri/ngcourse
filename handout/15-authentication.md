@@ -353,7 +353,7 @@ Make these changes to your `app/core/tasks/tasks-service.js`.
 
 Also, update your `app/sections/task-add/task-add-controller.js` and `app/sections/task-edit/task-edit-controller.js` to use 'addTask' and updateTask' in case your prior service signatures were different.
 
-This is also an example about 'good-cop' _authentication_ on the client-side:
+This is also an example of 'good-cop' _authentication_ on the client-side:
 
 `makeAuthenticatedMethod(fn)` wraps a server call in a check to make sure
 the user is authenticated before actually making a secure server call.

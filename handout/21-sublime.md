@@ -33,11 +33,11 @@ __Note__: The above code was retrieved Jan 29, 2015. The code may have since cha
 
 ## How to Install Packages Using Package Control
 1. Open the Sublime command pallete: ```ctrl+shift+p``` (Win, Linux) or ```cmd+shift+p``` (OS X)
-2. Enter/select ```Package Controll: Install Package```
+2. Enter/select ```Package Control: Install Package```
 3. Finally a list of avaliable packages will appear, where the desired package can be entered/selected (ex: sublimelint, editorconfig, brackethighlighter )
 
 ## Perfectly Suitable Editor Alternatives
-- [Atom](https://atom.io/): Very similar to Sublime, but opensource and has very good native github integration.
+- [Atom](https://atom.io/): Very similar to Sublime, but it's open-source and has very good native github integration.
 - [WebStorm](https://www.jetbrains.com/webstorm/): Paid full IDE for web and node development.
 - Emacs or Vim: Oldschool terminal text editors.
 - [Visual Studio](http://www.visualstudio.com/en-us/products/visual-studio-community-vs) with [NodeJS Tools](http://nodejstools.codeplex.com/): Windows only, free and paid full IDE that has improved its web and nodejs support/features in the past few years.
