@@ -1,7 +1,7 @@
 # Part 3: JavaScript for AngularJS Developers
 
-JavaScript is an untyped interpreted programming language that can accomodate
-a vast variety of  programming paradigms. Among other things, a lot of modern
+JavaScript is an untyped, interpreted programming language that can accomodate
+a variety of  programming paradigms. Among other things, a lot of modern
 JavaScript code heavily leverages functional programming style. The
 combination of weak typing and functional methods can make JavaScript code a
 bit hard to understand for those coming from strongly typed object-oriented
@@ -23,7 +23,7 @@ Let's begin by dissecting the following example of AngularJS code:
 ```
 
 This code defines an AngularJS controller called `MainCtrl` as a part of a
-module `ngcourse`. The way it does it may seem unintuitive at first.
+module `ngcourse`. The way it does it may seem counterintuitive at first.
 
 ##Function Chaining / Fluent interfaces
 
@@ -31,10 +31,10 @@ If we look at files that make up an AngularJS application, a typical file
 would often consist of a single giant JavaScript statement where multiple
 method calls are chained together: we call a method on an object, get another
 object, then call a method on that object, get another method, etc. JavaScript
-allows us to insert white space before the `.` that preceeds a method
+allows us to insert white space before the `.` that precedes a method
 invocation, so this:
 
-In the example above, 
+In the example above,
 
 ```javascript
   angular.module('ngcourse')
@@ -85,8 +85,8 @@ example above defines a new variable `ngCourseModule`. Unfortunately, a
 variable defined outside of a function becomes _global_ in JavaScript. We'll
 come back to global variables and ways to avoid them in a short while.
 
-For now, however, let's note that chained method calls provide us with a way of
-avoiding defining new variables. We will see this pattern often in AngularJS
+For now, however, let's note that chained method calls provide us with a way to
+avoid defining new variables. We will see this pattern often in AngularJS
 applications, for example when defining services or directives.
 
 ## JavaScript Functions
@@ -106,10 +106,10 @@ class citizens. A function can be passed into another function as a parameter.
 A function can return a function. Functions can also be assigned to variables.
 
 JavaScript allows two ways of defining a function. In the first method, called
-"function declaration", a function new function is defined in the current
+"function declaration", a new function is defined in the current
 scope and is given a name:
 
-```js
+```javascript
   function foo() {
     // do something
   }
@@ -121,7 +121,7 @@ in JavaScript. Regardless of where you define a function in the current scope,
 JavaScript would act as if the function was defined up front. So, this is
 perfectly valid:
 
-```js
+```javascript
   // Call a function.
   foo();
 
@@ -135,7 +135,7 @@ An alternative method of defining a function is a "function expression". In
 this case, provide a function definition in a context where JavaScript would
 expect to see an expression:
 
-```
+```javascript
   var foo = function foo() {
     // do something
   }
@@ -143,7 +143,7 @@ expect to see an expression:
 
 Functions defined this way are _not_ hoisted, so this would be invalid:
 
-```
+```javascript
   // This call will fail because the value of "foo" is undefined at this point.
   foo();
 
@@ -155,7 +155,7 @@ Functions defined this way are _not_ hoisted, so this would be invalid:
 
 Functions defined as function expressions do not need to have names:
 
-```
+```javascript
   var foo = function() {
     // do something
   }
@@ -164,7 +164,7 @@ Functions defined as function expressions do not need to have names:
 If we do provide a name in a function expression, we won't be able to call the
 function by this name, but the function will use name when reporting errors.
 
-```
+```javascript
   var foo = function bar() {
     // This function thinks it's called "bar" and will use this name when
     // reporting errors. We cannot call it by this name, however.
@@ -177,7 +177,7 @@ In our case of defining an Angular controller, we use a function expression to d
 anonymous function and then pass it as the second argument argument to
 `controller()`:
 
-```js
+```javascript
   .controller('MainCtrl', function($scope) {
     ...
   })
@@ -187,7 +187,7 @@ anonymous function and then pass it as the second argument argument to
 
 In JavaScript, variables are _global_ unless declared inside a function.
 Global variables can make code very hard to debug and maintain, so you must
-always be careful to not create unintentional global.
+always be careful not to create them unintentionally.
 
 The only way to create local variables in JavaScript is to define them inside
 a function. Doing so, however, requires defining a function. If we were to use
@@ -196,7 +196,7 @@ the function itself.
 
 Consider this example:
 
-```js
+```javascript
   function foo() {
     var bar = 1;
     // do something with bar;
@@ -207,7 +207,7 @@ Here we succeeded in making `bar` local, but we created a global function `foo()
 
 We can solve this "catch-22" situation by using a function expression:
 
-```js
+```javascript
   (function() {
     var bar = 1;
     // do something with bar;
@@ -220,7 +220,7 @@ function expression" or "IIFE". We do _not_ usually use this style in
 AngularJS, however. Instead, we normally rely on functions that we define as
 arguments to module methods:
 
-```js
+```javascript
   .controller('MainCtrl', function($scope) {
     var bar = 1; // This will be local to this function.
     ...
@@ -244,12 +244,12 @@ Here is a pure JavaScript example with multiple scopes:
   var y = 2;
 
   console.log('in global scope: ', x, y);
-  
+
   function func() {
     var x = 2;
     y = 2;
     console.log('in func(): ', x, y);
-  
+
     function innerFunc() {
       var x = 3;
       y = 3;

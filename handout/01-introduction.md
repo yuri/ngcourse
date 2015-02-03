@@ -18,7 +18,7 @@ Crockford goes on to point out that JavaScript also has lots of _good_ parts whi
 can make it a great language to use. The key is avoiding the bad parts.
 
 (Crockford's book should be required reading for all JavaScript developers. At
-rangle.io, we keep a few extra copies on hand on the of chance that one of our
+rangle.io, we keep a few extra copies on hand on the off-chance that one of our
 developers has not already read this great book.)
 
 What Crockford says about programming languages applies equally well to
@@ -130,4 +130,3 @@ be provided to the component.
 Angular's dependency injection is one of the best things about the framework.
 This approach makes your code more modular, reusable, and easier to test.
 Those features are essential when building larger applications.
-
