@@ -30,6 +30,10 @@ angular.module('ngcourse.users', [
 
   service.getUserDisplayName = function (username) {
     var user = service.getUserByUsername(username);
+    if (!user) {
+      return '';
+    }
+
     return user.displayName;
   };
 
