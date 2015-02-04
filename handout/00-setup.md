@@ -132,12 +132,11 @@ everything correctly and are ready for the course.
 
 ## Proxy Issues
 
-While running the above commands you might get an error saying:
+While running the above commands you might get errors related to proxies.  If
+this is the case, you'll need to configure your command-line tools to handle
+proxies.
 
-```sh
-  ECMDERR Failed to execute "git ls-remote..."
-```
-
+### Git
 This most likely means that you are behind a proxy that blocks SSH access to
 Github. In this case, run the following command:
 
@@ -147,4 +146,22 @@ Github. In this case, run the following command:
 
 Then re-run the failed command.
 
-It's a somewhat blunt weapon, but should work in most cases.
+It's a somewhat blunt weapon, but should work in most cases. If this doesn't
+work, and if you know the URL of your proxy server, you can try this:
+
+```sh
+git config —global http.proxy <proxy server url>
+```
+
+### npm
+
+```sh
+npm config set proxy <proxy server url>
+```
+
+### bower
+
+```sh
+echo '"proxy": "<proxy server url>"' >> .bowerrc
+echo '"https-proxy": "<proxy server url>"' >> .bowerrc
+```

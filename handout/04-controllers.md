@@ -54,6 +54,9 @@ We already saw this code in Part 2, so we recognize JavaScript's "fluent"
 chaining style and the use of a function expression in the second argument to
 `controller()`.
 
+Note the way `angular.module()` is invoked in these two files.  Let's make sure
+we understand the difference.
+
 We can now attach the controller to an element and start using the content of its scope:
 
 ```html

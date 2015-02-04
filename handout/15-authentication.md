@@ -16,6 +16,33 @@ who we're talking to.
 This is where login comes into play - by logging in, a user confirms his or her
 identity with the application.
 
+There are a number of was to perform authentication over HTTP:
+
+#### Consider "social" authentication.
+
+Authentication using Google, Facebook, etc., allows you to push some of the
+work onto those applications and the user has one less password to remember.
+
+#### Use token-based authentication.
+
+Once the user is authenticated, you will need to either issue them an
+authentication token or a cookie. Tokens are vastly preferred.
+
+Cookies are easier to steal and are hard to use in a multi-server setup.
+Tokens solve both of those problems. They can also be used with a completely
+stateless server architecture.
+
+Our standard solution is JWT-style bearer tokens.
+
+#### When using cookies, protect against CSRF.
+
+If you _must_ use cookies, make sure your app is safe against
+[cross-site request forgery (CSRF)](http://en.wikipedia.org/wiki/Cross-site_request_forgery).
+
+Angular provides a solution for this via the user of `X-XSRF-TOKEN` header.
+However, in order for this to work this needs to be supported on the server.
+You would also need to verify that this is actually working in your case.
+
 ### Authorization
 
 Authorization is about determining whether a given user has the right to perform
@@ -233,7 +260,7 @@ We can add header type information to index.html to have it show on all pages.
 
       <div ui-view></div>
     </div>
-  
+
     <script src="/bower_components/lodash/dist/lodash.js"></script>
     ...
 ```
