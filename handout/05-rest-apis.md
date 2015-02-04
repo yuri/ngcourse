@@ -2,14 +2,14 @@
 
 Most AngularJS apps will need to interact with a backend system to achieve
 their objectives. By far the most common protocol for this is HTTP (or,
-preferrably, it's secure version, HTTPS). While this is the same protocol that
+preferably, it's secure version, HTTPS). While this is the same protocol that
 was employed by the previous generation of web applications, it tends to be
 used rather differently in a context of a modern single-page application
 framework such as AngularJS.
 
 ## Talking to a RESTful Server via Postman
 
-In most cases, the Angular application and the server would not be exchanging
+In most cases, the Angular application and the server will not be exchanging
 HTML. Instead, they will be exchanging data using an approach that is usually
 referred to as "RESTful". The key idea is that each URL is normally understood
 to represent a data "resource" in some collection of resources. The
@@ -91,8 +91,8 @@ and will handle the details for you.
 
 ## Status Codes
 
-An HTTP response must contain a numberic status code that indicate whether the
-request was handled successfully. Web applications of old days often used such
+An HTTP response must contain a numeric status code that indicates whether the
+request was handled successfully. Legacy web applications often use such
 codes in a sloppy way, responding to all requests with the same code "200
 Success." REST APIs usually approach status codes more seriously. This allows
 your application to rely on them to determine what happened and how to
@@ -123,7 +123,7 @@ that you ask the user to re-login, while a 403 response would usually mean
 telling the user that they aren't allowed to do whatever they were trying to
 do.
 
-__500-599__: Those codes indicate _server_ errors. The server cannot do what
+__500-599__: These codes indicate _server_ errors. The server cannot do what
 you asked because something is wrong on the server. Normally, this means that
 it's _not_ your application's fault and there is little you can do other than
 try again later (or get in touch with the administrators for the server).

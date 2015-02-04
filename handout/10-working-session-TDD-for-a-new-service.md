@@ -9,6 +9,13 @@ Try using a "Test-Driven-Development" approach, in which you define what
 the new functions should look like by writing tests first; then you can fill
 in the actual implementation as you get the tests to pass.
 
+You can get your tests to automatically run each time you save a file.  Just
+type the following command in your terminal:
+
+```bash
+gulp karma-watch
+```
+
 ## Setup:
 
 If you've been following along with the course so far, your

@@ -47,7 +47,7 @@ module. So, Gulp is the only tool we need to setup globally.
   bower install
 ```
 
-However, let's install Mocha as well, so that we could try using it manually:
+However, let's install Mocha as well, so that we can try using it manually:
 
 ```bash
   sudo npm install -g mocha
@@ -85,8 +85,8 @@ We can now run this code with:
 ## The Importance of Test Documentation
 
 The first argument to `it()` should explain what your test aims to verify.
-Beyond that, consider adding additional information through comments. Well-
-documented tests can serve as documentation for your code and can simplify
+Beyond that, consider adding additional information through comments.
+Well-documented tests can serve as documentation for your code and can simplify
 maintenance.
 
 ## Mocha with Karma and Gulp
@@ -114,19 +114,19 @@ You can skip the whole suite:
 
 Or just an individual test:
 
-  ```javascript
-    xit('should have 2*2 be equal to 4', function () {
-      // ...
-    });
-  ```
+```javascript
+  xit('should have 2*2 be equal to 4', function () {
+    // ...
+  });
+```
 
 Alternatively, we can *only* run a specific test:
 
-  ```javascript
-    it.only('2*2 should equal 4', function () {
-      // ...
-    });
-  ```
+```javascript
+  it.only('2*2 should equal 4', function () {
+    // ...
+  });
+```
 
 ## Mocha with Chai
 
@@ -306,7 +306,7 @@ is equivalent to:
   .then(null, done);
 ```
 
-## Mocha's Support for Promises;
+## Mocha's Support for Promises
 
 Mocha's tests can alternatively just accept a promise. In most case this is
 what you want to use.
@@ -398,7 +398,7 @@ about the calls. For example, we can check if the function has been called:
 
 Note that here we created a new test to verify that `server.get` is only
 getting called once. We also do not attempt to verify in this test that the
-promise returned by `getTasks()` actual resolves to the value we expect, since
+promise returned by `getTasks()` actually resolves to the value we expect, since
 this is already being verified by another test. Keeping tests small and
 focused greatly facilitates test maintenance.
 

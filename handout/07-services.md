@@ -74,7 +74,7 @@ Let's discuss some of the advantages of keeping your code in services rather
 than in controllers.
 
 The rule of thumb: code that can be written without referring to a
-controller's scope should be written this way and should be places in a
+controller's scope should be written this way and should be placed in a
 service.
 
 ## Using `.factory()` vs `.service()` vs `.provider()`
