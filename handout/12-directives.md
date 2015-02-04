@@ -168,6 +168,8 @@ We won't be using this for the rest of this tutorial, though.
 Directives usually have templates that are too complex to include as a string.
 So, instead we often provide a URL to the template file:
 
+Create a new file, `app/core/users/user-directive.js`:
+
 ```javascript
   .directive('ngcUser',
     function () {
@@ -293,6 +295,8 @@ also just use "@" by itself:
 Alternatively, we may want to bind a property of the directive's scope to a
 specific property of the parent scope. In other words, we want to be able to
 use the directive as follows:
+
+In index.html:
 
 ```html
   <ngc-user username="user"></ngc-user>

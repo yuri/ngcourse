@@ -18,7 +18,6 @@ Let's put the following test into `server/testing/e2e/api-test.js`:
 ```javascript
   'use strict';
 
-  var querystring = require('querystring');
   var request = require('supertest');
   var expect = require('chai').expect;
   var Q = require('q');
@@ -77,9 +76,15 @@ at the same time, we can do so using Selenium and Protractor.
 We'll be using rangle-gulp (install version 0.0.7) to run protractor, but we'll need to have selenium installed. For that, we'll need to install protractor first.
 
 ```bash
-  sudo npm install -g protractor
-  sudo webdriver-manager update --standalone
-  sudo webdriver-manager start
+npm install -g protractor
+webdriver-manager update --standalone
+webdriver-manager start
+```
+
+If the second command above gives you proxy-related errors, instead run:
+
+```bash
+webdriver-manager update --standalone --proxy <proxy-server-url>
 ```
 
 This starts selenium on port 4444.
@@ -91,10 +96,10 @@ describe('localhost', function() {
   it('should allow login', function() {
     var username;
     browser.get('http://localhost:8080/');
-    element(by.model('main.username')).sendKeys('alice');
-    element(by.model('main.password')).sendKeys('x');
+    element(by.model('loginFormCtrl.username')).sendKeys('alice');
+    element(by.model('loginFormCtrl.password')).sendKeys('x');
     element(by.id('login-button')).click();
-    username = element(by.binding('main.username')).getText();
+    username = element(by.binding('main.userDisplayName')).getText();
     expect(username).toEqual('Hello, alice!');
   });
 });
@@ -158,13 +163,10 @@ In the console:
   expect(owners.count()).toEqual(3);
 ```
 
-## Using Protractor Instance
+## Checking for Element Presence
 
 ```javascript
-  var ptor = protractor.getInstance();
   var button = by.id('login-button');
 
-  expect(ptor.isElementPresent(button)).toBe(true);
-  expect(element(button).isDisplayed()).toBe(true);
-
+  expect(browser.isElementPresent(button)).toBe(true);
 ```
