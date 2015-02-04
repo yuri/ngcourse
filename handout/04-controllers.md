@@ -5,8 +5,8 @@ will start by building a client app, which we will later connect to a REST
 API. Our first task is to setup a simple Angular app consisting of a few
 *controllers* and a few *templates*, and to understand how they fit together
 via *scopes* and the *digest cycle*. We'll be making use of common built-in
-directives such as `ng-model`, `ng-show`, `ng-hide`, `ng-cloak`, `ng-if`, `ng-
-repeat`. We will also discuss Angular’s dependency injection and the use of
+directives such as `ng-model`, `ng-show`, `ng-hide`, `ng-cloak`, `ng-if`,
+`ng-repeat`. We will also discuss Angular’s dependency injection and the use of
 `$log` for logging.
 
 ## The Most Trivial Angular App
@@ -31,7 +31,7 @@ that it won't do anything at all. Here is what we'll put in our HTML file.
   </html>
 ```
 
-We'll also need a very very simple JavaScript file - our "app":
+We'll also need a very simple JavaScript file - our "app":
 
 ```javascript
   angular.module('ngcourse', []);
@@ -197,8 +197,8 @@ In which case you can rename the variables. (Don't do this!)
   ]);
 ```
 
-This used to be needed due to minification. Can now be handled with the ng-
-annotate plugin for Gulp.
+This used to be needed due to minification. Can now be handled with the
+`ng-annotate` plugin for Gulp.
 
 ## Two-Way Binding with ng-model
 
@@ -406,7 +406,7 @@ In fact, most things that can be achieved with `$apply` are better done with
 Angular's nested scope make it easy to setup controller-to-controller
 communication. There are three problems with this, however.
 
-1. The nested scope system is ununtuitive and hard to debug.
+1. The nested scope system is counterintuitive and hard to debug.
 2. Improper use of scope as a communication can lead to performance problems.
 3. Your controllers shouldn't be talking to each other directly in the first
    place.
@@ -428,7 +428,7 @@ seem like a reason to use it, but it's actually another reason to avoid it.
 
 ## The "Controller As" Pattern
 
-Give controller's scope an name and refer to its properties using this name:
+Gives a controller's scope a name and refer to its properties using this name:
 
 ```html
   <div ng-controller="MainCtrl as main">

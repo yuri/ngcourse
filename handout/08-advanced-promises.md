@@ -73,9 +73,9 @@ An alternative is to use the ES6-style constructor:
 This latter approach is less common today but is worth adopting since it is
 closer to the native promise creation in ES6.
 
-However, beware of a very common JavaScript antipattern that involves
-unnecessary creation of new promises. This often goes by the name of "Deferred
-Antipatern", but it applies equally to the ES6-style promise constructor. In
+However, beware of a very common JavaScript anti-pattern that involves
+unnecessary creation of new promises. This is often called the "Deferred
+Anti-pattern", but it applies equally to the ES6-style promise constructor. In
 most cases, you do not need to create new promises from scratch and resolve
 them yourself. If you got a promise from another function, you should use that
 promise's `.then()` method to create further promises. It is almost never a

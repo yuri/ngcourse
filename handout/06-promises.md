@@ -6,7 +6,7 @@ promise?
 ## Promises vs Callbacks
 
 JavaScript is single threaded, so we can't really ever "wait" for a result of
-a task such as an HTTP request. Our base line solution is callbacks:
+a task such as an HTTP request. Our baseline solution is callbacks:
 
 ```javascript
   request(url, function(error, response) {
@@ -150,7 +150,7 @@ always returns a promise. Always.
 `p2` is now a promise regardless of what transformData() returned. Even if
 something fails.
 
-If the callback function returns a value, the promise returns to that value:
+If the callback function returns a value, the promise resolves to that value:
 
 ```javascript
   p2 = p1.then(function (results) {
@@ -159,7 +159,7 @@ If the callback function returns a value, the promise returns to that value:
 ```
 `p2` will resolve to “1”.
 
-If the callback function returns a promise, the promise returns to a
+If the callback function returns a promise, the promise resolves to a
 functionally equivalent promise:
 
 ```javascript
@@ -293,7 +293,7 @@ A better approach is to break them up into meaningful functions.
         });
       });
   }
- 
+
   getMyTasks()
     .then(function(tasks) {
       $log.info(tasks);
