@@ -120,7 +120,7 @@ course.
 
 So in this example, we're configuring ui-router's `$stateProvider`,
 `$urlRouterProvider`, and `$locationProvider` with settings that will later
-be used to generate state, route, and state services with the correct path
+be used to generate state, route, and location services with the correct path
 and parameter data for use in our own controllers.
 
 ## More States
