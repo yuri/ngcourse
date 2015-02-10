@@ -211,8 +211,3 @@ Tip: Just follow the pattern set by `tasks-service.js`.
 * Fill out `app/core/users/user-service.js` and
 `app/core/users/user-service.test.js`
 * Follow same mocking and testing strategy as in `tasks-service.test.js`
-
-# Bonus Exercise:
-
-Use the `ng-repeat` directive, `tasks-service.js getTasks()` and `task-controller`
-to display a list of tasks in `index.html`.
