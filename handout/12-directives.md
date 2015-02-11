@@ -451,22 +451,3 @@ and then offload the actual manipulation to a service dedicated to this:
     attrs.id, element);
   };
 ```
-
-## Testing Directives
-
-We can test a directive as follows:
-
-```javascript
-  element = $compile(template)(scope);
-  element.click();
-  user.select.should.have.been.calledOnce;
-```
-
-If our directive relies on a template in an external file, those templates
-would need to be loaded somehow. One common approach is to use  ng- html2js
-preprocessor to convert templates in to JavaScript files, after which they can
-be required as modules.
-
-Keep in mind, however, that your time may be better spent on refactoring your
-code to maximize the amount of work that you do in services and writing tests
-for those services.

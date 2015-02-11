@@ -8,7 +8,7 @@ convenient.
 
 ## UI-Router
 
-Angular's built in routing solution ('ng-route') has been de facto superceeded
+Angular's built in routing solution ('ng-route') has been de facto superseded
 by "ui-router". We'll be using that. To install UI-Router with Bower:
 
 ```bash
@@ -184,7 +184,7 @@ Now we are going to rebuild our view around ui-router. First, let's do tasks.
     });
 ```
 
-If you look at task-list.hmtl, you'll see a new controller function in the html, getUserDisplayName. Let's add that to client/app/sections/task-list/task-list-controller.js.
+If you look at `task-list.html`, you'll see a new controller function in the html, `getUserDisplayName`. Let's add that to `client/app/sections/task-list/task-list-controller.js`.
 
 ```
     vm.getUserDisplayName= function(name){
@@ -268,7 +268,7 @@ name to the view as seen in `ui-view="child@parent"` below.
   });
 ```
 
-Update the parent index.html to be named using `<div ui-router="parent"/>`.
+Update the parent index.html to be named using `<div ui-view="parent"/>`.
 
 Nesting views allows sophisticated routing where parts of the view are defined
 by the parent state and parts are defined (or, overridden) by child states.
