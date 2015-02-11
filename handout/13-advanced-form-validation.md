@@ -13,7 +13,7 @@ Make sure your index.html only has ui-view in it. It should look something like 
     <div>
       <div ui-view></div>
     </div>
-  
+
     <script src="/bower_components/lodash/dist/lodash.js"></script>
 ```
 
@@ -47,14 +47,14 @@ Let's revise the basic login UI we built earlier in this course.  Create a `main
 </div>
 ```
 
-Also, to prepare for sharing information across services, lets update our user service in `app/components/users/users-service.js`:
+Also, to prepare for sharing information across services, lets update our user service in `client/app/core/users/users-service.js`:
 
 ```
 angular.module('ngcourse.users', [])
 
 .factory('users', function () {
   var service={};
-  
+
   service.username= null;
   service.password= null;
   service.login= function(name, password){
@@ -69,7 +69,7 @@ and our app.js:
 
 ```
 angular.module('ngcourse', [
-  'ngcourse.tasks', 
+  'ngcourse.tasks',
   'ngcourse.server',
   'ngcourse.router',
   'ngcourse.users'
