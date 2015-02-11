@@ -9,7 +9,7 @@ convenient.
 ## UI-Router
 
 Angular's built in routing solution ('ng-route') has been de facto superseded
-by "ui-router". We'll be using that. To install UI-Router with Bower:
+by [ui-router](https://github.com/angular-ui/ui-router/blob/master/README.md). We'll be using that. To install UI-Router with Bower:
 
 ```bash
   bower install --save angular-ui-router
