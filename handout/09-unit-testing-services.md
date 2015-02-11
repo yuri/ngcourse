@@ -42,7 +42,7 @@ We'll be mostly running our tools via Gulp, replying on our `rangle-gulp`
 module. So, Gulp is the only tool we need to setup globally.
 
 ```bash
-  sudo npm install -g gulp
+  npm install -g gulp
   npm install
   bower install
 ```
@@ -50,7 +50,7 @@ module. So, Gulp is the only tool we need to setup globally.
 However, let's install Mocha as well, so that we can try using it manually:
 
 ```bash
-  sudo npm install -g mocha
+  npm install -g mocha
 ```
 
 Now we can proceed to writing tests.
@@ -79,7 +79,7 @@ into `client/app/simple.test.js`.
 We can now run this code with:
 
 ```bash
-  mocha client/app/simple_test.js
+  mocha client/app/simple.test.js
 ```
 
 ## The Importance of Test Documentation

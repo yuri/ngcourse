@@ -61,18 +61,22 @@ We'll also need to add a directive for ui-router in index.html:
 
 Your index.html main section should now look like this:
 
-```
+```html
+  ...
+
   <body ng-app="ngcourse">
     <div>
      <div ui-view></div>
     </div>
 
     <script src="/bower_components/lodash/dist/lodash.js"></script>
+
+  ...
 ```
 
-ui-view is a directive that ui-router users to manage it's views. It will be replaced by the template or templateURL that is configured for each ui-router state.
+`ui-view` is a directive that `ui-router` users to manage its views. It will be replaced by the template or templateURL that is configured for each ui-router state.
 
-All the content we just removed will be added to templates, and ui-router will insert them into ui-view based on state.
+All the content we just removed will be added to templates, and `ui-router` will insert them into `ui-view` based on the current application state.
 
 Let's talk about why this need to happen in the "config" section.
 
@@ -234,7 +238,8 @@ usually produces a more natural experience for the user.
 
 ## Nesting Views
 
-One of the most powerful features of ui-router versus the out-of-the-box AngularJS router is nested views. To enable ui-router to know what view it's update, we can add a name to the view as seen in `ui-view="child@parent"` below.
+One of the most powerful features of ui-router versus the out-of-the-box AngularJS router is nested views. To allow `ui-router` to know what view it's updating, we can add a
+name to the view as seen in `ui-view="child@parent"` below.
 
 ```javascript
   .state('parent', {
