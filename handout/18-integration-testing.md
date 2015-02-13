@@ -170,3 +170,14 @@ In the console:
 
   expect(browser.isElementPresent(button)).toBe(true);
 ```
+
+## Protractor Documentation
+
+You can find more detailed API documentation for protractor
+[here](http://angular.github.io/protractor/#/api).
+
+Also note that protractor doesn't use our classic mocha/chai/sinon combo.
+
+Instead, it uses the older framework, Jasmine, which provides similar but
+slightly different syntax (see
+[here](http://jasmine.github.io/2.0/introduction.html))
