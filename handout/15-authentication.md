@@ -310,8 +310,8 @@ angular.module('ngcourse.users', [
 
 ### Logout
 
-Logout is implemented in a similar way, but with one additional detail: when you
-click the logout button in the UI, you'll notice that the application re-loads
+Logout is implemented in a similar way, but with a couple of additional details:
+when you click the logout button in the UI, you'll notice that the application re-loads
 itself.
 
 During the course of the user's session with the application, he or she will
@@ -319,6 +319,11 @@ have accumulated a decent amount of state in the JavaScript application and in
 the DOM.  This state needs to be cleared when we logout.  It turns out that a
 simple way to do this is to simply reload the page, resetting the application
 to its initial state.
+
+If you were storing anything in local storage, you should also be sure to delete
+it at this time.  These two steps are an easy way to reset the application to
+its initial state so that we don't get user data leaking out if another user
+signs in subsequently using the same machine.
 
 `koast.user.logout()` uses `$window.location.replace('/')` internally for this
 purpose.
