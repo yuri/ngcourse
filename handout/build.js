@@ -14,15 +14,19 @@ var parts = [
   '07-services.md',
   '08-advanced-promises.md',
   '09-unit-testing-services.md',
+  '10-working-session-TDD-for-a-new-service.md',
   '11-ui-router.md',
   '12-directives.md',
   '13-advanced-form-validation.md',
-  '14-authentication.md',
-  '15-providers.md',
-  '16-integration-testing.md',
-  '17-unit-testing-controllers-and-directives.md',
+  '14-working-session-2.md',
+  '15-authentication.md',
+  '16-providers.md',
+  '17-final-working-session.md',
+  '18-integration-testing.md',
+  '19-unit-testing-controllers-and-directives.md',
   '20-gulp.md',
-  '21-sublime.md'
+  '21-sublime.md',
+  '22-continuous-integration.md'
 ];
 
 // Synchronous highlighting with highlight.js
