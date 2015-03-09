@@ -167,7 +167,7 @@ it with `--disable-web-security` flag. For example, on OSX:
   open -a /Applications/Google\ Chrome.app --args --disable-web-security
 ```
 
-Or on Window:
+Or on Windows:
 
 ```
   chrome.exe --disable-web-security
