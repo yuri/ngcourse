@@ -35,7 +35,7 @@ __GET__ to retrieve some resource (or resources). E.g.:
   GET http://ngcourse.herokuapp.com/api/v1/tasks/5491e9da995e33455a7307e2
 ```
 
-The server will respond with the a set of object represenging matching resources:
+The server will respond with the a set of objects representing matching resources:
 
 ```js
 [{
@@ -116,7 +116,7 @@ not authorized to do what you are asking to do), and "404 Not Found" (the
 resource you are asking for does not exist, or you are not allowed to know
 whether it exists). Some servers will send additional 400-level status code
 for certain specific problems, while others will fall back on "400" if none of
-the options above apply. It is important for your application to identify
+the options above apply. It is important for your application to identify the
 different 400-level codes used by your server, since they may help you
 determine what to do next. For example, a 401 response would normally require
 that you ask the user to re-login, while a 403 response would usually mean
