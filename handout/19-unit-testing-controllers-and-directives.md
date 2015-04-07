@@ -218,7 +218,7 @@ The solution to this issue is to use the `karma-ng-html2js` preprocessor.
 Install it like this:
 
 ```bash
-gulp install karma-ng-html2js-preprocessor --save-dev
+npm install karma-ng-html2js-preprocessor --save-dev
 ```
 
 Add it to your `karma.conf.js` like this:
