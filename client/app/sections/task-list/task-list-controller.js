@@ -2,19 +2,6 @@
 
 angular.module('ngcourse')
 
-.controller('TaskListCtrl', function ($log, tasks, users, router) {
-  var vm = this;
-  vm.tasks = [];
-  vm.addTask = router.goToAddTask;
+.controller('TaskListCtrl', function () {
 
-  vm.getUserDisplayName = users.getUserDisplayName;
-
-  tasks.getTasks()
-    .then(function (tasks) {
-      return users.whenReady()
-        .then(function () {
-          vm.tasks = tasks;
-        });
-    })
-    .then(null, $log.error);
 });
