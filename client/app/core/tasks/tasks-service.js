@@ -1,39 +1,42 @@
 'use strict';
 
-angular.module('ngcourse.tasks', [
-  'koast'
-])
+import {InjectableReceiver} from 'utils/injectable-receiver';
 
-.factory('tasks', function (koast) {
-  var service = {};
+class TasksService extends InjectableReceiver {
 
-  function makeAuthenticatedMethod(functionToDelay) {
+  constructor () {
+    super(arguments);
+    this.addMethods();
+  }
+
+  makeAuthenticatedMethod(functionToDelay) {
     return function () {
       var myArgs = arguments;
-      return koast.user.whenAuthenticated()
+      return this.services.koast.user.whenAuthenticated()
         .then(function () {
-          return functionToDelay.apply(service, myArgs);
+          return functionToDelay.apply(this, myArgs);
         });
     };
   }
 
-  service.getTasks = makeAuthenticatedMethod(function () {
-    return koast.queryForResources('tasks');
-  });
+  addMethods() {
+    this.getTasks = this.makeAuthenticatedMethod(
+      () => this.services.koast.queryForResources('tasks')
+    );
 
-  service.addTask = makeAuthenticatedMethod(function (task) {
-    return koast.createResource('tasks', task);
-  });
+    this.addTask = this.makeAuthenticatedMethod(
+      (task) => this.services.koast.createResource('tasks', task)
+    );
 
-  service.updateTask = makeAuthenticatedMethod(function (task) {
-    return task.save();
-  });
+    this.updateTask = this.makeAuthenticatedMethod(
+      (task) => task.save()
+    );
 
-  service.getTask = makeAuthenticatedMethod(function (id) {
-    return koast.getResource('tasks', {
-      _id: id
-    });
-  });
+    this.getTask = this.makeAuthenticatedMethod(
+      (id) => this.services.koast.getResource('tasks', { _id: id})
+    );
+  }
+}
+TasksService.$inject = ['koast'];
 
-  return service;
-});
+export {TasksService};

@@ -1,20 +1,27 @@
 'use strict';
 
-angular.module('ngcourse')
+import {InjectableReceiver} from 'utils/injectable-receiver';
 
-.controller('TaskListCtrl', function ($log, tasks, users, router) {
-  var vm = this;
-  vm.tasks = [];
-  vm.addTask = router.goToAddTask;
+class TaskListCtrl extends InjectableReceiver {
+  constructor() {
+    super(arguments);
+    this.tasks = [];
+    this.addTask = this.services.router.goToAddTask;
+    this.getUserDisplayName = this.services.users.getUserDisplayName.bind(this.services.users);
+    this.loadInitialTasks();
+  }
 
-  vm.getUserDisplayName = users.getUserDisplayName;
+  loadInitialTasks() {
+    let tasks;
+    this.services.tasks.getTasks()
+      .then(newTasks => tasks = newTasks)
+      .then(() => this.services.users.whenReady())
+      .then(() => this.tasks = tasks)
+      .then(null, this.services.$log.error);
+  }
 
-  tasks.getTasks()
-    .then(function (tasks) {
-      return users.whenReady()
-        .then(function () {
-          vm.tasks = tasks;
-        });
-    })
-    .then(null, $log.error);
-});
+  // get addTask() { return this.services.router.goToAddTask; }
+};
+TaskListCtrl.$inject = ['$log', 'tasks', 'users', 'router'];
+
+export {TaskListCtrl};

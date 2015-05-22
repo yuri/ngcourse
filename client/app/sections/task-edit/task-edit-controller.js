@@ -1,23 +1,22 @@
-'use strict';
+import {InjectableReceiver} from 'utils/injectable-receiver';
 
-angular.module('ngcourse')
+class TaskEditCtrl extends InjectableReceiver {
+  constructor() {
+    super(arguments);
+    this.services.tasks.getTask(this.services.$stateParams._id)
+      .then((response) => this.task = response)
+      .then(null, this.services.$log.error);
 
-.controller('TaskEditCtrl', function ($http, $log, tasks, $stateParams, router) {
-  var vm = this;
+    this.cancel = this.services.router.goToTaskList;
+  }
 
-  tasks.getTask($stateParams._id)
-    .then(function (response) {
-      vm.task = response;
-    })
-    .then(null, $log.error);
+  updateTask (task) {
+    this.services.tasks.updateTask(task)
+      .then(this.services.router.goToTaskList)
+      .then(null, this.services.$log.error);
+  }
+}
 
-  vm.cancel = router.goToTaskList;
+TaskEditCtrl.$inject = ['$http', '$log', 'tasks', '$stateParams', 'router'];
 
-  vm.updateTask = function (task) {
-    tasks.updateTask(task)
-      .then(function () {
-        router.goToTaskList();
-      })
-      .then(null, $log.error);
-  };
-});
+export {TaskEditCtrl};
