@@ -1,12 +1,19 @@
-'use strict';
+import {Inject, getServices} from 'utils/di';
 
-import {InjectableReceiver} from 'utils/injectable-receiver';
-
-class TaskListCtrl extends InjectableReceiver {
-  constructor() {
-    super(arguments);
+export class TaskListCtrl {
+  services: any;
+  tasks: any;
+  addTask: any;
+  getUserDisplayName: any;
+  constructor(
+    @Inject('$log') $log,
+    @Inject('tasks') tasks,
+    @Inject('users') users,
+    @Inject('router') router
+  ) {
+    this.services = getServices(this.constructor, arguments);
     this.tasks = [];
-    this.addTask = this.services.router.goToAddTask;
+    this.addTask = this.services.router.goToAddTask.bind(this.services.router);
     this.getUserDisplayName = this.services.users.getUserDisplayName.bind(this.services.users);
     this.loadInitialTasks();
   }
@@ -22,6 +29,3 @@ class TaskListCtrl extends InjectableReceiver {
 
   // get addTask() { return this.services.router.goToAddTask; }
 };
-TaskListCtrl.$inject = ['$log', 'tasks', 'users', 'router'];
-
-export {TaskListCtrl};

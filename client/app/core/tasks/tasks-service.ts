@@ -1,21 +1,22 @@
-'use strict';
+import {Inject, getServices} from 'utils/di';
 
-import {InjectableReceiver} from 'utils/injectable-receiver';
+class TasksService {
+  services: any;
+  getTasks: any;
+  addTask: any;
+  updateTask: any;
+  getTask: any;
 
-class TasksService extends InjectableReceiver {
-
-  constructor () {
-    super(arguments);
+  constructor( @Inject('koast') koast) {
+    this.services = getServices(this.constructor, arguments);
     this.addMethods();
   }
 
   makeAuthenticatedMethod(functionToDelay) {
     return function () {
-      var myArgs = arguments;
+      let myArgs = arguments;
       return this.services.koast.user.whenAuthenticated()
-        .then(function () {
-          return functionToDelay.apply(this, myArgs);
-        });
+        .then(() => functionToDelay.apply(this, myArgs));
     };
   }
 
@@ -37,6 +38,5 @@ class TasksService extends InjectableReceiver {
     );
   }
 }
-TasksService.$inject = ['koast'];
 
 export {TasksService};

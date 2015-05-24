@@ -1,11 +1,16 @@
-'use strict';
+import {Inject, getServices} from 'utils/di';
 
-import {InjectableReceiver} from 'utils/injectable-receiver';
+class UsersService {
+  services: any;
+  byUserName: any;
+  usersPromise: any;
+  all: any;
 
-class UsersService extends InjectableReceiver {
-
-  constructor() {
-    super(arguments);
+  constructor(
+    @Inject('koast') koast,
+    @Inject('$log') $log
+  ) {
+    this.services = getServices(this.constructor, arguments);
     this.byUserName = {};
     this.loadUsers();
   }
@@ -39,7 +44,6 @@ class UsersService extends InjectableReceiver {
     return user.displayName;
   }
 }
-
-UsersService.$inject = ['$log', 'koast'];
+// UsersService.$inject = ['$log', 'koast'];
 
 export {UsersService};
