@@ -1,6 +1,22 @@
 import {Inject, getServices} from 'utils/di';
+import {makeComponent} from 'utils/component-maker';
 
-export class MainCtrl {
+let template = `
+  <div>
+    <ngc-login-form
+      ng-hide="ctrl.user.isAuthenticated"
+      on-submit="ctrl.login(data)"
+      error-message="ctrl.errorMessage">
+    </ngc-login-form>
+    <div ng-show="ctrl.user.isAuthenticated">
+      Hello, <span>{{ctrl.userDisplayName}}</span>!
+      <button ng-click="ctrl.logout()">Logout</button>
+      <hr>
+      <ng-transclude></ng-transclude>
+    </div>
+`;
+
+class AuthenticatorCtrl {
   services: any;
   user: any;
   userDisplayName: any;
@@ -11,7 +27,7 @@ export class MainCtrl {
     @Inject('users') users,
     @Inject('koast') koast
   ) {
-    this.services = getServices(this.constructor, arguments);
+    this.services = {$log, users, koast};
     this.user = this.services.koast.user;
     this.services.koast.user.whenAuthenticated()
         .then(() => this.services.users.whenReady())
@@ -23,6 +39,7 @@ export class MainCtrl {
   }
 
   login(form) {
+    console.log('form received:', form);
     this.services.koast.user.loginLocal(form)
       .then(null, this.showLoginError.bind(this));
   }
@@ -37,3 +54,11 @@ export class MainCtrl {
     this.services.$log.error(errorMessage);
   }
 }
+
+export var AuthenticatorComponent = makeComponent(
+  template,
+  AuthenticatorCtrl,
+  {
+    transclude: true
+  }
+);

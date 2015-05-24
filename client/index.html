@@ -17,43 +17,9 @@
   </head>
   <body>
     <div>
-      <div ng-controller="MainCtrl as main">
-        <form
-          ng-hide="main.user.isAuthenticated"
-          ng-controller="LoginFormCtrl as loginFormCtrl"
-          class="login"
-          name="loginFormCtrl.form"
-          novalidate>
-
-          Enter username: <input
-            ng-model="loginFormCtrl.username"
-            name="username"
-            ng-pattern="/^[a-z]+$/"
-            required><br>
-
-          Password: <input
-            type="password"
-            ng-model="loginFormCtrl.password"
-            name="password"
-            required><br>
-
-          <div ng-show="main.errorMessage">{{ main.errorMessage}}</div>
-          <button id="login-button"
-            ng-click="main.login(loginFormCtrl)"
-            ng-disabled="loginFormCtrl.form.$invalid">Login</button>
-        </form>
-
-        <div ng-show="main.user.isAuthenticated">
-          Hello, <span>{{main.userDisplayName}}</span>!
-          <button ng-click="main.logout()">Logout</button>
-        </div>
-
-        <hr>
-
-        <div ui-view ng-show="main.user.isAuthenticated"></div>
-
-
-      </div>
+      <ngc-authenticator>
+        <div ui-view></div>
+      </ngc-authenticator>
     </div>
     <script src="/bower_components/lodash/dist/lodash.js"></script>
     <script src="/bower_components/koast-angular/dist/koast.js"></script>
